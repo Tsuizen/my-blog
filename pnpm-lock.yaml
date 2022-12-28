@@ -29,6 +29,7 @@ specifiers:
   next-cookie: ^2.8.0
   next-remove-imports: ^1.0.8
   next-with-less: ^2.0.5
+  normalize.css: ^8.0.1
   postcss: ^8.4.20
   prettier: ^2.8.0
   react: 18.2.0
@@ -37,6 +38,7 @@ specifiers:
   run: ^1.4.0
   style: ^0.0.3
   tailwindcss: ^3.2.4
+  theme-change: ^2.2.0
   typescript: 4.9.3
 
 dependencies:
@@ -55,11 +57,13 @@ dependencies:
   next: registry.npmmirror.com/next/13.0.5_biqbaboplfbrettd7655fr4n2y
   next-cookie: registry.npmmirror.com/next-cookie/2.8.0_next@13.0.5
   next-remove-imports: registry.npmmirror.com/next-remove-imports/1.0.8
+  normalize.css: registry.npmmirror.com/normalize.css/8.0.1
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
   reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
   run: registry.npmmirror.com/run/1.4.0
   style: registry.npmmirror.com/style/0.0.3
+  theme-change: registry.npmmirror.com/theme-change/2.2.0
   typescript: registry.npmmirror.com/typescript/4.9.3
 
 devDependencies:
@@ -5178,6 +5182,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  registry.npmmirror.com/normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/normalize.css/-/normalize.css-8.0.1.tgz}
+    name: normalize.css
+    version: 8.0.1
+    dev: false
+
   registry.npmmirror.com/npm-run-path/4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/npm-run-path/-/npm-run-path-4.0.1.tgz}
     name: npm-run-path
@@ -6603,6 +6613,12 @@ packages:
     name: text-table
     version: 0.2.0
     dev: true
+
+  registry.npmmirror.com/theme-change/2.2.0:
+    resolution: {integrity: sha512-vvgZEEfmH3yZGq2bWHyzs2AOG1SRfNnCvWbEnPzGpdvvCmAWtOsEdg4H6k/OMapegG+LEQvQ76tQoN9B+FT7rg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/theme-change/-/theme-change-2.2.0.tgz}
+    name: theme-change
+    version: 2.2.0
+    dev: false
 
   registry.npmmirror.com/through/2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/through/-/through-2.3.8.tgz}

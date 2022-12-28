@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-default: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-default: #252b30;
+  }
+}
+[data-theme='dark'] {
+  --color-default: #252b30;
+}
+[data-theme='black'] {
+  --color-default: #000000;
+}
+[data-theme='🌸'] {
+  --color-default: #ffabc8;
+}
+[data-theme='🐬'] {
+  --color-default: #7ec6ff;
+}
+[data-theme='🐤'] {
+  --color-default: #ffd65a;
+}
+body {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
+}
