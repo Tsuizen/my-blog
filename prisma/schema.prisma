@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model posts {
+  id                 Int     @id @default(autoincrement())
+  i18n               String  @default("zh-Hans")
+  slug               String
+  layout             String  @default("Post")
+  category           String  @default("博客")
+  categorySlug       String  @default("blog")
+  chapter            String? @default("")
+  title              String
+  description        String?
+  scripts            String  @default("")
+  headings           String  @default("[]")
+  content            String?
+  readMins           Float   @default(0)
+  words              Int     @default(0)
+  author             String  @default("Tsuizen")
+  tags               String?
+  featureImage       String
+  featureImageWidth  Int     @default(0)
+  featureImageHeight Int     @default(0)
+  featureVideo       String? @default("")
+  demoLink           String? @default("")
+  sourceLink         String? @default("")
+  filename           String
+  createdAt          String
+  updatedAt          String
+
+  @@unique([slug, i18n], map: "kp_slug")
+}
