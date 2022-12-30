@@ -1,5 +1,5 @@
 ---
-slug: ru-he-zhuan-qian
+slug: test
 category: 博客
 title: 如何在网络中赚钱？
 author: Tsuizen

@@ -29,7 +29,6 @@ async function savePosts(posts: Post[]) {
       return a.sort - b.sort;
     })
     .map((v) => {
-      console.log('time', v.createdAt);
       return {
         ...omitBy(v, 'sort'),
         createdAt: format(v.createdAt, 'yyyy-MM-dd HH:mm:ss'),
@@ -39,7 +38,6 @@ async function savePosts(posts: Post[]) {
 
   await db.posts.deleteMany({});
   for (const post of initPosts) {
-    console.log('post', post);
     await db.posts.create({ data: post });
   }
 

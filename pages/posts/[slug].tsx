@@ -1,23 +1,17 @@
-import { PrismaClient } from '@prisma/client';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType } from 'next';
 import { useMemo } from 'react';
 
-import { getAllPosts, getPostsData } from '@/utils/blogPosts';
+import { getAllPosts, getPostsData } from '@/utils/posts';
 
 export async function getStaticProps({ params }: any) {
   const postData = await getPostsData(params.slug);
-  const db = new PrismaClient();
-  const data = await db.posts.findMany({
-    select: {
-      title: true,
-      slug: true
-    }
-  });
-  console.log(data);
+
   return {
     props: {
-      ...postData
+      code: postData.code,
+      slug: postData.slug,
+      frontmatter: JSON.parse(JSON.stringify(postData.frontmatter))
     }
   };
 }

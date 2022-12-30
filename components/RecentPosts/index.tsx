@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import InfiniteScroll from 'react-awesome-infinite-scroll';
+import { useEffect, useState } from 'react';
 
 export function RecentPosts({ posts }) {
   const [recentPosts, setRecentPosts] = useState({
@@ -9,43 +8,39 @@ export function RecentPosts({ posts }) {
     hasMore: true
   });
 
-  const fetchMoreData = () => {
-    fetch('/api/recentposts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        lastSlug: recentPosts.posts[recentPosts.posts.length - 1].slug || '',
-        count: recentPosts.posts.length || 0
-      })
-    })
-      .then((response) => response.json())
-      .then(function (resp) {
-        if (resp && resp.success && resp.posts && resp.posts.length > 0) {
-          setRecentPosts({
-            ...recentPosts,
-            posts: recentPosts.posts.concat(resp.posts)
-          });
-        } else {
-          setRecentPosts({
-            ...recentPosts,
-            hasMore: false
-          });
-        }
-      });
-  };
+  useEffect(() => {
+    setRecentPosts(posts);
+  }, [posts]);
+
+  // const fetchMoreData = () => {
+  //   fetch('/api/recentposts', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       lastSlug: recentPosts.posts[recentPosts.posts.length - 1].slug || '',
+  //       count: recentPosts.posts.length || 0
+  //     })
+  //   })
+  //     .then((response) => response.json())
+  //     .then(function (resp) {
+  //       if (resp && resp.success && resp.posts && resp.posts.length > 0) {
+  //         setRecentPosts({
+  //           ...recentPosts,
+  //           posts: recentPosts.posts.concat(resp.posts)
+  //         });
+  //       } else {
+  //         setRecentPosts({
+  //           ...recentPosts,
+  //           hasMore: false
+  //         });
+  //       }
+  //     });
+  // };
 
   return (
-    <InfiniteScroll
-      length={recentPosts.posts.length}
-      next={fetchMoreData}
-      hasMore={recentPosts.hasMore}
-      loadingComponent={
-        <div className="animate-pulse text-center text-xl py-8">加载中……</div>
-      }
-      height={150}
-    >
+    <>
       <div className="text-center pt-24 pb-16 text-gray-600">
         <h2 className="text-5xl md:text-6xl">最新文章</h2>
       </div>
@@ -61,6 +56,8 @@ export function RecentPosts({ posts }) {
                 <Image
                   src={v.featureImage}
                   title={v.title}
+                  width={100}
+                  height={100}
                   alt="feature image"
                 />
               </Link>
@@ -71,12 +68,12 @@ export function RecentPosts({ posts }) {
                   href={`/category/${encodeURIComponent(v.categorySlug)}/`}
                   passHref
                 >
-                  <a title={v.category}>{v.category}</a>
+                  {v.category}
                 </Link>
               </span>
               <h3 className="text-lg mb-2 lg:text-2xl">
                 <Link href={`/${encodeURIComponent(v.slug)}/`} passHref>
-                  <a title={v.title}>{v.title}</a>
+                  {v.title}
                 </Link>
               </h3>
               <span className="w-1/4 mb-4 border-b-2 border-primary inline-block"></span>
@@ -103,6 +100,6 @@ export function RecentPosts({ posts }) {
           </div>
         ))}
       </section>
-    </InfiniteScroll>
+    </>
   );
 }

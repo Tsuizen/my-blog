@@ -23,12 +23,12 @@ export interface Post {
   demoLink: string;
   createdAt: Date;
   updatedAt: Date;
-  slug: string;
   sort: number;
   category: any;
   categorySlug: string;
   chapter: string;
   i18n: string;
+  slug?: string;
 }
 
 //获取 MDX 文档数据
@@ -76,7 +76,6 @@ async function getMDXList() {
 
   for (let i = 0; i < files.length; i++) {
     const fp = path.join(files[i].dir, files[i].name);
-    console.log('fp', fp)
     // 文章标题列表
     let headings: string[] = [];
     const { code, frontmatter } = await bundleMDX({
@@ -98,7 +97,7 @@ async function getMDXList() {
     const stats = readingTime(text.toString(), { wordsPerMinute: 400 });
 
     const category = frontmatter.category || '博客';
-    console.log('formattime', frontmatter)
+
     let post: Post = {
       sort: getSort(files[i].name),
       category: category,
@@ -117,8 +116,7 @@ async function getMDXList() {
       headings: JSON.stringify(headings),
       filename: fp,
       createdAt: new Date(Date.parse(frontmatter.createdAt)),
-      updatedAt: new Date(Date.parse(frontmatter.updatedAt)),
-      slug: ''
+      updatedAt: new Date(Date.parse(frontmatter.updatedAt))
     };
 
     //校验
