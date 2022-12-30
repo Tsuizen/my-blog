@@ -22,7 +22,7 @@ model posts {
   description        String?
   scripts            String  @default("")
   headings           String  @default("[]")
-  content            String?
+  content            String? @db.Text
   readMins           Float   @default(0)
   words              Int     @default(0)
   author             String  @default("Tsuizen")
