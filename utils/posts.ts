@@ -44,7 +44,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
   const items: Items = {};
 
-  // Ensure only the minimal needed data is exposed
+  // 确保只导出最低限度数据
   fields.forEach((field) => {
     if (field === 'slug') {
       items[field] = realSlug;

@@ -10,25 +10,8 @@ interface FilePath {
   name: string;
 }
 
-export interface Post {
-  readMins: number;
-  words: number;
-  content: string;
-  headings: string;
-  filename: string;
-  featureImage: string;
-  featureVideo: string;
-  sourceLink: string;
-  scripts: string;
-  demoLink: string;
-  createdAt: Date;
-  updatedAt: Date;
-  sort: number;
-  category: any;
-  categorySlug: string;
-  chapter: string;
-  i18n: string;
-  slug?: string;
+interface Posts {
+  
 }
 
 //获取 MDX 文档数据

@@ -6,9 +6,10 @@ import { RecentPosts } from '@/components/RecentPosts';
 
 import Header from '../components/Header';
 
-async function getPosts(start = 0) {
+// 获取首页滚动加载数据
+async function getRecentPosts(start = 0) {
   const db = new PrismaClient();
-  const data = await db.posts.findMany({
+  const posts = await db.posts.findMany({
     orderBy: {
       createdAt: 'desc'
     },
@@ -23,17 +24,16 @@ async function getPosts(start = 0) {
       author: true,
       tags: true,
       featureImage: true,
-      featureImageWidth: true,
-      featureImageHeight: true,
       createdAt: true,
       updatedAt: true
     }
   });
-  return data;
+  return posts;
 }
 
 export async function getStaticProps() {
-  const posts = await getPosts();
+  const posts = await getRecentPosts();
+
   return {
     props: {
       posts

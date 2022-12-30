@@ -1,15 +1,43 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+export interface Post {
+  id?: number;
+  i18n?: string;
+  slug?: string;
+  layout?: string;
+  category?: string;
+  categorySlug?: string;
+  chapter?: string;
+  title?: string;
+  description?: string;
+  scripts?: string;
+  headings?: string;
+  content?: string;
+  readMins?: number;
+  words?: number;
+  author?: string;
+  tags?: string;
+  featureImage?: string;
+  featureImageWidth?: number;
+  featureImageHeight?: number;
+  featureVideo?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 export function RecentPosts({ posts }) {
-  const [recentPosts, setRecentPosts] = useState({
+  const [recentPosts, setRecentPosts] = useState<{
+    posts: Post[];
+    hasMore: boolean;
+  }>({
     posts: posts,
     hasMore: true
   });
 
   useEffect(() => {
-    setRecentPosts(posts);
+    console.log('post', posts);
+    setRecentPosts({ posts, hasMore: true });
   }, [posts]);
 
   // const fetchMoreData = () => {
@@ -19,16 +47,16 @@ export function RecentPosts({ posts }) {
   //       'Content-Type': 'application/json'
   //     },
   //     body: JSON.stringify({
-  //       lastSlug: recentPosts.posts[recentPosts.posts.length - 1].slug || '',
-  //       count: recentPosts.posts.length || 0
+  //       lastSlug: recentPosts.post[recentPosts.post.length - 1].slug || '',
+  //       count: recentPosts.post.length || 0
   //     })
   //   })
   //     .then((response) => response.json())
   //     .then(function (resp) {
-  //       if (resp && resp.success && resp.posts && resp.posts.length > 0) {
+  //       if (resp && resp.success && resp.post && resp.post.length > 0) {
   //         setRecentPosts({
   //           ...recentPosts,
-  //           posts: recentPosts.posts.concat(resp.posts)
+  //           post: recentPosts.post.concat(resp.post)
   //         });
   //       } else {
   //         setRecentPosts({
@@ -41,43 +69,40 @@ export function RecentPosts({ posts }) {
 
   return (
     <>
-      <div className="text-center pt-24 pb-16 text-gray-600">
-        <h2 className="text-5xl md:text-6xl">最新文章</h2>
-      </div>
-
-      <section className="flex flex-wrap text-gray-600 max-w-screen-lg mx-auto mb-10">
-        {recentPosts.posts.map((v) => (
+      <section className="flex flex-wrap text-gray-600 max-w-screen-sm mx-auto mb-10 mt-10">
+        {recentPosts.posts.map((post) => (
           <div
-            key={v.slug}
-            className="bg-gray-100 w-full mb-10 mx-4 block md:overflow-hidden md:flex"
+            key={post.slug}
+            className="bg-gray-100 w-full mx-4 block md:overflow-hidden md:flex md:flex-wrap my-4"
           >
-            <div className="md:w-1/2 transform transition-transform ease-in-out duration-500 hover:scale-110">
-              <Link href={`/${encodeURIComponent(v.slug)}/`}>
+            {/* <div className="md:w-full md:h-40 transform transition-transform ease-in-out duration-500 hover:scale-110">
+              <Link href={`/${encodeURIComponent(post.slug!)}/`}>
                 <Image
-                  src={v.featureImage}
-                  title={v.title}
-                  width={100}
-                  height={100}
+                  fill
+                  src={post.featureImage!}
+                  title={post.title}
                   alt="feature image"
                 />
               </Link>
-            </div>
-            <div className="bg-white p-6 z-[1] shadow-md md:w-1/2 md:p-8 md:my-6 md:-ml-8">
-              <span className="text-primary text-sm bg-gray-200 rounded-sm px-2 py-1 mb-4 inline-block lg:text-base">
+            </div> */}
+            <div className="bg-white p-6 z-[1] shadow-md md:w-full md:p-8">
+              <span className="text-primary text-sm bg-gray-200 rounded-sm px-2 py-1 inline-block lg:text-base">
                 <Link
-                  href={`/category/${encodeURIComponent(v.categorySlug)}/`}
+                  href={`/category/${encodeURIComponent(post.categorySlug!)}/`}
                   passHref
                 >
-                  {v.category}
+                  {post.category}
                 </Link>
               </span>
-              <h3 className="text-lg mb-2 lg:text-2xl">
-                <Link href={`/${encodeURIComponent(v.slug)}/`} passHref>
-                  {v.title}
+              <h3 className="text-lg mb-2 lg:text-2xl mt-2">
+                <Link href={`/${encodeURIComponent(post.slug!)}/`} passHref>
+                  {post.title}
                 </Link>
               </h3>
-              <span className="w-1/4 mb-4 border-b-2 border-primary inline-block"></span>
-              <div className="text-sm mb-4 lg:text-base">{v.description}</div>
+              <span className="w-1/4 border-b-2 border-primary inline-block mt-2"></span>
+              <div className="text-sm mb-4 lg:text-base mt-0">
+                {post.description}
+              </div>
               <div className="text-xs text-gray-400 flex items-center">
                 <svg
                   className="w-3 h-3 mr-1"
@@ -94,7 +119,7 @@ export function RecentPosts({ posts }) {
                     d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
                   ></path>
                 </svg>
-                <span className="">{v.createdAt}</span>
+                <span className="">{post.createdAt}</span>
               </div>
             </div>
           </div>
