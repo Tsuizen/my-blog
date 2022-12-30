@@ -86,16 +86,21 @@ export function RecentPosts({ posts }) {
               </Link>
             </div> */}
             <div className="bg-white p-6 z-[1] shadow-md md:w-full md:p-8">
-              <span className="text-primary text-sm bg-gray-200 rounded-sm px-2 py-1 inline-block lg:text-base">
+              <span className="text-primary text-sm bg-gray-200 rounded-sm px-2 py-1 inline-block lg:text-base ">
                 <Link
+                  className="hover:text-blue-500"
                   href={`/category/${encodeURIComponent(post.categorySlug!)}/`}
                   passHref
                 >
                   {post.category}
                 </Link>
               </span>
-              <h3 className="text-lg mb-2 lg:text-2xl mt-2">
-                <Link href={`/${encodeURIComponent(post.slug!)}/`} passHref>
+              <h3 className="text-lg mb-2 lg:text-2xl mt-2 ">
+                <Link
+                  href={`/${encodeURIComponent(post.slug!)}/`}
+                  passHref
+                  className="text-gray-600"
+                >
                   {post.title}
                 </Link>
               </h3>
