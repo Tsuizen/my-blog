@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -29,43 +30,13 @@ export interface Post {
 export function RecentPosts({ posts }) {
   const [recentPosts, setRecentPosts] = useState<{
     posts: Post[];
-    hasMore: boolean;
   }>({
-    posts: posts,
-    hasMore: true
+    posts: posts
   });
 
   useEffect(() => {
-    console.log('post', posts);
-    setRecentPosts({ posts, hasMore: true });
+    setRecentPosts({ posts });
   }, [posts]);
-
-  // const fetchMoreData = () => {
-  //   fetch('/api/recentposts', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       lastSlug: recentPosts.post[recentPosts.post.length - 1].slug || '',
-  //       count: recentPosts.post.length || 0
-  //     })
-  //   })
-  //     .then((response) => response.json())
-  //     .then(function (resp) {
-  //       if (resp && resp.success && resp.post && resp.post.length > 0) {
-  //         setRecentPosts({
-  //           ...recentPosts,
-  //           post: recentPosts.post.concat(resp.post)
-  //         });
-  //       } else {
-  //         setRecentPosts({
-  //           ...recentPosts,
-  //           hasMore: false
-  //         });
-  //       }
-  //     });
-  // };
 
   return (
     <>
@@ -75,7 +46,7 @@ export function RecentPosts({ posts }) {
             key={post.slug}
             className="bg-gray-100 w-full mx-4 block md:overflow-hidden md:flex md:flex-wrap my-4"
           >
-            {/* <div className="md:w-full md:h-40 transform transition-transform ease-in-out duration-500 hover:scale-110">
+            <div className="md:w-full md:h-52 transform transition-transform ease-in-out duration-500 hover:scale-110">
               <Link href={`/${encodeURIComponent(post.slug!)}/`}>
                 <Image
                   fill
@@ -84,17 +55,8 @@ export function RecentPosts({ posts }) {
                   alt="feature image"
                 />
               </Link>
-            </div> */}
+            </div>
             <div className="bg-white p-6 z-[1] shadow-md md:w-full md:p-8">
-              <span className="text-primary text-sm bg-gray-200 rounded-sm px-2 py-1 inline-block lg:text-base ">
-                <Link
-                  className="hover:text-blue-500"
-                  href={`/category/${encodeURIComponent(post.categorySlug!)}/`}
-                  passHref
-                >
-                  {post.category}
-                </Link>
-              </span>
               <h3 className="text-lg mb-2 lg:text-2xl mt-2 ">
                 <Link
                   href={`/${encodeURIComponent(post.slug!)}/`}
@@ -108,7 +70,7 @@ export function RecentPosts({ posts }) {
               <div className="text-sm mb-4 lg:text-base mt-0">
                 {post.description}
               </div>
-              <div className="text-xs text-gray-400 flex items-center">
+              <div className="text-gray-400 flex items-center text-sm">
                 <svg
                   className="w-3 h-3 mr-1"
                   aria-hidden="true"
@@ -125,6 +87,17 @@ export function RecentPosts({ posts }) {
                   ></path>
                 </svg>
                 <span className="">{post.createdAt}</span>
+                <span className="text-primary text-sm inline-block ml-2">
+                  <Link
+                    className="hover:text-blue-500"
+                    href={`/category/${encodeURIComponent(
+                      post.categorySlug!
+                    )}/`}
+                    passHref
+                  >
+                    {post.category}
+                  </Link>
+                </span>
               </div>
             </div>
           </div>

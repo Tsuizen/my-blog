@@ -40,6 +40,7 @@ async function savePosts(posts: Post[]) {
   for (const post of initPosts) {
     await db.posts.create({ data: post });
   }
+  await db.$disconnect();
 }
 
 export { savePosts };

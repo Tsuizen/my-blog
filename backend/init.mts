@@ -10,8 +10,19 @@ interface FilePath {
   name: string;
 }
 
-interface Posts {
-  
+export interface Post {
+  readMins: number;
+  words: number;
+  content: string;
+  filename: string;
+  createdAt: Date;
+  updatedAt: Date;
+  sort: number;
+  category: string;
+  categorySlug: string;
+  chapter: string;
+  slug?: string;
+  i18n: string;
 }
 
 //获取 MDX 文档数据
@@ -60,7 +71,6 @@ async function getMDXList() {
   for (let i = 0; i < files.length; i++) {
     const fp = path.join(files[i].dir, files[i].name);
     // 文章标题列表
-    let headings: string[] = [];
     const { code, frontmatter } = await bundleMDX({
       mdxOptions: (opts) => {
         //TODO: 添加额外的处理插件
@@ -86,17 +96,11 @@ async function getMDXList() {
       category: category,
       categorySlug: category,
       chapter: '',
-      featureImage: '',
-      featureVideo: '',
-      demoLink: '',
-      sourceLink: '',
-      scripts: '',
       i18n: '',
       ...frontmatter,
       readMins: stats.minutes,
       words: stats.words,
       content: code,
-      headings: JSON.stringify(headings),
       filename: fp,
       createdAt: new Date(Date.parse(frontmatter.createdAt)),
       updatedAt: new Date(Date.parse(frontmatter.updatedAt))

@@ -37,9 +37,19 @@ export default function Header() {
             <li>
               <Link href="#">标签</Link>
             </li>
+            <li className="flex">
+              <button className="btn btn-ghost btn-circle">
+                <Image src="/dark.svg" alt="夜间模式" width={24} height={24} />
+              </button>
+              <button className="btn btn-ghost btn-circle">
+                <Image src="/rss.svg" alt="rss" width={24} height={24} />
+              </button>
+            </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Tsuizen&apos;s blog</a>
+        <a className="btn btn-ghost normal-case text-xl hover:bg-opacity-0">
+          Tsuizen&apos;s blog
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -54,7 +64,7 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end hidden lg:flex">
         <button className="btn btn-ghost btn-circle">
           <Image src="/dark.svg" alt="夜间模式" width={24} height={24} />
         </button>

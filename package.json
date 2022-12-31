@@ -25,6 +25,7 @@
     "esbuild": "^0.16.12",
     "gray-matter": "^4.0.3",
     "iron-session": "^6.3.1",
+    "joi": "^17.7.0",
     "js-base64": "^3.7.3",
     "md5": "^2.3.0",
     "mdx-bundler": "^9.2.1",

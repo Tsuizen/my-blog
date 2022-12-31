@@ -1,10 +1,11 @@
 ---
 slug: test
-category: 博客
+category: 后端
+categorySlug: backend
 title: 如何在网络中赚钱？
 author: Tsuizen
 description: 如何在网络时代赚钱？一共只需要三步。第一步需要有一个想法。第二步，贯彻执行这个想法。第三步，扩大或者换个新的想法执行。
-tags: 如何赚钱、想法、策略、网络赚钱、赚钱体会
+tags: Dokcer JAVA
 featureImage: /assert/images/make-money.jpg
 createdAt: 2020-09-11
 updatedAt: 2020-12-22

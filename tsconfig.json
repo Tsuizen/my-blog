@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "backend/db.mts", "backend/db.mts", "backend/init.mts", "backend/init.mts", "backend/prisma.mts", "backend/prisma.mts", "backend/script.mts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "backend/db.mts", "backend/db.mts", "backend/init.mts", "backend/init.mts"],
   "exclude": ["node_modules"]
 }

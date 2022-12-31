@@ -6,7 +6,7 @@ import { getAllPosts, getPostsData } from '@/utils/posts';
 
 export async function getStaticProps({ params }: any) {
   const postData = await getPostsData(params.slug);
-
+  console.log(postData.slug);
   return {
     props: {
       code: postData.code,
@@ -18,7 +18,6 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const posts = getAllPosts(['slug']);
-  console.log(posts);
   return {
     paths: posts.map((post) => {
       return {

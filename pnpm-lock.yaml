@@ -24,6 +24,7 @@ specifiers:
   gray-matter: ^4.0.3
   husky: ^8.0.2
   iron-session: ^6.3.1
+  joi: ^17.7.0
   js-base64: ^3.7.3
   lint-staged: '>=10'
   markdownlint-cli: ^0.32.2
@@ -66,6 +67,7 @@ dependencies:
   esbuild: registry.npmmirror.com/esbuild/0.16.12
   gray-matter: registry.npmmirror.com/gray-matter/4.0.3
   iron-session: registry.npmmirror.com/iron-session/6.3.1_next@13.0.5
+  joi: registry.npmmirror.com/joi/17.7.0
   js-base64: registry.npmmirror.com/js-base64/3.7.3
   md5: registry.npmmirror.com/md5/2.3.0
   mdx-bundler: registry.npmmirror.com/mdx-bundler/9.2.1_esbuild@0.16.12
@@ -932,6 +934,20 @@ packages:
     version: 2.1.2
     dev: false
 
+  registry.npmmirror.com/@hapi/hoek/9.3.0:
+    resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@hapi/hoek/-/hoek-9.3.0.tgz}
+    name: '@hapi/hoek'
+    version: 9.3.0
+    dev: false
+
+  registry.npmmirror.com/@hapi/topo/5.1.0:
+    resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@hapi/topo/-/topo-5.1.0.tgz}
+    name: '@hapi/topo'
+    version: 5.1.0
+    dependencies:
+      '@hapi/hoek': registry.npmmirror.com/@hapi/hoek/9.3.0
+    dev: false
+
   registry.npmmirror.com/@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz}
     name: '@humanwhocodes/config-array'
@@ -1351,6 +1367,26 @@ packages:
     name: '@rushstack/eslint-patch'
     version: 1.2.0
     dev: true
+
+  registry.npmmirror.com/@sideway/address/4.1.4:
+    resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sideway/address/-/address-4.1.4.tgz}
+    name: '@sideway/address'
+    version: 4.1.4
+    dependencies:
+      '@hapi/hoek': registry.npmmirror.com/@hapi/hoek/9.3.0
+    dev: false
+
+  registry.npmmirror.com/@sideway/formula/3.0.1:
+    resolution: {integrity: sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sideway/formula/-/formula-3.0.1.tgz}
+    name: '@sideway/formula'
+    version: 3.0.1
+    dev: false
+
+  registry.npmmirror.com/@sideway/pinpoint/2.0.0:
+    resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz}
+    name: '@sideway/pinpoint'
+    version: 2.0.0
+    dev: false
 
   registry.npmmirror.com/@sindresorhus/is/0.14.0:
     resolution: {integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sindresorhus/is/-/is-0.14.0.tgz}
@@ -5688,6 +5724,18 @@ packages:
     version: 3.0.1
     engines: {node: '>=0.10.0'}
     dev: true
+
+  registry.npmmirror.com/joi/17.7.0:
+    resolution: {integrity: sha512-1/ugc8djfn93rTE3WRKdCzGGt/EtiYKxITMO4Wiv6q5JL1gl9ePt4kBsl1S499nbosspfctIQTpYIhSmHA3WAg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/joi/-/joi-17.7.0.tgz}
+    name: joi
+    version: 17.7.0
+    dependencies:
+      '@hapi/hoek': registry.npmmirror.com/@hapi/hoek/9.3.0
+      '@hapi/topo': registry.npmmirror.com/@hapi/topo/5.1.0
+      '@sideway/address': registry.npmmirror.com/@sideway/address/4.1.4
+      '@sideway/formula': registry.npmmirror.com/@sideway/formula/3.0.1
+      '@sideway/pinpoint': registry.npmmirror.com/@sideway/pinpoint/2.0.0
+    dev: false
 
   registry.npmmirror.com/js-base64/3.7.3:
     resolution: {integrity: sha512-PAr6Xg2jvd7MCR6Ld9Jg3BmTcjYsHEBx1VlwEwULb/qowPf5VD9kEMagj23Gm7JRnSvE/Da/57nChZjnvL8v6A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-base64/-/js-base64-3.7.3.tgz}
