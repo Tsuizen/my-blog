@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
-import Footer from '@/components/Footer';
 import { RecentPosts } from '@/components/RecentPosts';
-
-import Header from '../components/Header';
+import { getLayout } from '@/Layout/Home';
 
 // 获取首页滚动加载数据
 async function getRecentPosts() {
@@ -40,15 +38,16 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({
+const Home: NextPageWithLayout = ({
   posts
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Header />
-      {/* <Hero /> */}
       <RecentPosts posts={posts} />
-      <Footer />
     </>
   );
-}
+};
+
+Home.getLayout = getLayout;
+
+export default Home;

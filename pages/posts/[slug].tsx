@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import { useMemo } from 'react';
 
+import { getLayout } from '@/Layout/Post';
 import { getAllPosts } from '@/utils/posts';
 
 export async function getStaticProps({ params }: any) {
-  console.log(params.slug);
   const db = new PrismaClient();
   const post = await db.posts.findFirst({
     where: {
@@ -37,9 +37,9 @@ export async function getStaticPaths() {
   };
 }
 
-export default function BlogPost(
+const BlogPost: NextPageWithLayout = (
   post: InferGetStaticPropsType<typeof getStaticProps>
-) {
+) => {
   const Component = useMemo(
     () => getMDXComponent(post.content!),
     [post.content]
@@ -55,4 +55,8 @@ export default function BlogPost(
       </article>
     </>
   );
-}
+};
+
+BlogPost.getLayout = getLayout;
+
+export default BlogPost;
