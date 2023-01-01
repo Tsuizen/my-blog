@@ -1,9 +1,6 @@
-import * as rehypePrism from '@mapbox/rehype-prism';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { bundleMDX } from 'mdx-bundler';
 import path from 'path';
-import remarkGfm from 'remark-gfm';
 
 export interface Post {
   readMins: number;
@@ -68,25 +65,4 @@ export function getAllPosts(fields: string[] = []) {
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
-}
-
-export async function getPostsData(slug: string) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const source = fs.readFileSync(fullPath, 'utf-8');
-
-  const { code, frontmatter } = await bundleMDX({
-    source: source,
-    mdxOptions: (opts) => {
-      //TODO: 添加额外的处理插件
-      opts.remarkPlugins = [...(opts?.remarkPlugins ?? []), remarkGfm];
-      opts.rehypePlugins = [...(opts?.rehypePlugins ?? []), rehypePrism];
-      return opts;
-    }
-  });
-
-  return {
-    slug,
-    code,
-    frontmatter
-  };
 }

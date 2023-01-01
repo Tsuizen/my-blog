@@ -47,7 +47,7 @@ export function RecentPosts({ posts }) {
             className="bg-gray-100 w-full mx-4 block md:overflow-hidden md:flex md:flex-wrap my-4"
           >
             <div className="md:w-full md:h-52 transform transition-transform ease-in-out duration-500 hover:scale-110">
-              <Link href={`/${encodeURIComponent(post.slug!)}/`}>
+              <Link href={`/posts/${encodeURIComponent(post.slug!)}/`}>
                 <Image
                   fill
                   src={post.featureImage!}
@@ -59,7 +59,7 @@ export function RecentPosts({ posts }) {
             <div className="bg-white p-6 z-[1] shadow-md md:w-full md:p-8">
               <h3 className="text-lg mb-2 lg:text-2xl mt-2 ">
                 <Link
-                  href={`/${encodeURIComponent(post.slug!)}/`}
+                  href={`/posts/${encodeURIComponent(post.slug!)}/`}
                   passHref
                   className="text-gray-600"
                 >

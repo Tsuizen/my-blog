@@ -1,17 +1,24 @@
+import { PrismaClient } from '@prisma/client';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType } from 'next';
 import { useMemo } from 'react';
 
-import { getAllPosts, getPostsData } from '@/utils/posts';
+import { getAllPosts } from '@/utils/posts';
 
 export async function getStaticProps({ params }: any) {
-  const postData = await getPostsData(params.slug);
-  console.log(postData.slug);
+  console.log(params.slug);
+  const db = new PrismaClient();
+  const post = await db.posts.findFirst({
+    where: {
+      slug: params.slug
+    }
+  });
+
+  await db.$disconnect();
+
   return {
     props: {
-      code: postData.code,
-      slug: postData.slug,
-      frontmatter: JSON.parse(JSON.stringify(postData.frontmatter))
+      ...post
     }
   };
 }
@@ -30,17 +37,19 @@ export async function getStaticPaths() {
   };
 }
 
-export default function BlogPost({
-  code,
-  frontmatter
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const Component = useMemo(() => getMDXComponent(code), [code]);
+export default function BlogPost(
+  post: InferGetStaticPropsType<typeof getStaticProps>
+) {
+  const Component = useMemo(
+    () => getMDXComponent(post.content!),
+    [post.content]
+  );
 
   return (
     <>
-      <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.description}</p>
-      <p>{frontmatter.date}</p>
+      <h1>{post.title}</h1>
+      <p>{post.description}</p>
+      <p>{post.createdAt}</p>
       <article>
         <Component />
       </article>
