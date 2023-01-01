@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import { RecentPosts } from '@/components/RecentPosts';
+import Sider from '@/components/Sider';
 import { getLayout } from '@/Layout/Home';
 
 // 获取首页滚动加载数据
@@ -43,7 +44,11 @@ const Home: NextPageWithLayout = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <RecentPosts posts={posts} />
+      <main className="w-4/5 flex m-auto break-all">
+        <Sider />
+        <RecentPosts posts={posts} />
+        <Sider />
+      </main>
     </>
   );
 };

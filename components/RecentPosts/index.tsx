@@ -40,7 +40,7 @@ export function RecentPosts({ posts }) {
 
   return (
     <>
-      <section className="flex flex-wrap text-gray-600 max-w-screen-sm mx-auto mb-10 mt-10">
+      <section className="flex flex-wrap text-gray-600 max-w-screen-sm my-10 mx-6">
         {recentPosts.posts.map((post) => (
           <div
             key={post.slug}
@@ -49,6 +49,7 @@ export function RecentPosts({ posts }) {
             <div className="md:w-full md:h-52 transform transition-transform ease-in-out duration-500 hover:scale-110">
               <Link href={`/posts/${encodeURIComponent(post.slug!)}/`}>
                 <Image
+                  className="object-cover"
                   fill
                   src={post.featureImage!}
                   title={post.title}

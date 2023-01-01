@@ -12,7 +12,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      {children}
       <Footer />
     </div>
   );
