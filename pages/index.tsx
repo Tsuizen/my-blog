@@ -1,9 +1,13 @@
 import { PrismaClient } from '@prisma/client';
+import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
+import Category from '@/components/Category';
+import Popular from '@/components/Popular';
 import { RecentPosts } from '@/components/RecentPosts';
-import Sider from '@/components/Sider';
 import { getLayout } from '@/Layout/Home';
+
+import style from './index.module.scss';
 
 // 获取首页滚动加载数据
 async function getRecentPosts() {
@@ -15,6 +19,7 @@ async function getRecentPosts() {
     take: 20,
     select: {
       title: true,
+      subtitle: true,
       description: true,
       slug: true,
       category: true,
@@ -44,10 +49,15 @@ const Home: NextPageWithLayout = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <main className="w-4/5 flex m-auto break-all">
-        <Sider />
-        <RecentPosts posts={posts} />
-        <Sider />
+      <main
+        className={classnames(
+          style['container'],
+          'md:w-4/5 md:grid m-auto break-all pt-10'
+        )}
+      >
+        <RecentPosts posts={posts} className={style.content} />
+        <Category className={style.category} />
+        <Popular className={style.popular} />
       </main>
     </>
   );

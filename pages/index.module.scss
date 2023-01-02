@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  grid-template: 
+    "newset category" auto
+    "newset popular" 1fr / 2fr 1fr;
+  gap: 64px 96px;
+}
+
+.content {
+  grid-area: newset;
+}
+
+.category {
+  grid-area: category;
+}
+
+.popular {
+  grid-area: popular;
+}

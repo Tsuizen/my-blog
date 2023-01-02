@@ -30,7 +30,4 @@ a {
 [data-theme='🐤'] {
   --color-default: #ffd65a;
 }
-body {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
-}
+

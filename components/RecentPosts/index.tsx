@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -11,6 +11,7 @@ export interface Post {
   categorySlug?: string;
   chapter?: string;
   title?: string;
+  subtitle?: string;
   description?: string;
   scripts?: string;
   headings?: string;
@@ -27,7 +28,7 @@ export interface Post {
   updatedAt?: string;
 }
 
-export function RecentPosts({ posts }) {
+export function RecentPosts({ posts, className }) {
   const [recentPosts, setRecentPosts] = useState<{
     posts: Post[];
   }>({
@@ -35,70 +36,50 @@ export function RecentPosts({ posts }) {
   });
 
   useEffect(() => {
+    posts.subtitle = '副标题';
     setRecentPosts({ posts });
   }, [posts]);
 
   return (
     <>
-      <section className="flex flex-wrap text-gray-600 max-w-screen-sm my-10 mx-6">
+      <section
+        className={classNames(
+          className,
+          'flex flex-wrap text-gray-600 max-w-screen-sm my-10'
+        )}
+      >
+        <div className="mx-4 px-6 text-lg text-accent font-bold">最近更新</div>
         {recentPosts.posts.map((post) => (
           <div
             key={post.slug}
-            className="bg-gray-100 w-full mx-4 block md:overflow-hidden md:flex md:flex-wrap my-4"
+            className="w-full mx-4 block md:overflow-hidden md:flex md:flex-wrap mt-8"
           >
-            <div className="md:w-full md:h-52 transform transition-transform ease-in-out duration-500 hover:scale-110">
-              <Link href={`/posts/${encodeURIComponent(post.slug!)}/`}>
-                <Image
-                  className="object-cover"
-                  fill
-                  src={post.featureImage!}
-                  title={post.title}
-                  alt="feature image"
-                />
-              </Link>
-            </div>
-            <div className="bg-white p-6 z-[1] shadow-md md:w-full md:p-8">
-              <h3 className="text-lg mb-2 lg:text-2xl mt-2 ">
+            <div className="bg-white px-6 z-[1] md:w-full">
+              <h3 className="text-lg mb-2 lg:text-2xl  ">
                 <Link
                   href={`/posts/${encodeURIComponent(post.slug!)}/`}
                   passHref
-                  className="text-gray-600"
+                  className="text-gray-800 hover:text-primary-focus"
                 >
                   {post.title}
                 </Link>
               </h3>
+              {post.subtitle ? (
+                <div className="text-gray-600">{post.subtitle}</div>
+              ) : (
+                ''
+              )}
               <span className="w-1/4 border-b-2 border-primary inline-block mt-2"></span>
               <div className="text-sm mb-4 lg:text-base mt-0">
-                {post.description}
-              </div>
-              <div className="text-gray-400 flex items-center text-sm">
-                <svg
-                  className="w-3 h-3 mr-1"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="calendar-alt"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
+                <Link
+                  href={`/posts/${encodeURIComponent(post.slug!)}/`}
+                  className="text-gray-600"
                 >
-                  <path
-                    fill="currentColor"
-                    d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"
-                  ></path>
-                </svg>
+                  {post.description}
+                </Link>
+              </div>
+              <div className="text-gray-500 flex items-center text-sm">
                 <span className="">{post.createdAt}</span>
-                <span className="text-primary text-sm inline-block ml-2">
-                  <Link
-                    className="hover:text-blue-500"
-                    href={`/category/${encodeURIComponent(
-                      post.categorySlug!
-                    )}/`}
-                    passHref
-                  >
-                    {post.category}
-                  </Link>
-                </span>
               </div>
             </div>
           </div>

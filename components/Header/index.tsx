@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <div className="navbar bg-base-100 shadow-md p-0">
+    <div className="navbar bg-base-100 p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,21 +54,27 @@ export default function Header() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/">首页</Link>
+            <Link href="/" className="hover:bg-opacity-0">
+              首页
+            </Link>
           </li>
           <li tabIndex={0}>
-            <Link href="#">归档</Link>
+            <Link href="#" className="hover:bg-opacity-0">
+              归档
+            </Link>
           </li>
           <li>
-            <Link href="#">标签</Link>
+            <Link href="#" className="hover:bg-opacity-0">
+              标签
+            </Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
           <Image src="/dark.svg" alt="夜间模式" width={24} height={24} />
         </button>
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
           <Image src="/rss.svg" alt="rss" width={24} height={24} />
         </button>
       </div>

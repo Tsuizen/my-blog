@@ -65,6 +65,8 @@
     "prettier": "^2.8.0",
     "prisma": "^4.8.0",
     "remark-gfm": "^3.0.1",
+    "sass": "^1.57.1",
+    "scss": "^0.2.4",
     "tailwindcss": "^3.2.4",
     "ts-node": "^10.9.1"
   },
