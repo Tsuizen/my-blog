@@ -2,26 +2,24 @@ import classNames from 'classnames';
 
 import { categories } from '../Config/config';
 
-const Sider = ({ className }: { className: string }) => {
+const Category = ({ className }: { className: string }) => {
   return (
     <>
-      <div className={classNames(className, 'my-10 mx-4 px-6 ')}>
-        <div className="">
-          <div className="text-lg text-accent font-bold">分类</div>
-          <div>
-            {categories.map((category) => (
-              <button
-                key={category.label}
-                className="btn btn-sm btn-light p-2 m-1"
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
+      <div className={classNames(className, 'mb-10 mx-4 px-6')}>
+        <div className="text-lg text-purple-400 font-bold">分类</div>
+        <div className="mt-2">
+          {categories.map((category) => (
+            <button
+              key={category.label}
+              className="btn btn-sm btn-light p-2 m-2"
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
       </div>
     </>
   );
 };
 
-export default Sider;
+export default Category;

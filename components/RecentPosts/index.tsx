@@ -36,7 +36,6 @@ export function RecentPosts({ posts, className }) {
   });
 
   useEffect(() => {
-    posts.subtitle = '副标题';
     setRecentPosts({ posts });
   }, [posts]);
 
@@ -45,10 +44,12 @@ export function RecentPosts({ posts, className }) {
       <section
         className={classNames(
           className,
-          'flex flex-wrap text-gray-600 max-w-screen-sm my-10'
+          'flex flex-wrap text-gray-600 max-w-screen-sm mb-10'
         )}
       >
-        <div className="mx-4 px-6 text-lg text-accent font-bold">最近更新</div>
+        <div className="mx-4 px-6 text-lg text-purple-400 font-bold">
+          最近更新
+        </div>
         {recentPosts.posts.map((post) => (
           <div
             key={post.slug}
@@ -57,7 +58,7 @@ export function RecentPosts({ posts, className }) {
             <div className="bg-white px-6 z-[1] md:w-full">
               <h3 className="text-lg mb-2 lg:text-2xl  ">
                 <Link
-                  href={`/posts/${encodeURIComponent(post.slug!)}/`}
+                  href={`/posts/${post.slug!}/`}
                   passHref
                   className="text-gray-800 hover:text-primary-focus"
                 >
@@ -65,16 +66,13 @@ export function RecentPosts({ posts, className }) {
                 </Link>
               </h3>
               {post.subtitle ? (
-                <div className="text-gray-600">{post.subtitle}</div>
+                <div className="text-gray-400 font-bold">{post.subtitle}</div>
               ) : (
                 ''
               )}
               <span className="w-1/4 border-b-2 border-primary inline-block mt-2"></span>
               <div className="text-sm mb-4 lg:text-base mt-0">
-                <Link
-                  href={`/posts/${encodeURIComponent(post.slug!)}/`}
-                  className="text-gray-600"
-                >
+                <Link href={`/posts/${post.slug!}/`} className="text-gray-600">
                   {post.description}
                 </Link>
               </div>

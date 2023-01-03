@@ -1,57 +1,24 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Header() {
+export default function Header({ color }) {
   return (
-    <div className="navbar bg-base-100 p-0">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link href="/">首页</Link>
-            </li>
-            <li tabIndex={0}>
-              <Link href="#" className="justify-between">
-                归档
-              </Link>
-            </li>
-            <li>
-              <Link href="#">标签</Link>
-            </li>
-            <li className="flex">
-              <button className="btn btn-ghost btn-circle">
-                <Image src="/dark.svg" alt="夜间模式" width={24} height={24} />
-              </button>
-              <button className="btn btn-ghost btn-circle">
-                <Image src="/rss.svg" alt="rss" width={24} height={24} />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <a className="btn btn-ghost normal-case text-xl hover:bg-opacity-0">
+    <div
+      className={classNames(
+        color,
+        ' flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10'
+      )}
+    >
+      <div className="flex items-center w-full md:navbar-start md:justify-center">
+        <Link
+          className="btn btn-ghost normal-case text-xl hover:bg-opacity-0"
+          href="/"
+        >
           Tsuizen&apos;s blog
-        </a>
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="flex  md:navbar-center ">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link href="/" className="hover:bg-opacity-0">
@@ -70,12 +37,32 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="flex items-center m-auto md:navbar-end mr-4">
+        <label className="swap swap-rotate mx-4">
+          <input type="checkbox" />
+          <Image
+            src="/sun.svg"
+            alt="夜间模式"
+            width={22}
+            height={22}
+            className="swap-on md:w-6 md:h-6"
+          />
+          <Image
+            src="/moon.svg"
+            alt="夜间模式"
+            width={22}
+            height={22}
+            className="swap-off md:w-6 md:h-6"
+          />
+        </label>
         <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
-          <Image src="/dark.svg" alt="夜间模式" width={24} height={24} />
-        </button>
-        <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
-          <Image src="/rss.svg" alt="rss" width={24} height={24} />
+          <Image
+            src="/rss-light.svg"
+            alt="rss"
+            width={22}
+            height={22}
+            className="md:w-6 md:h-6"
+          />
         </button>
       </div>
     </div>

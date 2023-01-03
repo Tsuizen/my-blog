@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
-import Popular from '@/components/Popular';
 import { RecentPosts } from '@/components/RecentPosts';
+import Tag from '@/components/Tag';
 import { getLayout } from '@/Layout/Home';
 
 import style from './index.module.scss';
@@ -52,12 +52,12 @@ const Home: NextPageWithLayout = ({
       <main
         className={classnames(
           style['container'],
-          'md:w-4/5 md:grid m-auto break-all pt-10'
+          'md:w-4/5 md:grid m-auto break-all pt-10 items-start'
         )}
       >
         <RecentPosts posts={posts} className={style.content} />
         <Category className={style.category} />
-        <Popular className={style.popular} />
+        <Tag className={style.popular} />
       </main>
     </>
   );

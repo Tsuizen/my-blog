@@ -8,8 +8,8 @@ import { LayoutProps } from '../Home';
 const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <div>
-      <Header />
-      <main className="flex flex-wrap">{children}</main>
+      <Header color={'bg-white'} />
+      <main className="flex flex-wrap mt-10">{children}</main>
       <Footer />
     </div>
   );
