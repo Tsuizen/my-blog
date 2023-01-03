@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
+import { getLayout } from '@/components/Layout/Home';
 import { RecentPosts } from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
-import { getLayout } from '@/Layout/Home';
 
 import style from './index.module.scss';
 

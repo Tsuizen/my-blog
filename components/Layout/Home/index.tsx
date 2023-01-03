@@ -10,11 +10,11 @@ export interface LayoutProps {
 
 const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
-    <div>
-      <div className={'h-52 md:h-80 bg-light w-full relative'}>
+    <>
+      <div className="h-52 md:h-72 relative bg-light w-full ">
         <div className="w-full bg-light"></div>
-        <Header color={'bg-light'}></Header>
-        <div className="w-full absolute -bottom-1">
+        <Header color="bg-light"></Header>
+        <div className="w-full absolute -bottom-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 290"
@@ -26,7 +26,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
       </div>
       {children}
       <Footer />
-    </div>
+    </>
   );
 };
 

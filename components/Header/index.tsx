@@ -3,11 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header({ color }) {
+  console.log(color);
   return (
     <div
       className={classNames(
         color,
-        ' flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10'
+        'flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10'
       )}
     >
       <div className="flex items-center w-full md:navbar-start md:justify-center">
@@ -45,14 +46,14 @@ export default function Header({ color }) {
             alt="夜间模式"
             width={22}
             height={22}
-            className="swap-on md:w-6 md:h-6"
+            className="swap-off md:w-6 md:h-6"
           />
           <Image
             src="/moon.svg"
             alt="夜间模式"
             width={22}
             height={22}
-            className="swap-off md:w-6 md:h-6"
+            className="swap-on md:w-6 md:h-6"
           />
         </label>
         <button className="btn btn-ghost btn-circle hover:bg-opacity-0">

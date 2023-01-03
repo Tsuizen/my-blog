@@ -3,7 +3,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import { useMemo } from 'react';
 
-import { getLayout } from '@/Layout/Post';
+import { getLayout } from '@/components/Layout/Post';
 import { getAllPosts } from '@/utils/posts';
 
 export async function getStaticProps({ params }: any) {
