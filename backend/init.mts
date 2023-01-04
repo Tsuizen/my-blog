@@ -3,7 +3,6 @@ import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import * as path from 'path';
 import readingTime from 'reading-time';
-import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -82,7 +81,7 @@ async function getMDXList() {
         (opts.remarkPlugins = [...(opts.remarkPlugins ?? []), remarkGfm]),
           (opts.rehypePlugins = [
             ...(opts.rehypePlugins ?? []),
-            rehypeSlug,
+            rehypeSlug
             // rehypePrism
           ]);
         return opts;
