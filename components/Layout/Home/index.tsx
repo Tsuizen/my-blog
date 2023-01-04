@@ -12,7 +12,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <>
       <div className="h-52 md:h-72 relative bg-light w-full ">
-        <div className="w-full bg-light"></div>
+        <div className="w-full bg-light h-10"></div>
         <Header color="bg-light"></Header>
         <div className="w-full absolute -bottom-2">
           <svg
