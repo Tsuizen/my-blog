@@ -13,7 +13,7 @@ export default function Header({ color }) {
     >
       <div className="flex items-center w-full md:navbar-start md:justify-center">
         <Link
-          className="btn btn-ghost normal-case text-xl hover:bg-opacity-0"
+          className="btn btn-ghost normal-case text-xl hover:bg-opacity-0 text-primary"
           href="/"
         >
           Tsuizen&apos;s blog

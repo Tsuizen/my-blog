@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 页面定位时部分内容会被header挡住，滚动条滚动到地址 hash 
+（地址 # 号后面的内容）对应的锚点元素 padding-box上边缘位置。 */
+html {
+  scroll-padding-top: 6rem;
+}
+
 a {
   text-decoration: none;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -30,4 +36,3 @@ a {
 [data-theme='🐤'] {
   --color-default: #ffd65a;
 }
-

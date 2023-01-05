@@ -9,7 +9,7 @@ const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Header color={'bg-white'} />
-      <main className="flex flex-wrap mt-10">{children}</main>
+      {children}
       <Footer />
     </div>
   );
