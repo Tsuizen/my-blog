@@ -19,7 +19,7 @@
         "/src/*": "${webRoot}/*",
         "/*": "*",
         "/./~/*": "${webRoot}/node_modules/*"
-      },
+      }
     }
   ]
 }
