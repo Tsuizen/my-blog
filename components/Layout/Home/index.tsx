@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';

@@ -1,7 +1,7 @@
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {}
@@ -32,6 +32,10 @@ module.exports = {
           '.text-tag': {
             color: '#4B5563'
           }
+        },
+        dark: {
+          ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+          primary: '#585de2'
         }
       }
     ]

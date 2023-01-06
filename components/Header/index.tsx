@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header({ color }) {
-  console.log(color);
   return (
     <div
       className={classNames(
