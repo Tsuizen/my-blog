@@ -9,10 +9,10 @@ type ThemeState = {
   toggleTheme: (theme: ThemeType) => void;
 };
 
-let defaultTheme: ThemeType = 'dark';
+let defaultTheme: ThemeType = 'light';
 
 if (typeof window !== 'undefined') {
-  defaultTheme = JSON.parse(localStorage.getItem('theme')!).state.theme;
+  defaultTheme = JSON.parse(localStorage.getItem('theme')!)?.state.theme;
 }
 
 export const useThemeStore = create<ThemeState>()(
