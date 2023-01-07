@@ -63,7 +63,7 @@ const TableOfContent: React.FC<TableOfContentsProps> = (props) => {
                   {
                     '!text-primary border-primary': activeId === heading.id
                   },
-                  'block p-2 hover:text-primary-focus text-sm overflow-y-auto'
+                  'block p-2 hover:text-primary text-sm overflow-y-auto'
                 )}
                 style={{ paddingLeft: `${(heading.level - 1) / 2}rem` }}
                 // 页面平滑滚动

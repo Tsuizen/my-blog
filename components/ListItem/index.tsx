@@ -60,7 +60,7 @@ const ListItem = ({ posts, className }) => {
                 <Link
                   href={`/posts/${post.slug!}/`}
                   passHref
-                  className="hover:text-primary-focus"
+                  className="hover:text-primary"
                 >
                   {post.title}
                 </Link>
