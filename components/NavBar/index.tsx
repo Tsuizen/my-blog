@@ -55,7 +55,7 @@ export default function NavBar({ color }) {
         <label className="swap swap-rotate mx-4">
           <input
             type="checkbox"
-            defaultChecked={theme !== 'light'}
+            defaultChecked={theme === 'light'}
             onClick={handleToggleTheme}
           />
           <Image

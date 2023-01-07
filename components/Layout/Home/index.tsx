@@ -18,7 +18,6 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
         <div className="w-full bg-light h-10"></div>
         <NavBar color="bg-light"></NavBar>
         <div className="w-full absolute -bottom-2">
-          <span>{theme === 'dark' ? 'dark' : 'light'}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 290"
