@@ -4,7 +4,7 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
 import { getLayout } from '@/components/Layout/Home';
-import { RecentPosts } from '@/components/RecentPosts';
+import ListItem from '@/components/ListItem';
 import Tag from '@/components/Tag';
 
 import style from './index.module.scss';
@@ -55,7 +55,7 @@ const Home: NextPageWithLayout = ({
           'md:w-4/5 md:grid m-auto break-all pt-10 items-start'
         )}
       >
-        <RecentPosts posts={posts} className={style.content} />
+        <ListItem posts={posts} className={style.content} />
         <Category className={style.category} />
         <Tag className={style.popular} />
       </main>

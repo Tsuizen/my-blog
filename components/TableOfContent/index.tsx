@@ -10,7 +10,9 @@ export interface TableOfContentsProps {
 // eslint-disable-next-line no-undef
 function useIntersectionObserver(ids: string[], setActiveId) {
   const elements = Array.from(ids.map((id) => document.getElementById(id)));
+  // 用useRef存储数据更新后页面不重渲染
   const headingsRef = useRef({});
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (headings) => {
@@ -23,15 +25,15 @@ function useIntersectionObserver(ids: string[], setActiveId) {
 
         Object.keys(headingsRef.current).forEach((key) => {
           const headingElement = headingsRef.current[key];
-          console.log(headingElement);
           if (headingElement.isIntersecting)
             visibleHeadings.push(headingElement);
         });
-        console.log(visibleHeadings);
+
         visibleHeadings.length > 0 && setActiveId(visibleHeadings[0].target.id);
       },
       {
-        rootMargin: '-100px 0px -40% 0px'
+        // -100px是给header留出的距离
+        rootMargin: '-100px 0px 0px 0px'
       }
     );
 
@@ -61,9 +63,10 @@ const TableOfContent: React.FC<TableOfContentsProps> = (props) => {
                   {
                     '!text-primary border-primary': activeId === heading.id
                   },
-                  'block p-2 hover:text-primary-focus text-sm overflow-y-auto'
+                  'block p-2 hover:text-primary text-sm overflow-y-auto'
                 )}
                 style={{ paddingLeft: `${(heading.level - 1) / 2}rem` }}
+                // 页面平滑滚动
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector(`#${heading.id}`)?.scrollIntoView({

@@ -1,9 +1,22 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
-export default function Header({ color }) {
-  console.log(color);
+import { useThemeStore } from '@/store/store';
+
+export default function NavBar({ color }) {
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+
+  useEffect(() => {
+    toggleTheme(theme);
+  }, []);
+
+  const handleToggleTheme = () => {
+    toggleTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <div
       className={classNames(
@@ -40,7 +53,11 @@ export default function Header({ color }) {
       </div>
       <div className="flex items-center m-auto md:navbar-end mr-4">
         <label className="swap swap-rotate mx-4">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            defaultChecked={theme !== 'light'}
+            onClick={handleToggleTheme}
+          />
           <Image
             src="/sun.svg"
             alt="夜间模式"

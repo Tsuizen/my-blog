@@ -1,26 +1,33 @@
 import type { NextPage } from 'next';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import NavBar from '@/components/NavBar';
+import { useThemeStore } from '@/store/store';
 
 export interface LayoutProps {
   children: ReactNode;
 }
 
 const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
+  const theme = useThemeStore((state) => state.theme);
+
   return (
     <>
-      <div className="h-52 md:h-72 relative bg-light w-full ">
+      <div className="h-52 md:h-72 relative  w-full bg-light">
         <div className="w-full bg-light h-10"></div>
-        <Header color="bg-light"></Header>
+        <NavBar color="bg-light"></NavBar>
         <div className="w-full absolute -bottom-2">
+          <span>{theme === 'dark' ? 'dark' : 'light'}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 290"
-            className="bg-light w-full"
+            className="w-full"
           >
-            <path fill="#fff" d="M0,256L1440,128L1440,320L0,320Z"></path>
+            <path
+              fill={theme === 'light' ? '#fff' : '#0E141B'}
+              d="M0,256L1440,128L1440,320L0,320Z"
+            ></path>
           </svg>
         </div>
       </div>
