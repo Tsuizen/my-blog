@@ -33,8 +33,6 @@ async function getRecentPosts(start = 0) {
       author: true,
       tags: true,
       featureImage: true,
-      featureImageWidth: true,
-      featureImageHeight: true,
       createdAt: true,
       updatedAt: true
     }
