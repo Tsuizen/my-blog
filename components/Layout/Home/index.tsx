@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
@@ -11,6 +11,18 @@ export interface LayoutProps {
 
 const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   const theme = useThemeStore((state) => state.theme);
+
+  // SSG 页面初始会给build时的html，rehydrate不会重新渲染页面，通过useEffect在页面mounted后再更新页面
+  // https://www.joshwcomeau.com/react/the-perils-of-rehydration/#some-problematic-code-1
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>

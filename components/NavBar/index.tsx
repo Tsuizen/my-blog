@@ -9,6 +9,7 @@ export default function NavBar({ color }) {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
+  // 首次进入时根据localStorage切换主题
   useEffect(() => {
     toggleTheme(theme);
   }, []);
