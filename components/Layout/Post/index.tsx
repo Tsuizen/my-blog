@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import NavBar from '@/components/NavBar';
 
 import { LayoutProps } from '../Home';
 
 const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <div>
-      <Header color={'bg-base-100'} />
+      <NavBar color={'bg-base-100'} />
       {children}
       <Footer />
     </div>
