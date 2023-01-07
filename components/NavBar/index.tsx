@@ -11,7 +11,7 @@ export default function NavBar({ color }) {
 
   useEffect(() => {
     toggleTheme(theme);
-  }, [theme]);
+  }, []);
 
   const handleToggleTheme = () => {
     toggleTheme(theme === 'light' ? 'dark' : 'light');
