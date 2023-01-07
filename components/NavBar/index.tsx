@@ -63,14 +63,14 @@ export default function NavBar({ color }) {
             alt="夜间模式"
             width={22}
             height={22}
-            className="swap-off md:w-6 md:h-6"
+            className="swap-on md:w-6 md:h-6"
           />
           <Image
             src="/moon.svg"
             alt="夜间模式"
             width={22}
             height={22}
-            className="swap-on md:w-6 md:h-6"
+            className="swap-off md:w-6 md:h-6"
           />
         </label>
         <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
