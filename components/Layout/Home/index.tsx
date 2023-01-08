@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
+import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
 export interface LayoutProps {
@@ -12,13 +13,18 @@ export interface LayoutProps {
 const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   const theme = useThemeStore((state) => state.theme);
 
+  const hasMounted = useMounted();
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <>
       <div className="h-52 md:h-72 relative  w-full bg-light">
         <div className="w-full bg-light h-10"></div>
         <NavBar color="bg-light"></NavBar>
         <div className="w-full absolute -bottom-2">
-          <span>{theme === 'dark' ? 'dark' : 'light'}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 290"
