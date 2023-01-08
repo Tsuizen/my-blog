@@ -4,6 +4,7 @@ import darkTheme from 'prism-react-renderer/themes/nightOwl';
 import litghtTheme from 'prism-react-renderer/themes/nightOwlLight';
 import React, { ReactNode } from 'react';
 
+import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
 type Children = ReactNode & {
@@ -23,7 +24,15 @@ const SyntaxHighlighter: React.FC<Props> = ({ children }) => {
   const language = children.props.className?.replace('language-', '').trim();
   const theme = useThemeStore((state) => state.theme);
 
-  if (!language) return <code>{children}</code>;
+  const hasMounted = useMounted();
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  if (!language) {
+    return <code>{children}</code>;
+  }
 
   return (
     <>
