@@ -1,17 +1,17 @@
-import { PrismaClient } from '@prisma/client';
 import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
 import { getLayout } from '@/components/Layout/Home';
-import ListItem from '@/components/ListItem';
+import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
+import prisma from '@/utils/prisma';
 
 import style from './index.module.scss';
 
-// 获取首页滚动加载数据
+// 获取首页数据
 async function getRecentPosts() {
-  const db = new PrismaClient();
+  const db = prisma;
   const posts = await db.posts.findMany({
     orderBy: {
       createdAt: 'desc'
@@ -55,7 +55,7 @@ const Home: NextPageWithLayout = ({
           'md:w-4/5 md:grid m-auto break-all pt-10 items-start'
         )}
       >
-        <ListItem posts={posts} className={style.content} />
+        <RecentPosts posts={posts} className={style.content} page="index" />
         <Category className={style.category} />
         <Tag className={style.popular} />
       </main>

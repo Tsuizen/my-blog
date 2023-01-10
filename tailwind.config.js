@@ -31,6 +31,9 @@ module.exports = {
           },
           '.text-tag': {
             color: '#4B5563'
+          },
+          '.bg-card': {
+            'background-color': 'base-100'
           }
         },
         dark: {
@@ -38,6 +41,9 @@ module.exports = {
           primary: '#585de2',
           'base-100': '#0E141B',
           '.bg-light': {
+            'background-color': '#151E25'
+          },
+          '.bg-card': {
             'background-color': '#151E25'
           },
           '.header-bottom-color': '#1E2831'
