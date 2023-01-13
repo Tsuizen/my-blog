@@ -48,7 +48,7 @@ export default function NavBar({ color }) {
             </Link>
           </li>
           <li tabIndex={0}>
-            <Link href="#" className="hover:bg-opacity-0">
+            <Link href="/archives" className="hover:bg-opacity-0">
               归档
             </Link>
           </li>

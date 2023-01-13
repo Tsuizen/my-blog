@@ -1,5 +1,4 @@
 import * as fsP from 'fs/promises';
-import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import * as path from 'path';
 import readingTime from 'reading-time';
@@ -73,7 +72,7 @@ async function getMDXList() {
 
   for (let i = 0; i < files.length; i++) {
     const fp = path.join(files[i].dir, files[i].name);
-    console.log('matter', matter(await fsP.readFile(fp)));
+
     // 文章标题列表
     const { code, frontmatter } = await bundleMDX({
       mdxOptions: (opts) => {

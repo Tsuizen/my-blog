@@ -1,5 +1,4 @@
 // @ts-nocheck
-import { PrismaClient } from '@prisma/client';
 import classNames from 'classnames';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
@@ -11,18 +10,17 @@ import TableOfContent, {
   TableOfContentsProps
 } from '@/components/TableOfContent';
 import { getAllPosts } from '@/utils/posts';
+import prisma from '@/utils/prisma';
 
 import style from './index.module.scss';
 
 export async function getStaticProps({ params }: any) {
-  const db = new PrismaClient();
+  const db = prisma;
   const post = await db.posts.findFirst({
     where: {
       slug: params.slug
     }
   });
-
-  await db.$disconnect();
 
   return {
     props: {

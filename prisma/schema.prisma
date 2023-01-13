@@ -34,26 +34,3 @@ model posts {
 
   @@unique([slug, i18n], map: "kp_slug")
 }
-
-model likes {
-  id Int @id @default(autoincrement())
-  user String
-  ip String
-  i18n String
-  slug String
-  count Int @default(1)
-  score Float @default(5.0)
-  timestamp String
-
-  @@unique([user, ip, slug, i18n], map: "kp_unique")
-}
-
-model vistors {
-  id Int @id @default(autoincrement())
-  user String @default("")
-  ip String
-  i18n String
-  slug String
-  hit Int @default(1)
-  timestamp String
-}

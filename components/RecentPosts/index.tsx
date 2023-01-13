@@ -11,15 +11,15 @@ export interface Post {
   categorySlug?: string;
   chapter?: string;
   title?: string;
-  subtitle?: string;
-  description?: string;
+  subtitle?: string | null;
+  description?: string | null;
   scripts?: string;
   headings?: string;
   content?: string;
   readMins?: number;
   words?: number;
   author?: string;
-  tags?: string;
+  tags?: string | null;
   featureImage?: string;
   featureImageWidth?: number;
   featureImageHeight?: number;
@@ -28,7 +28,13 @@ export interface Post {
   updatedAt?: string;
 }
 
-const ListItem = ({ posts, className }) => {
+interface Props {
+  posts: Post[];
+  className?: string;
+  page?: string;
+}
+
+const RecentPosts = ({ posts, className, page }: Props) => {
   const [recentPosts, setRecentPosts] = useState<{
     posts: Post[];
   }>({
@@ -42,14 +48,15 @@ const ListItem = ({ posts, className }) => {
   return (
     <>
       <section
-        className={classNames(
-          className,
-          'flex flex-wrap max-w-screen-sm mb-10'
-        )}
+        className={classNames(className, 'flex flex-wrap max-w-screen-sm mb-4')}
       >
-        <div className="mx-4 px-6 text-lg text-purple-500 font-bold">
-          最近更新
-        </div>
+        {page === 'index' ? (
+          <div className="mx-4 px-6 text-lg text-purple-500 font-bold">
+            最近更新
+          </div>
+        ) : (
+          ''
+        )}
         {recentPosts.posts.map((post) => (
           <div
             key={post.slug}
@@ -66,7 +73,7 @@ const ListItem = ({ posts, className }) => {
                 </Link>
               </h3>
               {post.subtitle ? (
-                <div className="text-gray-400 font-bold">{post.subtitle}</div>
+                <div className="text-gray-500 font-bold">{post.subtitle}</div>
               ) : (
                 ''
               )}
@@ -87,4 +94,4 @@ const ListItem = ({ posts, className }) => {
   );
 };
 
-export default ListItem;
+export default RecentPosts;
