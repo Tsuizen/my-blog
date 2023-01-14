@@ -19,24 +19,5 @@ declare global {
   var __db: any;
 }
 
-interface Post {
-  readMins: number;
-  words: number;
-  content: string;
-  headings: string;
-  filename: string;
-  featureImage: string;
-  featureVideo: string;
-  sourceLink: string;
-  scripts: string;
-  demoLink: string;
-  createdAt: Date;
-  updatedAt: Date;
-  slug: string;
-  sort: number;
-  category: any;
-  categorySlug: string;
-  chapter: string;
-  i18n: string;
-}
+
 export {};

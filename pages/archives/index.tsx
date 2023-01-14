@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Link from 'next/link';
 
-import { getLayout } from '@/components/Layout/Post';
+import { getLayout } from '@/Layout/Post';
 import prisma from '@/utils/prisma';
 
 interface Post {

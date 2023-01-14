@@ -1,9 +1,9 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
-import { getLayout } from '@/components/Layout/Post';
 import ListItem from '@/components/ListItem';
 import { categories } from '@/Config/config';
-import prisma from '@/utils/prisma';
+import { getLayout } from '@/Layout/Post';
+import { getRecentPosts } from '@/utils/posts';
 
 export async function getStaticPaths() {
   const categorySlug = categories.map((category) => category.label);
@@ -20,25 +20,19 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const db = prisma;
-  const posts = await db.post.findMany({
-    where: {
-      category: {
-        contains: params.slug
-      }
-    },
-    select: {
-      title: true,
-      slug: true,
-      subtitle: true,
-      description: true,
-      category: true
-    }
-  });
+  const posts = await getRecentPosts([
+    'slug',
+    'title',
+    'createdAt',
+    'subtitle',
+    'description',
+    'category'
+  ]);
 
   return {
     props: {
-      posts
+      posts: posts.filter((post) => post.category === params.slug),
+      keyword: params.slug
     }
   };
 }
@@ -46,12 +40,11 @@ export async function getStaticProps({ params }: any) {
 const Category: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
-  const { posts } = props;
-  const keys = posts.length && posts[0].category;
+  const { posts, keyword } = props;
 
   return (
     <>
-      <ListItem allPosts={posts} keyword={keys}></ListItem>
+      <ListItem allPosts={posts} keyword={keyword}></ListItem>
     </>
   );
 };

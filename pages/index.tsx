@@ -2,31 +2,26 @@ import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
-import { getLayout } from '@/components/Layout/Home';
 import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
-import { getAllPosts } from '@/utils/posts';
+import { getLayout } from '@/Layout/Home';
+import { getRecentPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
 
 // 获取首页数据
-async function getRecentPosts() {
-  const sortPost = getAllPosts([
+export async function getStaticProps() {
+  const posts = await getRecentPosts([
     'slug',
     'title',
     'createdAt',
     'subtitle',
     'description'
   ]);
-  return sortPost;
-}
-
-export async function getStaticProps() {
-  const posts = await getRecentPosts();
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts))
+      posts
     }
   };
 }

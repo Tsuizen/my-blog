@@ -15,7 +15,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data } = matter(fileContents);
 
   type Items = {
     [key: string]: string;
@@ -24,12 +24,12 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const items: Items = {};
 
   // 按需导出数据
-  fields.forEach((field) => {
+  fields.forEach(async (field) => {
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field];
     }
-    if (field === 'content') {
-      items[field] = content;
+    if (field === 'slug') {
+      items[field] = realSlug;
     }
     if (field === 'createdAt') {
       items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
@@ -47,5 +47,10 @@ export function getAllPosts(fields: string[] = []) {
       else
         return isBefore(new Date(a.createdAt), new Date(b.createdAt)) ? 1 : -1;
     });
+  return posts;
+}
+
+export async function getRecentPosts(fields: string[] = []) {
+  const posts = getAllPosts(fields);
   return posts;
 }

@@ -6,6 +6,7 @@ interface Post {
   title: string;
   subtitle: string;
   description: string;
+  createdAt: string;
 }
 
 const ListItem = ({ keyword, allPosts }) => {
