@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const db = prisma;
-  const posts = await db.posts.findMany({
+  const posts = await db.post.findMany({
     where: {
       category: {
         contains: params.slug

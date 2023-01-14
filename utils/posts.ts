@@ -1,27 +1,9 @@
+import format from 'date-fns/format';
+import isBefore from 'date-fns/isBefore';
+import isEqual from 'date-fns/isEqual';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-
-export interface Post {
-  readMins: number;
-  words: number;
-  content: string;
-  headings: string;
-  filename: string;
-  featureImage: string;
-  featureVideo: string;
-  sourceLink: string;
-  scripts: string;
-  demoLink: string;
-  createdAt: Date;
-  updatedAt: Date;
-  slug: string;
-  sort: number;
-  category: any;
-  categorySlug: string;
-  chapter: string;
-  i18n: string;
-}
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -41,20 +23,18 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
   const items: Items = {};
 
-  // 确保只导出最低限度数据
+  // 按需导出数据
   fields.forEach((field) => {
-    if (field === 'slug') {
-      items[field] = realSlug;
+    if (typeof data[field] !== 'undefined') {
+      items[field] = data[field];
     }
     if (field === 'content') {
       items[field] = content;
     }
-
-    if (typeof data[field] !== 'undefined') {
-      items[field] = data[field];
+    if (field === 'createdAt') {
+      items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
     }
   });
-
   return items;
 }
 
@@ -62,7 +42,10 @@ export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    .sort((a, b) => {
+      if (isEqual(new Date(a.createdAt), new Date(b.createdAt))) return 0;
+      else
+        return isBefore(new Date(a.createdAt), new Date(b.createdAt)) ? 1 : -1;
+    });
   return posts;
 }

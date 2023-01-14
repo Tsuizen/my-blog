@@ -16,7 +16,7 @@ import style from './index.module.scss';
 
 export async function getStaticProps({ params }: any) {
   const db = prisma;
-  const post = await db.posts.findFirst({
+  const post = await db.post.findFirst({
     where: {
       slug: params.slug
     }

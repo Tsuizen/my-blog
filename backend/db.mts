@@ -36,9 +36,9 @@ async function savePosts(posts: Post[]) {
       };
     });
 
-  await db.posts.deleteMany({});
+  await db.post.deleteMany({});
   for (const post of initPosts) {
-    await db.posts.create({ data: post });
+    await db.post.create({ data: post });
   }
   await db.$disconnect();
 }

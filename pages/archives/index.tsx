@@ -14,7 +14,7 @@ interface Post {
 
 const getYear = async () => {
   const db = prisma;
-  const allDate = await db.posts.findMany({
+  const allDate = await db.post.findMany({
     select: {
       createdAt: true
     },
@@ -35,7 +35,7 @@ export async function getStaticProps() {
   const years = await getYear();
 
   for (const year of years) {
-    const postByYear = await db.posts.findMany({
+    const postByYear = await db.post.findMany({
       where: {
         createdAt: {
           gte: year + '-01-01',

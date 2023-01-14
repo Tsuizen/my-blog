@@ -5,41 +5,28 @@ import Category from '@/components/Category';
 import { getLayout } from '@/components/Layout/Home';
 import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
-import prisma from '@/utils/prisma';
+import { getAllPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
 
 // 获取首页数据
 async function getRecentPosts() {
-  const db = prisma;
-  const posts = await db.posts.findMany({
-    orderBy: {
-      createdAt: 'desc'
-    },
-    take: 20,
-    select: {
-      title: true,
-      subtitle: true,
-      description: true,
-      slug: true,
-      category: true,
-      categorySlug: true,
-      author: true,
-      tags: true,
-      featureImage: true,
-      createdAt: true,
-      updatedAt: true
-    }
-  });
-  await db.$disconnect();
-  return posts;
+  const sortPost = getAllPosts([
+    'slug',
+    'title',
+    'createdAt',
+    'subtitle',
+    'description'
+  ]);
+  return sortPost;
 }
 
 export async function getStaticProps() {
   const posts = await getRecentPosts();
+
   return {
     props: {
-      posts
+      posts: JSON.parse(JSON.stringify(posts))
     }
   };
 }
