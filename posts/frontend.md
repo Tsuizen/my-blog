@@ -1,7 +1,7 @@
 ---
 slug: frontend
-category: 前端
-categorySlug: front
+category: 技术向
+categorySlug: tech
 title: 标题
 subtitle: 前端测试
 author: Tsuizen

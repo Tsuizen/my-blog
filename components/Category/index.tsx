@@ -1,6 +1,7 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 
-import { categories } from '../Config/config';
+import { categories } from '../../Config/config';
 
 const Category = ({ className }: { className: string }) => {
   return (
@@ -13,7 +14,7 @@ const Category = ({ className }: { className: string }) => {
               key={category.label}
               className="btn btn-sm btn-light p-2 m-2"
             >
-              {category.label}
+              <Link href={`/category/${category.label}`}>{category.label}</Link>
             </button>
           ))}
         </div>

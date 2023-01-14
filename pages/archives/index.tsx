@@ -12,11 +12,6 @@ interface Post {
   description: string | null;
 }
 
-interface AllPost {
-  year: string;
-  posts: Post[];
-}
-
 const getYear = async () => {
   const db = prisma;
   const allDate = await db.posts.findMany({
@@ -61,7 +56,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: JSON.stringify(posts)
+      posts
     }
   };
 }
@@ -69,8 +64,9 @@ export async function getStaticProps() {
 const Archives: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
-  const allPosts: AllPost[] = JSON.parse(props.posts).map((postByYear) => ({
-    year: new Date(postByYear[0].createdAt).getFullYear(),
+  const { posts } = props;
+  const allPosts = posts.map((postByYear) => ({
+    key: new Date(postByYear[0].createdAt).getFullYear(),
     posts: postByYear
   }));
 
@@ -79,10 +75,11 @@ const Archives: NextPageWithLayout = (
       <div>
         {allPosts.map((postsByYear) => {
           return (
-            <div key={postsByYear.year} className="mx-auto w-1/2">
+            <div className="mx-auto w-1/2" key={postsByYear.key}>
               <div className="my-4 font-bold text-2xl text-primary">
-                #&nbsp;{postsByYear.year}
+                #&nbsp;{postsByYear.key}
               </div>
+
               {postsByYear.posts.map((post) => (
                 <div
                   className="card w-full bg-card shadow-xl mb-6"
