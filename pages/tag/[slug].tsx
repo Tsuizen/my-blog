@@ -1,20 +1,20 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import ListItem from '@/components/ListItem';
-import { CATEGORIES } from '@/config';
+import { TAGS } from '@/config';
 import { getLayout } from '@/layout/Default';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 
-type CategoryPosts = Pick<
+type TagPosts = Pick<
   Post,
-  'slug' | 'title' | 'subtitle' | 'category' | 'description' | 'createdAt'
+  'slug' | 'title' | 'subtitle' | 'tags' | 'description' | 'createdAt'
 >;
 
 export async function getStaticPaths() {
-  const categorySlug = CATEGORIES.map((category) => category.label);
+  const tags = TAGS.map((tag) => tag.label);
   return {
-    paths: categorySlug.map((slug) => {
+    paths: tags.map((slug) => {
       return {
         params: {
           slug
@@ -25,25 +25,26 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: any) {
-  const posts = await getRecentPosts<CategoryPosts>([
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const posts = await getRecentPosts<TagPosts>([
     'slug',
     'title',
     'createdAt',
     'subtitle',
     'description',
-    'category'
+    'TagPage',
+    'tags'
   ]);
 
   return {
     props: {
-      posts: posts.filter((post) => post.category === params.slug),
+      posts: posts.filter((post) => post.tags?.includes(params.slug)),
       keyword: params.slug
     }
   };
 }
 
-const Category: NextPageWithLayout = (
+const TagPage: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
   const { posts, keyword } = props;
@@ -55,6 +56,6 @@ const Category: NextPageWithLayout = (
   );
 };
 
-Category.getLayout = getLayout;
+TagPage.getLayout = getLayout;
 
-export default Category;
+export default TagPage;

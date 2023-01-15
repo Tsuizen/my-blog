@@ -53,7 +53,7 @@ export default function NavBar({ color }) {
             </Link>
           </li>
           <li>
-            <Link href="#" className="hover:bg-opacity-0">
+            <Link href="/tag" className="hover:bg-opacity-0">
               标签
             </Link>
           </li>
@@ -67,14 +67,14 @@ export default function NavBar({ color }) {
             onClick={handleToggleTheme}
           />
           <Image
-            src="/sun.svg"
+            src="/images/sun.svg"
             alt="夜间模式"
             width={22}
             height={22}
             className="swap-on md:w-6 md:h-6"
           />
           <Image
-            src="/moon.svg"
+            src="/images/moon.svg"
             alt="夜间模式"
             width={22}
             height={22}
@@ -83,7 +83,11 @@ export default function NavBar({ color }) {
         </label>
         <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
           <Image
-            src={theme === 'light' ? '/rss-light.svg' : '/rss-dark.svg'}
+            src={
+              theme === 'light'
+                ? '/images/rss-light.svg'
+                : '/images/rss-dark.svg'
+            }
             alt="rss"
             width={22}
             height={22}

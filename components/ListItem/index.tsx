@@ -12,9 +12,7 @@ interface Post {
 const ListItem = ({ keyword, allPosts }) => {
   return (
     <div className="mx-auto w-4/5 md:w-3/5" key={keyword}>
-      <div className="my-4 font-bold text-2xl text-primary">
-        #&nbsp;{keyword}
-      </div>
+      <div className="my-4 font-bold text-2xl text-primary">{keyword}</div>
       {allPosts.length &&
         allPosts.map((post: Post) => (
           <div className="card w-full bg-card shadow-xl mb-6" key={post.slug}>

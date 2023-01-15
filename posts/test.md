@@ -7,7 +7,6 @@ author: Tsuizen
 description: 如何在网络时代赚钱？一共只需要三步。第一步需要有一个想法。第二步，贯彻执行这个想法。第三步，扩大或者换个新的想法执行。
 tags:  
   - React
-  - CSS
 featureImage: /assert/images/make-money.jpg
 createdAt: 2020-09-11
 updatedAt: 2020-12-22

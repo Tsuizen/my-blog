@@ -1,0 +1,28 @@
+.typing {
+  width: 20em;
+  height: 1.25em;
+  border-right: 1px solid transparent;
+  animation: typing 3.5s steps(37, end), blink-caret 0.75s step-end infinite;
+  font-family: Consolas, Monaco;
+  word-break: break-all;
+  overflow: hidden;
+}
+/* 打印效果 */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20em;
+  }
+}
+/* 光标闪啊闪 */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
