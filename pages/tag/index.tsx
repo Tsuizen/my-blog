@@ -26,9 +26,9 @@ export default function Tag(
   const totalTagsNum = tags.reduce((pre, cur) => pre + cur.postsNum, 0);
 
   return (
-    <div className="w-1/2 mx-auto text-center my-32">
+    <div className="w-4/5 md:w-1/2 mx-auto text-center my-32">
       <h1 className="">标签</h1>
-      <div className="flex items-baseline">
+      <div className="flex items-baseline flex-wrap">
         {tags.map((tag) => (
           <div
             className="p-4 link link-hover"
