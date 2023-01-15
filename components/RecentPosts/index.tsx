@@ -2,31 +2,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export interface Post {
-  id?: number;
-  i18n?: string;
-  slug?: string;
-  layout?: string;
-  category?: string;
-  categorySlug?: string;
-  chapter?: string;
-  title?: string;
-  subtitle?: string | null;
-  description?: string | null;
-  scripts?: string;
-  headings?: string;
-  content?: string;
-  readMins?: number;
-  words?: number;
-  author?: string;
-  tags?: string | null;
-  featureImage?: string;
-  featureImageWidth?: number;
-  featureImageHeight?: number;
-  featureVideo?: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
+import { Post } from '@/types';
 
 interface Props {
   posts: Post[];

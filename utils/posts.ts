@@ -5,23 +5,24 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
+import { Post } from '@/types';
+
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug<T extends Post>(
+  slug: string,
+  fields: string[] = []
+): T {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data } = matter(fileContents);
 
-  type Items = {
-    [key: string]: string;
-  };
-
-  const items: Items = {};
+  const items = {};
 
   // 按需导出数据
   fields.forEach(async (field) => {
@@ -35,22 +36,26 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
     }
   });
-  return items;
+  return items as T;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts<T extends Post>(fields: string[] = []): T[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug<T>(slug, fields))
     .sort((a, b) => {
-      if (isEqual(new Date(a.createdAt), new Date(b.createdAt))) return 0;
+      if (isEqual(new Date(a.createdAt!), new Date(b.createdAt!))) return 0;
       else
-        return isBefore(new Date(a.createdAt), new Date(b.createdAt)) ? 1 : -1;
+        return isBefore(new Date(a.createdAt!), new Date(b.createdAt!))
+          ? 1
+          : -1;
     });
   return posts;
 }
 
-export async function getRecentPosts(fields: string[] = []) {
-  const posts = getAllPosts(fields);
+export async function getRecentPosts<T extends Post>(
+  fields: string[] = []
+): Promise<T[]> {
+  const posts = getAllPosts<T>(fields);
   return posts;
 }

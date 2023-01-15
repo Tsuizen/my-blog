@@ -3,7 +3,13 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import ListItem from '@/components/ListItem';
 import { categories } from '@/Config/config';
 import { getLayout } from '@/Layout/Post';
+import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
+
+type CategoryPosts = Pick<
+  Post,
+  'slug' | 'title' | 'subtitle' | 'category' | 'description' | 'createdAt'
+>;
 
 export async function getStaticPaths() {
   const categorySlug = categories.map((category) => category.label);
@@ -20,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const posts = await getRecentPosts([
+  const posts = await getRecentPosts<CategoryPosts>([
     'slug',
     'title',
     'createdAt',

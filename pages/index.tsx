@@ -5,13 +5,19 @@ import Category from '@/components/Category';
 import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
 import { getLayout } from '@/Layout/Home';
+import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
 
+type HomePosts = Pick<
+  Post,
+  'slug' | 'title' | 'createdAt' | 'description' | 'subtitle'
+>;
+
 // 获取首页数据
 export async function getStaticProps() {
-  const posts = await getRecentPosts([
+  const posts = await getRecentPosts<HomePosts>([
     'slug',
     'title',
     'createdAt',
@@ -19,6 +25,7 @@ export async function getStaticProps() {
     'description'
   ]);
 
+  console.log(posts);
   return {
     props: {
       posts

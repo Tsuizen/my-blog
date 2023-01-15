@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const COMPONENTROOT = path.join(process.cwd(), 'posts');
-  console.log(COMPONENTROOT);
+
   const { code, frontmatter } = await bundleMDX({
     mdxOptions: (opts) => {
       //TODO: 添加额外的处理插件
