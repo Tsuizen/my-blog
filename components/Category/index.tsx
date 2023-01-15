@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { categories } from '../../Config/config';
+import { categories } from '../../config';
 
 const Category = ({ className }: { className: string }) => {
   return (

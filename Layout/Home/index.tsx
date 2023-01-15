@@ -12,7 +12,6 @@ export interface LayoutProps {
 
 const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
   const theme = useThemeStore((state) => state.theme);
-
   const hasMounted = useMounted();
 
   if (!hasMounted) {
@@ -21,13 +20,13 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <div className="h-52 md:h-72 relative  w-full bg-light">
-        <div className="w-full bg-light h-10"></div>
-        <NavBar color="bg-light"></NavBar>
+      <div className="h-52 md:h-72 relative  w-full bg-header">
+        <div className="w-full bg-header h-10"></div>
+        <NavBar color={'bg-header'} />
         <div className="w-full absolute -bottom-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 290"
+            viewBox="0 0 1440 280"
             className="w-full"
           >
             <path

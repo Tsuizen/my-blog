@@ -13,7 +13,7 @@ import SyntaxHighlighter from '@/components/SyntaxHighlighter';
 import TableOfContent, {
   TableOfContentsProps
 } from '@/components/TableOfContent';
-import { getLayout } from '@/Layout/Post';
+import { getLayout } from '@/layout/Post';
 import { getAllPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
