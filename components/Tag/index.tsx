@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { tags } from '../../Config/config';
+import { tags } from '../../config';
 
 const Tag = ({ className }: { className: string }) => {
   return (

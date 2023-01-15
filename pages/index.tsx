@@ -4,7 +4,7 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Category from '@/components/Category';
 import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
-import { getLayout } from '@/Layout/Home';
+import { getLayout } from '@/layout/Home';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 
@@ -25,7 +25,6 @@ export async function getStaticProps() {
     'description'
   ]);
 
-  console.log(posts);
   return {
     props: {
       posts

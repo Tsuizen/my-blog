@@ -1,7 +1,8 @@
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layout/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {}
@@ -26,7 +27,7 @@ module.exports = {
             'background-color': '#7FBDE6',
             'border-color': '#7FBDE6'
           },
-          '.bg-light': {
+          '.bg-header': {
             'background-color': '#BFDEF2'
           },
           '.text-tag': {
@@ -40,7 +41,7 @@ module.exports = {
           ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
           primary: '#585de2',
           'base-100': '#0E141B',
-          '.bg-light': {
+          '.bg-header': {
             'background-color': '#151E25'
           },
           '.bg-card': {

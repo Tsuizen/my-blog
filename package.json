@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development && next dev",
-    "prebuild": "node --loader ts-node/esm backend/script.mts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -50,7 +49,7 @@
     "@types/mockjs": "^1.0.7",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
-    "daisyui": "^2.42.1",
+    "daisyui": "^2.46.0",
     "esbuild": "^0.16.12",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
