@@ -27,7 +27,7 @@ const RecentPosts = ({ posts, className, page }: Props) => {
         className={classNames(className, 'flex flex-wrap max-w-screen-sm mb-4')}
       >
         {page === 'index' ? (
-          <div className="mx-4 px-6 text-lg text-purple-500 font-bold">
+          <div className="mx-4 px-6 text-lg text-purple-400 font-bold">
             最近更新
           </div>
         ) : (
