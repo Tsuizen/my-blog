@@ -34,7 +34,7 @@ const Archives: NextPageWithLayout = (
 
   return (
     <>
-      <div className="mx-auto w-1/2">
+      <div className="mx-auto w-4/5 md:w-1/2">
         {posts.map((post, index) => (
           <div key={index}>
             <div className="my-4 font-bold text-2xl text-primary">
