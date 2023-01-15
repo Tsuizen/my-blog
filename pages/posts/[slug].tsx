@@ -99,7 +99,7 @@ const BlogPost: NextPageWithLayout = ({
   return (
     <div className="flex md:w-10/12 m-auto items-start">
       <main className="flex flex-wrap mt-10 w-full m-auto">
-        <div className="w-2/3 px-10 m-auto md:w-3/4 md:px-0">
+        <div className="w-4/5 px-10 m-auto md:px-0">
           <h1>{post.title}</h1>
           <p className="text-gray-500">
             {format(new Date(post.createdAt), 'yyyy-MM-dd HH:mm:ss')}

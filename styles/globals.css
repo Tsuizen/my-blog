@@ -10,6 +10,12 @@ html {
   scroll-padding-top: 6rem;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei,
+    sans-serif;
+}
+
 a {
   text-decoration: none;
   color: rgb(75 85 99 / var(--tw-text-opacity));
