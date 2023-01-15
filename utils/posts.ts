@@ -1,27 +1,11 @@
+import format from 'date-fns/format';
+import isBefore from 'date-fns/isBefore';
+import isEqual from 'date-fns/isEqual';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-export interface Post {
-  readMins: number;
-  words: number;
-  content: string;
-  headings: string;
-  filename: string;
-  featureImage: string;
-  featureVideo: string;
-  sourceLink: string;
-  scripts: string;
-  demoLink: string;
-  createdAt: Date;
-  updatedAt: Date;
-  slug: string;
-  sort: number;
-  category: any;
-  categorySlug: string;
-  chapter: string;
-  i18n: string;
-}
+import { Post } from '@/types';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -29,40 +13,49 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug<T extends Post>(
+  slug: string,
+  fields: string[] = []
+): T {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data } = matter(fileContents);
 
-  type Items = {
-    [key: string]: string;
-  };
+  const items = {};
 
-  const items: Items = {};
-
-  // 确保只导出最低限度数据
-  fields.forEach((field) => {
-    if (field === 'slug') {
-      items[field] = realSlug;
-    }
-    if (field === 'content') {
-      items[field] = content;
-    }
-
+  // 按需导出数据
+  fields.forEach(async (field) => {
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field];
     }
+    if (field === 'slug') {
+      items[field] = realSlug;
+    }
+    if (field === 'createdAt') {
+      items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
+    }
   });
-
-  return items;
+  return items as T;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts<T extends Post>(fields: string[] = []): T[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    .map((slug) => getPostBySlug<T>(slug, fields))
+    .sort((a, b) => {
+      if (isEqual(new Date(a.createdAt!), new Date(b.createdAt!))) return 0;
+      else
+        return isBefore(new Date(a.createdAt!), new Date(b.createdAt!))
+          ? 1
+          : -1;
+    });
+  return posts;
+}
+
+export async function getRecentPosts<T extends Post>(
+  fields: string[] = []
+): Promise<T[]> {
+  const posts = getAllPosts<T>(fields);
   return posts;
 }

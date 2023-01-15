@@ -18,4 +18,6 @@ declare module 'next/app' {
 declare global {
   var __db: any;
 }
+
+
 export {};

@@ -5,8 +5,6 @@ import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
-import { savePosts } from './db.mjs';
-
 interface FilePath {
   dir: string;
   name: string;
@@ -19,7 +17,6 @@ export interface Post {
   filename: string;
   createdAt: Date;
   updatedAt: Date;
-  sort: number;
   category: string;
   categorySlug: string;
   chapter: string;
@@ -60,7 +57,7 @@ export async function getPathAll(
   return allFiles;
 }
 
-async function getMDXList() {
+export async function getMDXList() {
   const files = (await getPathAll(DOCROOT, [])) as FilePath[];
 
   type Once = {
@@ -101,7 +98,6 @@ async function getMDXList() {
     const category = frontmatter.category || '博客';
 
     let post: Post = {
-      sort: getSort(files[i].name),
       category: category,
       categorySlug: category,
       chapter: '',
@@ -128,20 +124,3 @@ async function getMDXList() {
 
   return posts;
 }
-
-//获取文件排序
-function getSort(filename: string) {
-  const items = filename.split(' ');
-  if (items.length > 0) {
-    return ~~items[0];
-  }
-
-  return -1;
-}
-
-async function initPostsToDB() {
-  const posts = await getMDXList();
-  await savePosts(posts);
-}
-
-export { initPostsToDB };

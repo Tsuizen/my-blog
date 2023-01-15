@@ -2,41 +2,30 @@ import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import Category from '@/components/Category';
-import { getLayout } from '@/components/Layout/Home';
 import RecentPosts from '@/components/RecentPosts';
 import Tag from '@/components/Tag';
-import prisma from '@/utils/prisma';
+import { getLayout } from '@/Layout/Home';
+import { Post } from '@/types';
+import { getRecentPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
 
-// 获取首页数据
-async function getRecentPosts() {
-  const db = prisma;
-  const posts = await db.posts.findMany({
-    orderBy: {
-      createdAt: 'desc'
-    },
-    take: 20,
-    select: {
-      title: true,
-      subtitle: true,
-      description: true,
-      slug: true,
-      category: true,
-      categorySlug: true,
-      author: true,
-      tags: true,
-      featureImage: true,
-      createdAt: true,
-      updatedAt: true
-    }
-  });
-  await db.$disconnect();
-  return posts;
-}
+type HomePosts = Pick<
+  Post,
+  'slug' | 'title' | 'createdAt' | 'description' | 'subtitle'
+>;
 
+// 获取首页数据
 export async function getStaticProps() {
-  const posts = await getRecentPosts();
+  const posts = await getRecentPosts<HomePosts>([
+    'slug',
+    'title',
+    'createdAt',
+    'subtitle',
+    'description'
+  ]);
+
+  console.log(posts);
   return {
     props: {
       posts
