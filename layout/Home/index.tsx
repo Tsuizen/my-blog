@@ -30,7 +30,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
             className="w-full"
           >
             <path
-              fill={theme === 'light' ? '#fff' : '#0E141B'}
+              fill={theme === 'dark' ? '#0E141B' : '#fff'}
               d="M0,256L1440,128L1440,320L0,320Z"
             ></path>
           </svg>
