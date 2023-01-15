@@ -12,7 +12,9 @@ type ThemeState = {
 let defaultTheme: ThemeType = 'light';
 
 if (typeof window !== 'undefined') {
-  defaultTheme = JSON.parse(localStorage.getItem('theme')!)?.state.theme;
+  defaultTheme = JSON.parse(localStorage.getItem('theme')!)
+    ? JSON.parse(localStorage.getItem('theme')!)
+    : defaultTheme;
 }
 
 export const useThemeStore = create<ThemeState>()(
