@@ -2,7 +2,7 @@ import getYear from 'date-fns/getYear';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Link from 'next/link';
 
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 

@@ -2,7 +2,7 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import ListItem from '@/components/ListItem';
 import { categories } from '@/config';
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 
