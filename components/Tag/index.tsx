@@ -11,7 +11,7 @@ const Tag = ({ className }: { className: string }) => {
         {TAGS.map((tag) => (
           <span key={tag.label} className="inline-block m-2">
             <Link
-              href={`/tags/${tag.tagSlug}`}
+              href={`/tag/${tag.label}`}
               className="text-md text-tag font-bold hover:text-primary"
             >
               #{tag.label}
