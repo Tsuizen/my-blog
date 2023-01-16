@@ -7,7 +7,20 @@
     "import/order": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "no-redeclare": "off"
+  },
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
   },
   "overrides": [
     {

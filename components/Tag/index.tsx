@@ -12,7 +12,7 @@ const Tag = ({ className }: { className: string }) => {
           <span key={tag.label} className="inline-block m-2">
             <Link
               href={`/tag/${tag.label}`}
-              className="text-md text-tag font-bold hover:text-primary"
+              className="text-md text-base-content font-bold hover:text-primary"
             >
               #{tag.label}
             </Link>

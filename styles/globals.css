@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 页面定位时部分内容会被header挡住，滚动条滚动到地址 hash 
-（地址 # 号后面的内容）对应的锚点元素 padding-box上边缘位置。 */
-
-/* bug: post页面重渲染时会向上滚动6rem的距离 */
-html {
-  scroll-padding-top: 6rem;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
-    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei,
-    sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
 :root {
   --color-default: #fff;
 }
@@ -44,3 +25,23 @@ a {
 [data-theme='🐤'] {
   --color-default: #ffd65a;
 }
+
+/* 页面定位时部分内容会被header挡住，滚动条滚动到地址 hash 
+（地址 # 号后面的内容）对应的锚点元素 padding-box上边缘位置。 */
+
+/* bug: post页面重渲染时会向上滚动6rem的距离 */
+html {
+  scroll-padding-top: 6rem;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei,
+    sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
