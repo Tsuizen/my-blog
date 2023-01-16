@@ -129,27 +129,19 @@
   }
 
   // List
-  ul,
-  ol {
+  ul, ol {
     @apply pl-4;
-
-    p {
-      @apply m-0;
-    }
+    p { @apply m-0 }
   }
-
   ol {
     counter-reset: list-item;
-
     > li {
       counter-increment: list-item;
-
       &::before {
         @apply mr-2 text-primary font-medium;
-
-        content: counter(list-item) '. ';
+        content: counter(list-item) ". ";
         min-width: 20px;
-        font-feature-settings: 'tnum';
+        font-feature-settings: "tnum";
       }
     }
   }

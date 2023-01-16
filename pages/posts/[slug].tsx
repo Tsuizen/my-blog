@@ -1,11 +1,13 @@
 // @ts-nocheck
 import classNames from 'classnames';
 import format from 'date-fns/format';
+import * as fs from 'fs';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import path from 'path';
 import { useEffect, useMemo, useState } from 'react';
+import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -17,6 +19,13 @@ import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
+
+type ReadTimeResults = {
+  text: string;
+  time: number;
+  words: number;
+  minutes: number;
+};
 
 export async function getStaticPaths() {
   const posts = getAllPosts(['slug']);
@@ -35,23 +44,25 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const COMPONENTROOT = path.join(process.cwd(), 'posts');
-
+  const filePath = path.resolve(process.cwd(), `posts/${params.slug}.md`);
   const { code, frontmatter } = await bundleMDX({
     mdxOptions: (opts) => {
       //TODO: 添加额外的处理插件
       (opts.remarkPlugins = [...(opts.remarkPlugins ?? []), remarkGfm]),
-        (opts.rehypePlugins = [
-          ...(opts.rehypePlugins ?? []),
-          rehypeSlug
-          // rehypePrism
-        ]);
+        (opts.rehypePlugins = [...(opts.rehypePlugins ?? []), rehypeSlug]);
       return opts;
     },
-    file: path.resolve(process.cwd(), `posts/${params.slug}.md`),
+    file: filePath,
     cwd: COMPONENTROOT
   });
 
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const readTime = readingTime(fileContents.toString(), {
+    wordsPerMinute: 300
+  });
+
   const post = frontmatter;
+  post.readTime = readTime;
   post.content = code;
 
   return {
@@ -95,6 +106,9 @@ const BlogPost: NextPageWithLayout = ({
     () => getMDXComponent(post.content!),
     [post.content]
   );
+  const { readTime }: { readTime: ReadTimeResults } = post;
+
+  console.log('read', readTime);
 
   return (
     <div className="flex md:w-10/12 m-auto items-start">
@@ -102,8 +116,11 @@ const BlogPost: NextPageWithLayout = ({
         <div className="w-4/5 px-10 m-auto md:px-0">
           <h1>{post.title}</h1>
           <p className="text-gray-500">
-            {format(new Date(post.createdAt), 'yyyy-MM-dd HH:mm:ss')}
+            {format(new Date(post.createdAt), 'yyyy-MM-dd')}
+            &nbsp;·&nbsp;
+            {Math.ceil(readTime.minutes)}&nbsp;分钟阅读
           </p>
+
           <p>{post.description}</p>
           <article
             className={classNames(style['markdown-body'], 'w-full mt-10')}

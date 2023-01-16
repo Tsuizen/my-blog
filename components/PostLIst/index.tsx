@@ -9,7 +9,7 @@ interface Post {
   createdAt: string;
 }
 
-const ListItem = ({ keyword, allPosts }) => {
+const PostList = ({ keyword, allPosts }) => {
   return (
     <div className="mx-auto w-4/5 md:w-3/5" key={keyword}>
       <div className="my-4 font-bold text-2xl text-primary">{keyword}</div>
@@ -35,4 +35,4 @@ const ListItem = ({ keyword, allPosts }) => {
   );
 };
 
-export default ListItem;
+export default PostList;

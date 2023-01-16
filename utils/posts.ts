@@ -4,6 +4,7 @@ import isEqual from 'date-fns/isEqual';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import readingTime from 'reading-time'
 
 import { Post } from '@/types';
 
@@ -21,6 +22,8 @@ export function getPostBySlug<T extends Post>(
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data } = matter(fileContents);
+  const readTime = readingTime(fileContents.toString(), { wordsPerMinute: 300 });
+  // console.log(readTime)
 
   const items = {};
 
@@ -28,6 +31,9 @@ export function getPostBySlug<T extends Post>(
   fields.forEach(async (field) => {
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field];
+    }
+    if (field === 'readTime') {
+      items[field] = readTime;
     }
     if (field === 'slug') {
       items[field] = realSlug;
