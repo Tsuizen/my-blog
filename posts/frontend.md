@@ -5,7 +5,7 @@ categorySlug: tech
 title: 标题
 subtitle: 前端测试
 author: Tsuizen
-description: 如何在网络时代赚钱？一共只需要三步。第一步需要有一个想法。第二步，贯彻执行这个想法。第三步，扩大或者换个新的想法执行。
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget.
 tags:  
   - JavaScript
 featureImage: /assert/images/make-money.jpg
