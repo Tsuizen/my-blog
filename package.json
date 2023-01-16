@@ -35,6 +35,7 @@
     "prism-react-renderer": "^1.3.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
     "reflect-metadata": "^0.1.13",
     "rehype-infer-reading-time-meta": "^1.1.0",
     "remark-reading-time": "^2.0.1",

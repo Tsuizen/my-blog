@@ -11,6 +11,9 @@ import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
+import ListItem from '@/components/List/ListItem';
+import OrderList from '@/components/List/OrderList';
+import UnorderList from '@/components/List/UnorderList';
 import SyntaxHighlighter from '@/components/SyntaxHighlighter';
 import TableOfContent, {
   TableOfContentsProps
@@ -25,6 +28,13 @@ type ReadTimeResults = {
   time: number;
   words: number;
   minutes: number;
+};
+
+const components = {
+  ul: UnorderList,
+  ol: OrderList,
+  li: ListItem,
+  pre: SyntaxHighlighter
 };
 
 export async function getStaticPaths() {
@@ -125,11 +135,7 @@ const BlogPost: NextPageWithLayout = ({
           <article
             className={classNames(style['markdown-body'], 'w-full mt-10')}
           >
-            <Component
-              components={{
-                pre: SyntaxHighlighter
-              }}
-            />
+            <Component components={components} />
           </article>
         </div>
       </main>
