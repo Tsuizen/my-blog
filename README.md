@@ -18,6 +18,7 @@ pnpm run dev
 ```
 ## 功能
 
+- [x] 使用husky + eslint + tsc + lint-staged规范代码
 - [x] SSG
 - [x] 响应式设计
 - [x] 黑暗模式
