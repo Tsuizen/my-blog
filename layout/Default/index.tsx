@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 
+import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 
@@ -11,6 +12,7 @@ const PostLayout: NextPage<LayoutProps> = ({ children }) => {
       <NavBar color={'bg-base-100'} />
       {children}
       <Footer />
+      <BackToTop />
     </>
   );
 };
