@@ -22,4 +22,5 @@ export interface Post {
   featureVideo?: string;
   createdAt?: string;
   updatedAt?: string;
+  draft?: boolean;
 }

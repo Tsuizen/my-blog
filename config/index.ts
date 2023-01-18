@@ -10,5 +10,6 @@ export const TAGS = [
   { label: 'Vue', tagSlug: 'vue' },
   { label: 'CSS', tagSlug: 'css' },
   { label: 'TypeScript', tagSlug: 'typescript' },
-  { label: 'JavaScript', tagSlug: 'typescript' }
+  { label: 'JavaScript', tagSlug: 'javascript' },
+  { label: 'TailwindCSS', tagSlug: 'tailwindcss' }
 ];
