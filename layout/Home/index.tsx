@@ -2,12 +2,14 @@ import classNames from 'classnames';
 import type { NextPage } from 'next';
 import { ReactNode } from 'react';
 
+import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
 import styles from './index.module.scss';
+
 export interface LayoutProps {
   children: ReactNode;
 }
@@ -48,6 +50,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
       </div>
       {children}
       <Footer />
+      <BackToTop />
     </>
   );
 };
