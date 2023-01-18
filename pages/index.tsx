@@ -22,7 +22,8 @@ export async function getStaticProps() {
     'title',
     'createdAt',
     'subtitle',
-    'description'
+    'description',
+    'draft'
   ]);
 
   return {

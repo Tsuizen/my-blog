@@ -4,7 +4,7 @@ import isEqual from 'date-fns/isEqual';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import readingTime from 'reading-time'
+import readingTime from 'reading-time';
 
 import { Post } from '@/types';
 
@@ -22,7 +22,10 @@ export function getPostBySlug<T extends Post>(
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data } = matter(fileContents);
-  const readTime = readingTime(fileContents.toString(), { wordsPerMinute: 300 });
+
+  const readTime = readingTime(fileContents.toString(), {
+    wordsPerMinute: 300
+  });
   // console.log(readTime)
 
   const items = {};
@@ -47,7 +50,9 @@ export function getPostBySlug<T extends Post>(
 
 export function getAllPosts<T extends Post>(fields: string[] = []): T[] {
   const slugs = getPostSlugs();
+
   const posts = slugs
+    .filter((slug) => !getPostBySlug<T>(slug, fields).draft)
     .map((slug) => getPostBySlug<T>(slug, fields))
     .sort((a, b) => {
       if (isEqual(new Date(a.createdAt!), new Date(b.createdAt!))) return 0;
