@@ -1,6 +1,6 @@
 const SEO = {
   defaultTitle: "Tsuizen's blog",
-  titleTemplate: 'Tsuizen | %s',
+  titleTemplate: '%s',
   robotsProps: {
     noarchive: false, // 不显示缓存链接
     nosnippet: false, // 不在搜索中显示文本片段
