@@ -122,10 +122,14 @@ const BlogPost: NextPageWithLayout = ({
     [post.content]
   );
   const { readTime }: { readTime: ReadTimeResults } = post;
-
+  console.log(post);
   return (
     <>
-      <NextSeo {...SEO} title={post.title}></NextSeo>
+      <NextSeo
+        {...SEO}
+        title={post.title}
+        description={post.description}
+      ></NextSeo>
       <ArticleJsonLd
         url={`https://www.tsuizen.cn/posts/${post.title}`}
         title={post.title}
@@ -140,7 +144,7 @@ const BlogPost: NextPageWithLayout = ({
         ]}
         publisherName="Tsuizen"
         publisherLogo="https://www.tsuizen.cn/images/logo.png"
-        description={post.desc}
+        description={post.description}
         isAccessibleForFree={true}
       />
       <div className="flex md:w-10/12 m-auto items-start">
