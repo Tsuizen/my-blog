@@ -1,8 +1,8 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 
 import ListItem from '@/components/PostLIst';
-import { TAGS } from '@/config';
-import { getLayout } from '@/layout/Default';
+import { TAGS } from '@/config/slug-config';
+import { getLayout } from '@/layout/Post';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
 

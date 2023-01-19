@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import dynamic from 'next/dynamic';
 import path from 'path';
 import { useEffect, useMemo, useState } from 'react';
 import readingTime from 'reading-time';
@@ -14,14 +15,15 @@ import remarkGfm from 'remark-gfm';
 import ListItem from '@/components/List/ListItem';
 import OrderList from '@/components/List/OrderList';
 import UnorderList from '@/components/List/UnorderList';
+import PostImage from '@/components/PostImage';
 import SyntaxHighlighter from '@/components/SyntaxHighlighter';
-import TableOfContent, {
-  TableOfContentsProps
-} from '@/components/TableOfContent';
-import { getLayout } from '@/layout/Default';
+import { TableOfContentsProps } from '@/components/TableOfContent';
+import { getLayout } from '@/layout/Post';
 import { getAllPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
+
+const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
 type ReadTimeResults = {
   text: string;
@@ -34,7 +36,8 @@ const components = {
   ul: UnorderList,
   ol: OrderList,
   li: ListItem,
-  pre: SyntaxHighlighter
+  pre: SyntaxHighlighter,
+  img: PostImage
 };
 
 export async function getStaticPaths() {
@@ -124,7 +127,7 @@ const BlogPost: NextPageWithLayout = ({
     <div className="flex md:w-10/12 m-auto items-start">
       <main className="flex flex-wrap mt-10 w-full m-auto">
         <div className="w-4/5 px-10 m-auto md:px-0">
-          <h1>{post.title}</h1>
+          <h1 className="text-4xl">{post.title}</h1>
           <p className="text-gray-500">
             {format(new Date(post.createdAt), 'yyyy-MM-dd')}
             &nbsp;·&nbsp;

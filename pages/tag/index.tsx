@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 
-import { getLayout } from '@/layout/Default';
+import { getLayout } from '@/layout/Post';
 import getAllTags from '@/utils/tags';
 
 const FONTSIZE_MIN = 16;
