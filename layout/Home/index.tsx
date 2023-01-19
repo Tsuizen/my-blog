@@ -2,13 +2,14 @@ import classNames from 'classnames';
 import type { NextPage } from 'next';
 import { ReactNode } from 'react';
 
-import BackToTop from '@/components/BackToTop';
-import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
 import styles from './index.module.scss';
+
+// NavBar懒加载导致页面回流
+// const NavBar = dynamic(() => import('@/components/NavBar'));
 
 export interface LayoutProps {
   children: ReactNode;
@@ -49,8 +50,6 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
         </div>
       </div>
       {children}
-      <Footer />
-      <BackToTop />
     </>
   );
 };

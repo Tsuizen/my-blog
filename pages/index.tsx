@@ -1,9 +1,10 @@
 import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import dynamic from 'next/dynamic';
 
-import Category from '@/components/Category';
-import RecentPosts from '@/components/RecentPosts';
-import Tag from '@/components/Tag';
+// import Category from '@/components/Category';
+// import RecentPosts from '@/components/RecentPosts';
+// import Tag from '@/components/Tag';
 import { getLayout } from '@/layout/Home';
 import { Post } from '@/types';
 import { getRecentPosts } from '@/utils/posts';
@@ -32,6 +33,10 @@ export async function getStaticProps() {
     }
   };
 }
+
+const RecentPosts = dynamic(() => import('@/components/RecentPosts'));
+const Category = dynamic(() => import('@/components/Category'));
+const Tag = dynamic(() => import('@/components/Tag'));
 
 const Home: NextPageWithLayout = ({
   posts

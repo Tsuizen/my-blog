@@ -5,6 +5,8 @@ import * as fs from 'fs';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import dynamic from 'next/dynamic';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
 import path from 'path';
 import { useEffect, useMemo, useState } from 'react';
 import readingTime from 'reading-time';
@@ -14,14 +16,16 @@ import remarkGfm from 'remark-gfm';
 import ListItem from '@/components/List/ListItem';
 import OrderList from '@/components/List/OrderList';
 import UnorderList from '@/components/List/UnorderList';
+import PostImage from '@/components/PostImage';
 import SyntaxHighlighter from '@/components/SyntaxHighlighter';
-import TableOfContent, {
-  TableOfContentsProps
-} from '@/components/TableOfContent';
-import { getLayout } from '@/layout/Default';
+import { TableOfContentsProps } from '@/components/TableOfContent';
+import SEO from '@/config/seo-config';
+import { getLayout } from '@/layout/Post';
 import { getAllPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
+
+const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
 type ReadTimeResults = {
   text: string;
@@ -34,7 +38,8 @@ const components = {
   ul: UnorderList,
   ol: OrderList,
   li: ListItem,
-  pre: SyntaxHighlighter
+  pre: SyntaxHighlighter,
+  img: PostImage
 };
 
 export async function getStaticPaths() {
@@ -118,32 +123,50 @@ const BlogPost: NextPageWithLayout = ({
   );
   const { readTime }: { readTime: ReadTimeResults } = post;
 
-  console.log('read', readTime);
-
   return (
-    <div className="flex md:w-10/12 m-auto items-start">
-      <main className="flex flex-wrap mt-10 w-full m-auto">
-        <div className="w-4/5 px-10 m-auto md:px-0">
-          <h1>{post.title}</h1>
-          <p className="text-gray-500">
-            {format(new Date(post.createdAt), 'yyyy-MM-dd')}
-            &nbsp;·&nbsp;
-            {Math.ceil(readTime.minutes)}&nbsp;分钟阅读
-          </p>
-
-          <p>{post.description}</p>
-          <article
-            className={classNames(style['markdown-body'], 'w-full mt-10')}
-          >
-            <Component components={components} />
-          </article>
-        </div>
-      </main>
-      <TableOfContent
-        headings={headings}
-        className="hidden md:block break-words w-60 p-4 mt-10 sticky top-20"
+    <>
+      <NextSeo {...SEO} title={post.title}></NextSeo>
+      <ArticleJsonLd
+        url={`https://www.tsuizen.cn/posts/${post.title}`}
+        title={post.title}
+        images={[]}
+        datePublished={post.createdAt}
+        dateModified={post.updatedAt}
+        authorName={[
+          {
+            name: 'Tsuizen',
+            url: 'https://www.tsuizen.cn'
+          }
+        ]}
+        publisherName="Tsuizen"
+        publisherLogo="https://www.tsuizen.cn/images/logo.png"
+        description={post.desc}
+        isAccessibleForFree={true}
       />
-    </div>
+      <div className="flex md:w-10/12 m-auto items-start">
+        <main className="flex flex-wrap mt-10 w-full m-auto">
+          <div className="w-4/5 px-10 m-auto md:px-0">
+            <h1 className="text-4xl">{post.title}</h1>
+            <p className="text-gray-500">
+              {format(new Date(post.createdAt), 'yyyy-MM-dd')}
+              &nbsp;·&nbsp;
+              {Math.ceil(readTime.minutes)}&nbsp;分钟阅读
+            </p>
+
+            <p>{post.description}</p>
+            <article
+              className={classNames(style['markdown-body'], 'w-full mt-10')}
+            >
+              <Component components={components} />
+            </article>
+          </div>
+        </main>
+        <TableOfContent
+          headings={headings}
+          className="hidden md:block break-words w-60 p-4 mt-10 sticky top-20"
+        />
+      </div>
+    </>
   );
 };
 
