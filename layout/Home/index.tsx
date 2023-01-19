@@ -34,7 +34,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
             'w-full text-center text-xl m-auto mt-4 text-primary'
           )}
         >
-          Talk is easy, show me the code.
+          Show me the code.
         </div>
         <div className="w-full absolute -bottom-2">
           <svg
