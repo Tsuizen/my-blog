@@ -127,8 +127,9 @@ const BlogPost: NextPageWithLayout = ({
     <>
       <NextSeo
         {...SEO}
-        title={post.title}
+        title={`${post.title} | Tsuizen's blog`}
         description={post.description}
+        canonical={'https://tsuizen.cn/' + post.title}
       ></NextSeo>
       <ArticleJsonLd
         url={`https://www.tsuizen.cn/posts/${post.title}`}
