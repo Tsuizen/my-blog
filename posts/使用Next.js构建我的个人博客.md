@@ -7,7 +7,8 @@ subtitle: ''
 author: Tsuizen
 description: 身为码农怎么能没有自己的博客，本来打算在博客园写作，但是由于之前的整改风波，决定还是自己搭建，顺便可以练习技术以及督促自己更新🧐。
 tags:
-  - MDX
+  - Next.js
+  - 前端性能优化
 featureImage: ''
 createdAt: 2023-01-18
 updatedAt: 2023-01-18
