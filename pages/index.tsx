@@ -6,8 +6,9 @@ import dynamic from 'next/dynamic';
 // import RecentPosts from '@/components/RecentPosts';
 // import Tag from '@/components/Tag';
 import { getLayout } from '@/layout/Home';
+import getRSS from '@/lib/generateRss';
+import { getRecentPosts } from '@/lib/posts';
 import { Post } from '@/types';
-import { getRecentPosts } from '@/utils/posts';
 
 import style from './index.module.scss';
 
@@ -23,9 +24,10 @@ export async function getStaticProps() {
     'title',
     'createdAt',
     'subtitle',
-    'description',
-    'draft'
+    'description'
   ]);
+
+  await getRSS();
 
   return {
     props: {

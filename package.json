@@ -39,6 +39,7 @@
     "reflect-metadata": "^0.1.13",
     "rehype-infer-reading-time-meta": "^1.1.0",
     "remark-reading-time": "^2.0.1",
+    "rss": "^1.2.2",
     "run": "^1.4.0",
     "style": "^0.0.3",
     "theme-change": "^2.2.0",

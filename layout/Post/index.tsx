@@ -1,9 +1,8 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
+
+import NavBar from '@/components/NavBar';
 
 import { LayoutProps } from '../Home';
-
-const NavBar = dynamic(() => import('@/components/NavBar'));
 
 const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   return (

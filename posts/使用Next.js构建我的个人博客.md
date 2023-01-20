@@ -1,7 +1,7 @@
 ---
 slug: buil-my-blog
-category: 技术向
-categorySlug: tech
+category: 前端
+categorySlug: frontend
 title: 使用Next.js构建我的个人博客
 subtitle: ''
 author: Tsuizen

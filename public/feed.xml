@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Tsuizen's blog]]></title>
+        <description><![CDATA[随便写东西的地方，主要以前端内容为主]]></description>
+        <link>http://localhost:3000</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 20 Jan 2023 03:03:49 GMT</lastBuildDate>
+        <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Fri, 20 Jan 2023 03:03:49 GMT</pubDate>
+        <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
+        <language><![CDATA[cn]]></language>
+        <item>
+            <title><![CDATA[使用Next.js构建我的个人博客]]></title>
+            <description><![CDATA[身为码农怎么能没有自己的博客，本来打算在博客园写作，但是由于之前的整改风波，决定还是自己搭建，顺便可以练习技术以及督促自己更新🧐。]]></description>
+            <link>http://localhost:3000/posts/使用Next.js构建我的个人博客</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/使用Next.js构建我的个人博客</guid>
+        </item>
+    </channel>
+</rss>

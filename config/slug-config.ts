@@ -1,8 +1,8 @@
 export const CATEGORIES = [
-  { label: '技术向', categorySlug: 'tech' },
-  { label: '生活', categorySlug: 'live' },
-  { label: '杂谈', categorySlug: 'talk' },
-  { label: '求职', categorySlug: 'career' }
+  { label: '前端', categorySlug: 'frontend' },
+  { label: '后端', categorySlug: 'backend' },
+  { label: '求职', categorySlug: 'career' },
+  { label: '其他', categorySlug: 'other' }
 ];
 
 export const TAGS = [

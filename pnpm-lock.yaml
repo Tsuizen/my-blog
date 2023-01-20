@@ -56,6 +56,7 @@ specifiers:
   remark-autolink-headings: ^7.0.1
   remark-gfm: ^3.0.1
   remark-reading-time: ^2.0.1
+  rss: ^1.2.2
   run: ^1.4.0
   sass: ^1.57.1
   scss: ^0.2.4
@@ -98,6 +99,7 @@ dependencies:
   reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
   rehype-infer-reading-time-meta: 1.1.0
   remark-reading-time: 2.0.1
+  rss: 1.2.2
   run: registry.npmmirror.com/run/1.4.0
   style: registry.npmmirror.com/style/0.0.3
   theme-change: registry.npmmirror.com/theme-change/2.2.0
@@ -1943,6 +1945,18 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /mime-db/1.25.0:
+    resolution: {integrity: sha512-5k547tI4Cy+Lddr/hdjNbBEWBwSl8EBc5aSdKvedav8DReADgWJzcYiktaRIw3GtGC1jjwldXtTzvqJZmtvC7w==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /mime-types/2.1.13:
+    resolution: {integrity: sha512-ryBDp1Z/6X90UvjUK3RksH0IBPM137T7cmg4OgD5wQBojlAiUwuok0QeELkim/72EtcYuNlmbkrcGuxj3Kl0YQ==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.25.0
+    dev: false
+
   /min-document/2.19.0:
     resolution: {integrity: sha512-9Wy1B3m3f66bPPmU5hdA4DR4PB2OfDU/+GS3yAB7IQozE3tqXaVv2zOjgla7MEGSRv95+ILmOuvhLkOK6wJtCQ==}
     dependencies:
@@ -2502,6 +2516,13 @@ packages:
     dependencies:
       glob: 7.2.3
     dev: true
+
+  /rss/1.2.2:
+    resolution: {integrity: sha512-xUhRTgslHeCBeHAqaWSbOYTydN2f0tAzNXvzh3stjz7QDhQMzdgHf3pfgNIngeytQflrFPfy6axHilTETr6gDg==}
+    dependencies:
+      mime-types: 2.1.13
+      xml: 1.0.1
+    dev: false
 
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -3094,6 +3115,10 @@ packages:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
+
+  /xml/1.0.1:
+    resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
+    dev: false
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
