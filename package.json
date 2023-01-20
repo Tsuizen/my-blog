@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development && next dev",
-    "build": "next build & next-sitemap --config=next.sitemap.config.js",
+    "build": "next build",
+    "postbuild": "next-sitemap --config=next.sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
     "style": "stylelint \"**/**/*.css\" --fix",
