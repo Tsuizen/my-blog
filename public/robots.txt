@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# test-bot
+User-agent: test-bot
+Allow: /path
+Allow: /path-2
+
+# Host
+Host: https://tsuizen.cn
+
+# Sitemaps
+Sitemap: https://tsuizen.cn/sitemap.xml
