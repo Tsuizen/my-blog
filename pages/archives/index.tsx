@@ -3,8 +3,8 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Link from 'next/link';
 
 import { getLayout } from '@/layout/Post';
+import { getRecentPosts } from '@/lib/posts';
 import { Post } from '@/types';
-import { getRecentPosts } from '@/utils/posts';
 
 type ArchivePost = Pick<
   Post,

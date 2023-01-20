@@ -21,7 +21,7 @@ import SyntaxHighlighter from '@/components/SyntaxHighlighter';
 import { TableOfContentsProps } from '@/components/TableOfContent';
 import SEO from '@/config/seo-config';
 import { getLayout } from '@/layout/Post';
-import { getAllPosts } from '@/utils/posts';
+import { getAllPosts } from '@/lib/posts';
 
 import style from './index.module.scss';
 
@@ -122,7 +122,7 @@ const BlogPost: NextPageWithLayout = ({
     [post.content]
   );
   const { readTime }: { readTime: ReadTimeResults } = post;
-  console.log(post);
+
   return (
     <>
       <NextSeo

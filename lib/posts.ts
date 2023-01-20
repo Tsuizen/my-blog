@@ -26,7 +26,6 @@ export function getPostBySlug<T extends Post>(
   const readTime = readingTime(fileContents.toString(), {
     wordsPerMinute: 300
   });
-  // console.log(readTime)
 
   const items = {};
 
@@ -45,6 +44,9 @@ export function getPostBySlug<T extends Post>(
       items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
     }
   });
+
+  items['draft'] = data.draft;
+
   return items as T;
 }
 
@@ -61,6 +63,8 @@ export function getAllPosts<T extends Post>(fields: string[] = []): T[] {
           ? 1
           : -1;
     });
+  
+  
   return posts;
 }
 

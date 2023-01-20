@@ -82,17 +82,19 @@ export default function NavBar({ color }) {
           />
         </label>
         <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/rss-light.svg'
-                : '/images/rss-dark.svg'
-            }
-            alt="rss"
-            width={22}
-            height={22}
-            className="md:w-6 md:h-6"
-          />
+          <Link href={'/feed.xml'} target="_blank">
+            <Image
+              src={
+                theme === 'light'
+                  ? '/images/rss-light.svg'
+                  : '/images/rss-dark.svg'
+              }
+              alt="rss"
+              width={22}
+              height={22}
+              className="md:w-6 md:h-6"
+            />
+          </Link>
         </button>
       </div>
     </div>

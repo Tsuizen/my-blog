@@ -3,8 +3,8 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import ListItem from '@/components/PostLIst';
 import { CATEGORIES } from '@/config/slug-config';
 import { getLayout } from '@/layout/Post';
+import { getRecentPosts } from '@/lib/posts';
 import { Post } from '@/types';
-import { getRecentPosts } from '@/utils/posts';
 
 type CategoryPosts = Pick<
   Post,
