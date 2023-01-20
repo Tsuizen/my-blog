@@ -145,7 +145,7 @@ const BlogPost: NextPageWithLayout = ({
         }}
       ></NextSeo>
       <ArticleJsonLd
-        url={`https://www.tsuizen.cn/posts/${post.title}`}
+        url={`https://tsuizen.cn/posts/${post.title}`}
         title={post.title}
         images={[]}
         datePublished={post.createdAt}
@@ -153,11 +153,11 @@ const BlogPost: NextPageWithLayout = ({
         authorName={[
           {
             name: 'Tsuizen',
-            url: 'https://www.tsuizen.cn'
+            url: 'https://tsuizen.cn'
           }
         ]}
         publisherName="Tsuizen"
-        publisherLogo="https://www.tsuizen.cn/images/logo.png"
+        publisherLogo="https://tsuizen.cn/images/logo.png"
         description={post.description}
         isAccessibleForFree={true}
       />
