@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import { NextSeo } from 'next-seo';
 
 import Category from '@/components/Category';
 import RecentPosts from '@/components/RecentPosts';
@@ -44,6 +45,7 @@ const Home: NextPageWithLayout = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <NextSeo title="首页 | Tsuizen's blog" />
       <main
         className={classnames(
           style['container'],

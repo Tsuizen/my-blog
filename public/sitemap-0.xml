@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://tsuizen.cn</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/archives</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/React</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/Vue</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/CSS</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/TypeScript</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/JavaScript</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/TailwindCSS</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/前端性能优化</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/HTML</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/tag/Next.js</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/category/前端</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/category/后端</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/category/求职</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/category/其他</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tsuizen.cn/posts/使用Next.js构建我的个人博客</loc><lastmod>2023-01-20T15:25:52.882Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tsuizen.cn</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://tsuizen.cn/archives</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.3</priority></url>
+<url><loc>https://tsuizen.cn/tag</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/React</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/Vue</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/CSS</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/TypeScript</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/JavaScript</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/TailwindCSS</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/前端性能优化</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/HTML</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/tag/Next.js</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+<url><loc>https://tsuizen.cn/category/前端</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>
+<url><loc>https://tsuizen.cn/category/后端</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>
+<url><loc>https://tsuizen.cn/category/求职</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>
+<url><loc>https://tsuizen.cn/category/其他</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>0.4</priority></url>
+<url><loc>https://tsuizen.cn/posts/使用Next.js构建我的个人博客</loc><lastmod>2023-01-21T01:46:36.397Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
 </urlset>

@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import { NextSeo } from 'next-seo';
 
 import ListItem from '@/components/PostLIst';
 import { TAGS } from '@/config/slug-config';
@@ -48,7 +49,7 @@ const TagPage: NextPageWithLayout = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
   const { posts, keyword } = props;
-
+  <NextSeo title={`${keyword} | Tsuizen's blog`} />;
   return (
     <>
       <ListItem allPosts={posts} keyword={keyword}></ListItem>
