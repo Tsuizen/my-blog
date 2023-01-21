@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react';
 import { AiOutlineRocket } from 'react-icons/ai';
 
 const BackToTop = () => {
   let timer: number;
-  return (
+  const [show, setShow] = useState(false); // 设置状态
+
+  // 顶部不显示按钮
+  useEffect(() => {
+    const listener = () => {
+      setShow(window.scrollY > 2000);
+    };
+    document.addEventListener('scroll', listener);
+    return () => document.removeEventListener('scroll', listener); // 组件销毁后，取消监听
+  }, [show]);
+
+  return show ? (
     <div
       className="fixed right-10 bottom-10 cursor-pointer tooltip"
       data-tip="返回顶部"
@@ -29,7 +41,7 @@ const BackToTop = () => {
     >
       <AiOutlineRocket className="text-4xl" />
     </div>
-  );
+  ) : null;
 };
 
 export default BackToTop;
