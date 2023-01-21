@@ -2,18 +2,18 @@
     <channel>
         <title><![CDATA[Tsuizen's blog]]></title>
         <description><![CDATA[随便写东西的地方，主要以前端内容为主]]></description>
-        <link>https://tsuizen.cn</link>
+        <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 21 Jan 2023 01:46:30 GMT</lastBuildDate>
-        <atom:link href="https://tsuizen.cn/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 21 Jan 2023 01:46:30 GMT</pubDate>
+        <lastBuildDate>Sat, 21 Jan 2023 02:33:28 GMT</lastBuildDate>
+        <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sat, 21 Jan 2023 02:33:28 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
             <title><![CDATA[使用Next.js构建我的个人博客]]></title>
             <description><![CDATA[身为码农怎么能没有自己的博客，本来打算在博客园写作，但是由于之前的整改风波，决定还是自己搭建，顺便可以练习技术以及督促自己更新🧐。]]></description>
-            <link>https://tsuizen.cn/posts/使用Next.js构建我的个人博客</link>
-            <guid isPermaLink="true">https://tsuizen.cn/posts/使用Next.js构建我的个人博客</guid>
+            <link>http://localhost:3000/posts/使用Next.js构建我的个人博客</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/使用Next.js构建我的个人博客</guid>
         </item>
     </channel>
 </rss>
