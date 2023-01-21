@@ -1,0 +1,84 @@
+---
+slug: css-selector-priority
+category: 前端
+categorySlug: frontend
+title: CSS选择器优先级问题
+subtitle: ''
+author: Tsuizen
+description: 一直被长久以来流传的CSS选择器优先级按1000，100，10，1划分误导，这种划分方式未免太不严谨，如果真的有人写100个低优先级选择器呢？
+tags:
+  - CSS
+featureImage: ''
+createdAt: 2022-05-13
+updatedAt: 2022-05-13
+draft: false
+---
+
+## 样式应用优先级比较
+
+优先级从高到低依次为
+
+1. 内联样式（例如`style="font-weigth:bold"`）
+2. id 选择器（例如`#example`）
+3. 类选择器（例如`.example`)，属性选择器（例如`[type="radio"]`）和伪类（例如`:hover`）
+4. 类型选择器（例如`h1`）和伪元素（例如`::before`)
+5. 通配选择符（`*`）关系选择符（例如`+`, `>`, `~`）对优先级没有影响
+
+当一个样式声明中使用`!import`时，此声明将覆盖其他任何声明。
+
+继承的样式永远比直接添加的样式优先级低，例如
+
+```css
+#parent {
+  color: green;
+}
+
+h1 {
+  color: purple;
+}
+```
+
+当他应用在
+
+```html
+<html>
+  <body id="parent">
+    <p>This text is purple.</p>
+  </body>
+</html>
+```
+
+浏览器会将他渲染成紫色
+
+<p style={{ color: 'purple' }}>This text is purple.</p>
+
+## 多选择器权重的比较
+
+网上流传以内联样式开始到通配符权重依次为 1000，100，10，1，0，当多个选择器共同作用时将权值相加比较的做法在部分情况下可以生效但并不正确。
+上述的 0，1 并不是十进制的 0 和 1，也不是二进制，而是根据浏览器对权值和的具体计算方法决定的，例如在老版本的 Firefox 中权值实现方式如下：
+
+![Alt text](/Posts/CssPriority/priority.png)
+
+id 和类选择器相差两个 16 进制，因此在老版本的 Firefox 中如果添加$16^2=256$个类选择器的权值要大于一个 id 选择器。
+一个合理的划分规则，不同类型的选择器权重应该是相互隔离的。经过在新版的 Chrome，Safari 上测试，上述现象已经不会发生。
+因此在计算优先级时严谨的做法是计算每个选择器的数量，数量多的优先级高，相同时再比较下一级的选择器。下面的例子中字体颜色应该为 orange
+
+```css
+.outer .inner p {
+  color: orange;
+}
+
+.inner p {
+  color: blue;
+}
+```
+
+```html
+<div class="outer">
+  <div class="inner">
+    <p>This text is orange.</p>
+  </div>
+</div>
+```
+
+<p style={{ color: 'orange' }}>This text is orange.</p>
