@@ -43,14 +43,14 @@ h1 {
 ```html
 <html>
   <body id="parent">
-    <p>我是紫色</p>
+    <p>This text is purple.</p>
   </body>
 </html>
 ```
 
 浏览器会将他渲染成紫色
 
-<p style={{ color: 'purple' }}>我是紫色</p>
+<p style={{ color: 'purple' }}>This text is purple.</p>
 
 ## 多选择器权重的比较
 
@@ -61,7 +61,7 @@ h1 {
 
 id 和类选择器相差两个 16 进制，因此在老版本的 Firefox 中如果添加$16^2=256$个类选择器的权值要大于一个 id 选择器。
 一个合理的划分规则，不同类型的选择器权重应该是相互隔离的。经过在新版的 Chrome，Safari 上测试，上述现象已经不会发生。
-因此在计算优先级时严谨的做法是计算每个选择器的数量，数量多的优先级高，相同时再比较下一级的选择器。例如下面的例子中字体颜色应该为 orange
+因此在计算优先级时严谨的做法是计算每个选择器的数量，数量多的优先级高，相同时再比较下一级的选择器。下面的例子中字体颜色应该为 orange
 
 ```css
 .outer .inner p {
@@ -76,9 +76,9 @@ id 和类选择器相差两个 16 进制，因此在老版本的 Firefox 中如�
 ```html
 <div class="outer">
   <div class="inner">
-    <p>我是橘色</p>
+    <p>This text is orange.</p>
   </div>
 </div>
 ```
 
-<p style={{ color: 'orange' }}>我是橘色</p>
+<p style={{ color: 'orange' }}>This text is orange.</p>
