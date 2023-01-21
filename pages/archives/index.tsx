@@ -1,6 +1,7 @@
 import getYear from 'date-fns/getYear';
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 
 import { getLayout } from '@/layout/Post';
 import { getRecentPosts } from '@/lib/posts';
@@ -34,6 +35,7 @@ const Archives: NextPageWithLayout = (
 
   return (
     <>
+      <NextSeo title="归档 | Tsuizen's blog"></NextSeo>
       <div className="mx-auto w-4/5 md:w-1/2">
         {posts.map((post, index) => (
           <div key={index}>

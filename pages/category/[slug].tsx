@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
+import { NextSeo } from 'next-seo';
 
 import ListItem from '@/components/PostLIst';
 import { CATEGORIES } from '@/config/slug-config';
@@ -50,6 +51,7 @@ const Category: NextPageWithLayout = (
 
   return (
     <>
+      <NextSeo title={`${keyword} | Tsuizen's blog`} />
       <ListItem allPosts={posts} keyword={keyword}></ListItem>
     </>
   );
