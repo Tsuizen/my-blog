@@ -20,7 +20,7 @@ import PostImage from '@/components/PostImage';
 import SyntaxHighlighter from '@/components/SyntaxHighlighter';
 import { TableOfContentsProps } from '@/components/TableOfContent';
 import SEO from '@/config/seo-config';
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/lib/posts';
 
 import style from './index.module.scss';

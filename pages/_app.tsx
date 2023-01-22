@@ -5,7 +5,6 @@ import type { AppPropsWithLayout } from 'next/app';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 import BackToTop from '@/components/BackToTop';
-import Footer from '@/components/Footer';
 import SEO from '@/config/seo-config';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
@@ -28,7 +27,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       />
 
       {getLayout(<Component {...pageProps}></Component>)}
-      <Footer />
       <BackToTop />
     </>
   );

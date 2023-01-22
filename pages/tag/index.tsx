@@ -2,7 +2,7 @@ import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import getAllTags from '@/lib/tags';
 
 const FONTSIZE_MIN = 16;

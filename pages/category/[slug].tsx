@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo';
 
 import ListItem from '@/components/PostLIst';
 import { CATEGORIES } from '@/config/slug-config';
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import { getRecentPosts } from '@/lib/posts';
 import { Post } from '@/types';
 
