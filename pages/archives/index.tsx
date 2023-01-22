@@ -3,7 +3,7 @@ import { InferGetStaticPropsType, NextPageWithLayout } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-import { getLayout } from '@/layout/Post';
+import { getLayout } from '@/layout/Default';
 import { getRecentPosts } from '@/lib/posts';
 import { Post } from '@/types';
 

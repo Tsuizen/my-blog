@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import type { NextPage } from 'next';
 import { ReactNode } from 'react';
 
+import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
@@ -50,6 +51,8 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
         </div>
       </div>
       {children}
+
+      <Footer />
     </>
   );
 };
