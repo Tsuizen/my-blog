@@ -2,7 +2,6 @@ import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
 
 import type { AppPropsWithLayout } from 'next/app';
-import Head from 'next/head';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 import BackToTop from '@/components/BackToTop';
@@ -14,12 +13,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
-      </Head>
       <DefaultSeo {...SEO} />
       {/* 网站logo */}
       <LogoJsonLd

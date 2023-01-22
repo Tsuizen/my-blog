@@ -8,7 +8,7 @@ const BackToTop = () => {
   // 顶部不显示按钮
   useEffect(() => {
     const listener = () => {
-      setShow(window.scrollY > 2000);
+      setShow(window.scrollY > 1000);
     };
     document.addEventListener('scroll', listener);
     return () => document.removeEventListener('scroll', listener); // 组件销毁后，取消监听
