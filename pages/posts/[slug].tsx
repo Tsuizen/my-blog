@@ -12,6 +12,7 @@ import { useEffect, useMemo, useState } from 'react';
 import readingTime from 'reading-time';
 import rehypeJoinLine from 'rehype-join-line';
 import rehypeSlug from 'rehype-slug';
+import rephyTargetBlank from 'rehype-target-blank';
 import remarkGfm from 'remark-gfm';
 
 import ListItem from '@/components/List/ListItem';
@@ -23,7 +24,6 @@ import { TableOfContentsProps } from '@/components/TableOfContent';
 import SEO from '@/config/seo-config';
 import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/lib/posts';
-import rephyTargetBlank from '@/lib/rehypeLink';
 
 import style from './index.module.scss';
 

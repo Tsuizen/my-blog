@@ -57,7 +57,7 @@ specifiers:
   rehype-join-line: ^1.0.2
   rehype-prism-plus: ^1.5.0
   rehype-slug: ^5.1.0
-  rehype-target-blank: ^1.0.2
+  rehype-target-blank: ^1.0.3
   remark-autolink-headings: ^7.0.1
   remark-gfm: ^3.0.1
   remark-reading-time: ^2.0.1
@@ -108,7 +108,7 @@ dependencies:
   reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
   rehype-infer-reading-time-meta: 1.1.0
   rehype-join-line: 1.0.2
-  rehype-target-blank: 1.0.2
+  rehype-target-blank: 1.0.3
   remark-reading-time: 2.0.1
   rss: 1.2.2
   run: registry.npmmirror.com/run/1.4.0
@@ -2467,8 +2467,8 @@ packages:
       unist-util-visit: 4.1.2
     dev: true
 
-  /rehype-target-blank/1.0.2:
-    resolution: {integrity: sha512-MhuwLTLE84Ic4j9ae/AbGRzEJZoLEXgVh9QBrHfPW61FaCLZB2nkFqSn3yQkDJPAqvTB9zcG+WBMxYQhO0r+vw==}
+  /rehype-target-blank/1.0.3:
+    resolution: {integrity: sha512-lLHZoYFckZ8cuZyx6siHOikDOvDQDn5LWVr56CnEjiwEwqhxuz3lLbRcHNrWLOp2G69cVWbEVGFA8sMpkj8nBA==}
     dependencies:
       '@types/hast': 2.3.4
       hast-util-has-property: 2.0.1
