@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 interface Props {
@@ -35,7 +36,11 @@ export default function LazyImage(props: Props) {
     };
   }, [threshold]);
 
-  return (
+  // 没有旧版本浏览器，没搞清楚Nextjs怎么给不支持原生懒加载的浏览器polyfill
+  return 'loading' in HTMLImageElement.prototype ? (
+    <Image src={src} alt={alt!} className={className}></Image>
+  ) : (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={imgRef}
       src={isLoaded ? src : placeholder}

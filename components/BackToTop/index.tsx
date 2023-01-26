@@ -20,7 +20,7 @@ const BackToTop = () => {
       data-tip="返回顶部"
       onClick={() => {
         cancelAnimationFrame(timer);
-        //获取当前毫秒数在·
+        //获取当前毫秒数
         const startTime = +new Date();
         //获取当前页面的滚动高度
         const curHeight =
