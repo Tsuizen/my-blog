@@ -10,7 +10,9 @@ import { ArticleJsonLd, NextSeo } from 'next-seo';
 import path from 'path';
 import { useEffect, useMemo, useState } from 'react';
 import readingTime from 'reading-time';
+import rehypeJoinLine from 'rehype-join-line';
 import rehypeSlug from 'rehype-slug';
+import rephyTargetBlank from 'rehype-target-blank';
 import remarkGfm from 'remark-gfm';
 
 import ListItem from '@/components/List/ListItem';
@@ -64,7 +66,12 @@ export async function getStaticProps({ params }: any) {
     mdxOptions: (opts) => {
       //TODO: 添加额外的处理插件
       (opts.remarkPlugins = [...(opts.remarkPlugins ?? []), remarkGfm]),
-        (opts.rehypePlugins = [...(opts.rehypePlugins ?? []), rehypeSlug]);
+        (opts.rehypePlugins = [
+          ...(opts.rehypePlugins ?? []),
+          rehypeSlug,
+          rehypeJoinLine,
+          rephyTargetBlank
+        ]);
       return opts;
     },
     file: filePath,
