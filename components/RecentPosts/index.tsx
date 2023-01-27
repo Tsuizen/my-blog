@@ -60,7 +60,15 @@ const RecentPosts = ({ posts, className, page }: Props) => {
                 </Link>
               </div>
               <div className="text-gray-500 flex items-center text-sm">
-                <span className="">{post.createdAt}</span>
+                <span>{post.createdAt}</span>
+                <span className="ml-2">
+                  <Link
+                    className="hover:text-primary"
+                    href={`/posts/${post.slug!}/`}
+                  >
+                    阅读更多
+                  </Link>
+                </span>
               </div>
             </div>
           </div>

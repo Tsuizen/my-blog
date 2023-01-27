@@ -4,11 +4,19 @@
         <description><![CDATA[随便写东西的地方，主要以前端内容为主]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 27 Jan 2023 14:47:27 GMT</lastBuildDate>
+
+        <lastBuildDate>Fri, 27 Jan 2023 15:36:11 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 27 Jan 2023 14:47:27 GMT</pubDate>
+        <pubDate>Fri, 27 Jan 2023 15:36:11 GMT</pubDate>
+
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
+        <item>
+            <title><![CDATA[在Next.js中使用MDX]]></title>
+            <description><![CDATA[这片文章介绍了如何在Next.js中使用mdx，从而让文章有更丰富的表现形式]]></description>
+            <link>http://localhost:3000/posts/在Next.js中使用MDX</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/在Next.js中使用MDX</guid>
+        </item>
         <item>
             <title><![CDATA[使用Next.js构建我的个人博客]]></title>
             <description><![CDATA[身为码农怎么能没有自己的博客，由于博客园的整改风波，出于安全原因决定自己搭建，顺便可以练习技术以及督促自己更新🧐。]]></description>
