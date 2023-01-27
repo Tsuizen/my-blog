@@ -151,7 +151,7 @@ const getRSS = async () => {
 export default getRSS;
 ```
 
-要让博客在 build 时更新 xml 文件，还需要在 `page/index.tsx` 中的 `getStaticProps` 添加执行语句，
+要让博客能够及时更新 xml 文件，还需要在 `page/index.tsx` 中的 `getStaticProps` 添加执行语句，
 
 ```typescript
 export async function getStaticProps() {
@@ -163,6 +163,6 @@ export async function getStaticProps() {
 }
 ```
 
-现在 build 项目后就可以看见 public 目录中生成了 `feed.xml`，访问`/feed.xml`就可以订阅 RSS 了
+现在运行项目后就可以看见 public 目录中生成了 `feed.xml`，访问`/feed.xml`就可以订阅 RSS 了
 
 ## 为博客添加 SEO 和站点地图
