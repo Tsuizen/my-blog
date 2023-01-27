@@ -41,7 +41,7 @@ export function getPostBySlug<T extends Post>(
       items[field] = realSlug;
     }
     if (field === 'createdAt') {
-      items[field] = format(data.createdAt, 'yyyy-MM-dd HH:mm:ss');
+      items[field] = format(data.createdAt, 'yyyy-MM-dd');
     }
   });
 
