@@ -49,7 +49,7 @@ const Home: NextPageWithLayout = ({
       <main
         className={classnames(
           style['container'],
-          'md:w-4/5 md:grid m-auto break-all pt-10 items-start'
+          'w-11/12 md:w-10/12 xl:w-3/5 md:grid m-auto break-all pt-10 items-start'
         )}
       >
         <RecentPosts posts={posts} className={style.content} page="index" />
