@@ -20,7 +20,7 @@ const getRSS = async () => {
 
   const feed = new RSS({
     title: "Tsuizen's blog",
-    description: '随便写东西的地方，主要以前端内容为主',
+    description: '随便写东西的地方',
     site_url: siteUrl,
     feed_url: `${siteUrl}/feed.xml`,
     language: 'cn',

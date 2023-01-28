@@ -1,0 +1,217 @@
+---
+slug: add-seo-sitemap
+category: 前端
+categorySlug: frontend
+title: 为博客添加SEO优化以及站点地图
+subtitle: ''
+author: Tsuizen
+description: 想要让博客内容在搜索引擎中名列前茅，好的seo优化是必不可少的，关于seo优化已经成了一门学问，本文在博客中进行了一番实践
+tags:
+  - Next.js
+  - 前端性能优化
+  - SEO
+featureImage: ''
+createdAt: 2023-01-12
+updatedAt: 2023-01-12
+draft: false
+---
+
+## 为博客添加 SEO 和站点地图
+
+SEO 的学问非常多，本博客尽可能贴近谷歌指导的规范对 seo 进行配置。
+
+在 next.js 项目中添加 seo 一般使用`next-seo`第三方库。要在全部页面配置默认 SEO 需要在`_app.tsx`文件中引入`DefaultSeo`组件。
+
+```tsx
+export default function App() {
+
+// ...
+
+  const SEO = {
+    defaultTitle: "Tsuizen's blog",
+    titleTemplate: "%s | Tsuizen's blog",
+    description: 'Tsuizen的个人博客',
+    canonical: "https://tsuizen.cn",
+    robotsProps: {
+      noarchive: false, // 不显示缓存链接
+      nosnippet: false, // 不在搜索中显示文本片段
+      maxSnippet: -1, // 值为-1谷歌会显示他认为最有效的文本片段长度
+      notranslate: false, // 不在搜索结果中提供页面翻译
+      noimageindex: false // 不要在此页面上为图像编制索引。如果不指定此值，页面上的图像可能会被编入索引并显示在搜索结果中。
+    }
+  };
+
+  return {
+    <DefaultSeo {...SEO} />
+  }
+}
+```
+
+以上是我选择的默认设置，`titleTemplate`中的 %s 是每个页面单独设置的标题内容，这样所有的页面就默认会携带 %s
+后面的模板。其他的配置可以参考`next-seo`的[文档](https://github.com/garmeeh/next-seo)
+
+接着来单独配置每个页面的内容，需要在相应页面引入`NextSEO`组件，以 post 页为例在`NextSEO`组件中添加对应的内容即可，
+想要在社交网站分享时呈现不错的效果就需要对 openGraph 进行配置
+
+```tsx
+<NextSeo
+  {...SEO}
+  title={post.title}
+  description={post.description}
+  canonical={'https://tsuizen.cn/' + post.title}
+  openGraph={{
+    title: `${post.title}`,
+    description: `${post.description}`,
+    url: 'https://tsuizen.cn/posts/' + post.title,
+    type: 'article',
+    article: {
+      publishedTime: post.createdAt,
+      modifiedTime: post.updatedAt,
+      authors: ['Tsuizen'],
+      tags: post.tags
+    },
+    images: []
+  }}
+/>
+```
+
+## 结构化数据 JSON-LD
+
+我们还可以在网页中添加结构化数据让谷歌读取，针对不同的网页类型作不同的搜索结果呈现
+在博客页面，我添加了一个 Article 的结构化数据用来描述文章信息
+
+```tsx
+<ArticleJsonLd
+  url={`https://tsuizen.cn/posts/${post.title}`}
+  title={post.title}
+  images={[]}
+  datePublished={post.createdAt}
+  dateModified={post.updatedAt}
+  authorName={[
+    {
+      name: 'Tsuizen',
+      url: 'https://tsuizen.cn'
+    }
+  ]}
+  publisherName="Tsuizen"
+  publisherLogo="https://tsuizen.cn/images/logo.png"
+  description={post.description}
+  isAccessibleForFree={true}
+/>
+```
+
+在网页中会被展开成如下形式
+
+```html
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "datePublished": "2023-01-18T00:00:00.000Z",
+    "description": "身为码农怎么能没有自己的博客，由于博客园的整改风波，出于安全原因决定自己搭建，顺便可以练习技术以及督促自己更新🧐。",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tsuizen.cn/posts/使用Next.js构建我的个人博客"
+    },
+    "headline": "使用Next.js构建我的个人博客",
+    "image": [],
+    "dateModified": "2023-01-18T00:00:00.000Z",
+    "author": [
+      { "@type": "Person", "name": "Tsuizen", "url": "https://tsuizen.cn" }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tsuizen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tsuizen.cn/images/logo.png"
+      }
+    },
+    "isAccessibleForFree": true
+  }
+</script>
+```
+
+这样谷歌就能根据你的需要展示更丰富的搜索结果。
+
+## 站点地图
+
+最后再来说说站点地图的问题，这是谷歌官方给出的定义：
+
+> 站点地图是一种文件，您可以在其中提供与您网站中的网页、视频或其他文件有关的信息，还可以说明这些内容之间的关系。Google 等搜索引擎会读取此文件，以便更高效地抓取您的网站。站点地图会告诉 Google 您认为网站中的哪些网页和文件比较重要，还会提供与这些文件有关的重要信息。例如，网页上次更新的时间和网页是否有任何备用的语言版本。
+
+我们可以使用`next-sitemap`来生成站点地图
+
+首先在根目录创建配置文件`next-sitemap.config.js`，添加地址，更新频率等需要的属性，然后根据需要可以在 `transform` 函数中配置不同相对路径中的属性
+，这里我修改了不同页面对应的优先级，更多的属性用法可以参考[官方文档](https://github.com/iamvishnusankar/next-sitemap)
+
+```javascript
+/** @type {import('next-sitemap').IConfig} */
+
+module.exports = {
+  siteUrl: 'https://tsuizen.cn',
+  changefreq: 'daily',
+  priority: 1,
+  sitemapSize: 5000,
+  generateRobotsTxt: true,
+  // exclude: ['/protected-page', '/awesome/secret-page'],
+  // alternateRefs: [
+  //   {
+  //     href: 'https://tsuizen.cn',
+  //     hreflang: 'cn'
+  //   }
+  // ],
+  // Default transformation function
+  transform: async (config, path) => {
+    const result = {
+      loc: 'https://tsuizen.cn' + path, // => this will be exported as http(s)://<config.siteUrl>/<path>
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      alternateRefs: config.alternateRefs ?? []
+    };
+    if (path.startsWith('/tag')) {
+      result.priority = 0.6;
+    }
+    if (path.startsWith('/posts')) {
+      result.priority = 1;
+      this.changefreq = 'always';
+    }
+    if (path.startsWith('/category')) {
+      result.priority = 0.4;
+    }
+    if (path.startsWith('/archives')) {
+      result.priority = 0.3;
+    }
+    return result;
+  },
+  // additionalPaths: async (config) => [
+  //   await config.transform(config, '/additional-page')
+  // ],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/'
+      },
+      {
+        userAgent: 'test-bot',
+        allow: ['/path', '/path-2']
+      }
+      // {
+      //   userAgent: 'black-listed-bot',
+      //   disallow: ['/sub-path-1', '/path-2']
+      // }
+    ],
+    additionalSitemaps: []
+  }
+};
+```
+
+最后在`package.json`中可以在 `postbuild` 周期配置执行脚本
+
+```json
+"postbuild": "next-sitemap",
+```
+
+然后我们就能看到 public 下生成了对应的站点 xml 文件和 robots.txt

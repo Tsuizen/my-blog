@@ -1,0 +1,123 @@
+---
+slug: buil-my-blog
+category: 前端
+categorySlug: frontend
+title: 在Next.js博客中添加RSS支持
+subtitle: ''
+author: Tsuizen
+description: RSS是博客必不可少的功能之一，本文介绍了如何在Next.js博客中添加RSS订阅功能
+tags:
+  - RSS
+  - Next.js
+featureImage: ''
+createdAt: 2023-01-17
+draft: false
+---
+
+现在使用 RSS 订阅的人越来越少了，但是对我而言，在信息过剩的时代通过 RSS 过滤不相干的推荐信息是保持高效获取信息的必要手段。
+本文我会介绍如何在博客中添加 RSS 订阅功能
+
+## RSS 是什么
+
+> RSS(Really Simple Syndication)是一种描述和同步网站内容的格式，其中包含来自网站的更新摘要，通常采用带有链接的文章列表的形式。
+
+## 为博客添加 RSS 功能
+
+为个人博客添加 RSS 支持需要用到一个同名包
+
+```shell
+pnpm add rss -D
+```
+
+接着，创建一个 RSS 对象，里面包含了你博客的标题，描述，url 等信息
+
+```typescript
+const feed = new RSS({
+  title: "Tsuizen's blog",
+  description: '随便写东西的地方',
+  site_url: siteUrl,
+  feed_url: `${siteUrl}/feed.xml`,
+  language: 'cn',
+  pubDate: new Date(),
+  copyright: `All rights reserved ${new Date().getFullYear()}, Tsuizen`
+});
+```
+
+全部属性可参考[RSS channel 属性](https://www.runoob.com/rss/rss-channel.html)
+
+然后遍历所有的文章并添加文章信息
+
+```typescript
+allPosts.map((post) => {
+  feed.item({
+    title: post.title,
+    url: `${siteUrl}/posts/${post.title}`,
+    date: post.date,
+    description: post.description
+  });
+});
+```
+
+可以添加的信息请参考[RSS item 元素](https://www.runoob.com/rss/rss-item.html)
+
+最后将其写入 public 目录即可，完整代码如下
+
+```typescript
+import { writeFileSync } from 'fs';
+import RSS from 'rss';
+
+import { Post } from '@/types';
+
+import { getRecentPosts } from './posts';
+
+type RSSPost = Pick<Post, 'title' | 'createdAt' | 'description'> & {
+  date: Date;
+  url: string;
+};
+
+const getRSS = async () => {
+  const siteUrl = process.env.SITE_URL;
+  const allPosts = await getRecentPosts<RSSPost>([
+    'title',
+    'createdAt',
+    'description'
+  ]);
+
+  const feed = new RSS({
+    title: "Tsuizen's blog",
+    description: '随便写东西的地方',
+    site_url: siteUrl,
+    feed_url: `${siteUrl}/feed.xml`,
+    language: 'cn',
+    pubDate: new Date(),
+    copyright: `All rights reserved ${new Date().getFullYear()}, Tsuizen`
+  });
+
+  allPosts.map((post) => {
+    feed.item({
+      title: post.title,
+      url: `${siteUrl}/posts/${post.title}`,
+      date: post.date,
+      description: post.description
+    });
+  });
+
+  writeFileSync('./public/feed.xml', feed.xml({ indent: true }));
+};
+
+export default getRSS;
+```
+
+要让博客能够及时更新 xml 文件，还需要在 `page/index.tsx` 中的 `getStaticProps` 添加执行语句，
+
+```typescript
+export async function getStaticProps() {
+  ...
+
+  await getRSS();
+
+  ...
+}
+```
+
+现在访问首页后就可以看见 public 目录中生成了 `feed.xml`，用户访问`/feed.xml`就可以订阅 RSS 了
