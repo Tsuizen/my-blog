@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title><![CDATA[Tsuizen's blog]]></title>
-        <description><![CDATA[随便写东西的地方，主要以前端内容为主]]></description>
-        <link>http://localhost:3000</link>
+        <description><![CDATA[随便写东西的地方]]></description>
+        <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-
-        <lastBuildDate>Fri, 27 Jan 2023 15:36:11 GMT</lastBuildDate>
-        <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 27 Jan 2023 15:36:11 GMT</pubDate>
-
+        <lastBuildDate>Sat, 28 Jan 2023 15:45:50 GMT</lastBuildDate>
+        <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sat, 28 Jan 2023 15:45:50 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
-            <title><![CDATA[在Next.js中使用MDX]]></title>
-            <description><![CDATA[这片文章介绍了如何在Next.js中使用mdx，从而让文章有更丰富的表现形式]]></description>
-            <link>http://localhost:3000/posts/在Next.js中使用MDX</link>
-            <guid isPermaLink="true">http://localhost:3000/posts/在Next.js中使用MDX</guid>
+            <title><![CDATA[在Next.js博客中添加RSS支持]]></title>
+            <description><![CDATA[RSS是博客必不可少的功能之一，本文介绍了如何在Next.js博客中添加RSS订阅功能]]></description>
+            <link>undefined/posts/在Next.js博客中添加RSS支持</link>
+            <guid isPermaLink="true">undefined/posts/在Next.js博客中添加RSS支持</guid>
         </item>
         <item>
-            <title><![CDATA[使用Next.js构建我的个人博客]]></title>
-            <description><![CDATA[身为码农怎么能没有自己的博客，由于博客园的整改风波，出于安全原因决定自己搭建，顺便可以练习技术以及督促自己更新🧐。]]></description>
-            <link>http://localhost:3000/posts/使用Next.js构建我的个人博客</link>
-            <guid isPermaLink="true">http://localhost:3000/posts/使用Next.js构建我的个人博客</guid>
+            <title><![CDATA[为博客添加SEO优化以及站点地图]]></title>
+            <description><![CDATA[想要让博客内容在搜索引擎中名列前茅，好的seo优化是必不可少的，关于seo优化已经成了一门学问，本文在博客中进行了一番实践]]></description>
+            <link>undefined/posts/为博客添加SEO优化以及站点地图</link>
+            <guid isPermaLink="true">undefined/posts/为博客添加SEO优化以及站点地图</guid>
         </item>
     </channel>
 </rss>
