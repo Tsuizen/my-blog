@@ -32,6 +32,7 @@ pnpm run dev
 - [x] SEO & sitemap
 - [x] 性能优化
 - [x] RSS
+- [x] Youtube, Bilibili嵌入支持
 - [ ] 添加动态功能，例如点赞、评论
 - [ ] 博文搜索功能
 

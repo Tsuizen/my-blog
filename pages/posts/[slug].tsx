@@ -18,6 +18,8 @@ import remarkGfm from 'remark-gfm';
 import ListItem from '@/components/List/ListItem';
 import OrderList from '@/components/List/OrderList';
 import UnorderList from '@/components/List/UnorderList';
+import Bilibili from '@/components/Player/Bilibili';
+import Youtube from '@/components/Player/Youtube';
 import PostImage from '@/components/PostImage';
 import SyntaxHighlighter from '@/components/SyntaxHighlighter';
 import { TableOfContentsProps } from '@/components/TableOfContent';
@@ -41,7 +43,9 @@ const components = {
   ol: OrderList,
   li: ListItem,
   pre: SyntaxHighlighter,
-  img: PostImage
+  img: PostImage,
+  Youtube,
+  Bilibili
 };
 
 export async function getStaticPaths() {
