@@ -1,0 +1,54 @@
+---
+slug: image-lazy-loading
+category: 前端
+categorySlug: frontend
+title: 还在使用传统图片懒加载？
+subtitle: ''
+author: Tsuizen
+description: 在学习Next.js13的新特性时发现部分浏览器已经支持了原生的图片懒加载，但却鲜有人提及。
+tags:
+  - 前端性能优化
+  - HTML
+featureImage: ''
+createdAt: 2023-01-02
+updatedAt: 2023-01-02
+draft: false
+---
+
+## 概述
+
+图片懒加载是每一个前端绕不过的话题，在用户访问页面时，如果一次性加载所有图片会极大地影响用户体验。图片懒加载就是让浏览器只请求出现在可视区域中的图片。
+传统图片懒加载方式有两种：
+
+- 监听 scroll 事件
+- IntersectionObserver API
+
+第一种方式通过监听 `scroll` 事件判断图片是否出现在可视区域中，然后替换 src 属性。虽然这种方式的兼容性较好，但是 `scroll`
+事件运行在主线程并且触发频繁，需要再写一个节流函数，这种方式并不优雅。[使用实例](https://zhuanlan.zhihu.com/p/55311726)
+
+第二种方式使用 `IntersectionObserver` API 监听页面元素的可见性，是目前最为推荐的一种方式。`IntersectionObserver` 更方便使用并且具有更好的可读性，
+我们只需要考虑编写元素可见时需要执行何种操作的代码即可。[使用实例](https://web.dev/lazy-loading-images/)
+
+## 浏览器级别的懒加载
+
+既然有了 `IntersectionObserver` 为什么还需要浏览器级别的懒加载支持呢，Chrome 团队给出的原因有两个：
+
+1. 不再需要引入外部库
+2. 浏览器禁止 JavaScript 也能正常工作
+
+### 使用方法
+
+使用方法非常简单，只需要在 img 标签中添加一个 loading 属性即可。
+
+```html
+<img src="image.png" loading="lazy" alt="…" width="200" height="200" />
+```
+
+loading 的属性值有两个：
+
+- lazy: 图片懒加载
+- eager: 图片正常加载
+
+需要注意的是使用 eager 的图片相比不使用 loading 属性的 img 标签并不会获得更高的加载优先级，所以正常加载的图片不写即可。
+
+

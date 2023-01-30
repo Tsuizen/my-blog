@@ -36,7 +36,7 @@ export default function LazyImage(props: Props) {
     };
   }, [threshold]);
 
-  // 没有旧版本浏览器，没搞清楚Nextjs怎么给不支持原生懒加载的浏览器polyfill
+  // 还没研究Nextjs怎么给不支持原生懒加载的浏览器polyfill
   return 'loading' in HTMLImageElement.prototype ? (
     <Image src={src} alt={alt!} className={className}></Image>
   ) : (

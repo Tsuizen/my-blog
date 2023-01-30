@@ -24,7 +24,10 @@ const RecentPosts = ({ posts, className, page }: Props) => {
   return (
     <>
       <section
-        className={classNames(className, 'flex flex-wrap max-w-screen-sm mb-4')}
+        className={classNames(
+          className,
+          'flex flex-wrap max-w-screen-sm mb-4  text-post'
+        )}
       >
         {page === 'index' ? (
           <div className="mx-4 px-6 text-lg text-purple-400 font-bold">
@@ -55,7 +58,7 @@ const RecentPosts = ({ posts, className, page }: Props) => {
               )}
               <span className="w-1/4 border-b-2 border-primary inline-block mt-2"></span>
               <div className="text-sm mb-4 lg:text-base mt-0">
-                <Link href={`/posts/${post.slug!}/`} className="text-gray-500">
+                <Link href={`/posts/${post.slug!}/`} className="">
                   {post.description}
                 </Link>
               </div>

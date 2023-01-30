@@ -8,7 +8,7 @@ import { LayoutProps } from '../Home';
 const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <>
-      <NavBar color={'bg-base-100'} />
+      <NavBar backgroundColor={'bg-base-100'} />
       {children}
       <Footer />
     </>
