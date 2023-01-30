@@ -4,9 +4,9 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 29 Jan 2023 05:00:16 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 30 Jan 2023 11:03:08 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 29 Jan 2023 05:00:16 GMT</pubDate>
+        <pubDate>Mon, 30 Jan 2023 11:03:08 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
@@ -20,6 +20,12 @@
             <description><![CDATA[想要让博客内容在搜索引擎中名列前茅，好的seo优化是必不可少的，关于seo优化已经成了一门学问，本文在博客中进行了一番实践]]></description>
             <link>undefined/posts/为博客添加SEO优化以及站点地图</link>
             <guid isPermaLink="true">undefined/posts/为博客添加SEO优化以及站点地图</guid>
+        </item>
+        <item>
+            <title><![CDATA[还在使用传统图片懒加载？]]></title>
+            <description><![CDATA[在学习Next.js13的新特性时发现部分浏览器已经支持了原生的图片懒加载，但却鲜有人提及。]]></description>
+            <link>undefined/posts/还在使用传统图片懒加载？</link>
+            <guid isPermaLink="true">undefined/posts/还在使用传统图片懒加载？</guid>
         </item>
     </channel>
 </rss>

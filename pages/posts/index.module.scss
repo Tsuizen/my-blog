@@ -88,7 +88,8 @@
 
   // InlineCode
   code {
-    @apply text-pink-500 font-medium;
+    @apply text-lg px-1 mx-1 rounded;
+    background-color: #e8e9ec;
   }
 
   // Image
@@ -128,9 +129,12 @@
     }
   }
 
-  ul, ol {
+  ul,
+  ol {
     @apply pl-4;
-    p { @apply m-0 }
+    p {
+      @apply m-0;
+    }
   }
   ol {
     counter-reset: list-item;
@@ -138,10 +142,16 @@
       counter-increment: list-item;
       &::before {
         @apply mr-2 text-primary font-medium;
-        content: counter(list-item) ". ";
+        content: counter(list-item) '. ';
         min-width: 20px;
-        font-feature-settings: "tnum";
+        font-feature-settings: 'tnum';
       }
     }
+  }
+}
+
+[data-theme='dark'] .markdown-body {
+  code {
+    background-color: #20262f;
   }
 }

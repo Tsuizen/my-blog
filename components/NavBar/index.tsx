@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
-export default function NavBar({ color }) {
+export default function NavBar({ backgroundColor }) {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
@@ -28,8 +28,8 @@ export default function NavBar({ color }) {
   return (
     <div
       className={classNames(
-        color,
-        'flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10'
+        backgroundColor,
+        'flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10 text-post'
       )}
     >
       <div className="flex items-center w-full md:navbar-start md:justify-center">

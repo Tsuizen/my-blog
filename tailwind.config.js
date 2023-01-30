@@ -47,7 +47,12 @@ module.exports = {
           '.bg-card': {
             'background-color': '#151E25'
           },
-          '.header-bottom-color': '#1E2831'
+          '.header-bottom-color': {
+            'background-color': '#1E2831'
+          },
+          '.text-post': {
+            'color': '#f2f5f7'
+          }
         }
       }
     ]

@@ -30,9 +30,8 @@ pnpm run dev
 - [x] 文章目录
 - [x] 文章分类，文章标签，阅读时间统计
 - [x] SEO & sitemap
-- [x] 性能优化
 - [x] RSS
-- [x] Youtube, Bilibili嵌入支持
+- [x] Youtube, Bilibili 嵌入支持
 - [ ] 添加动态功能，例如点赞、评论
 - [ ] 博文搜索功能
 
