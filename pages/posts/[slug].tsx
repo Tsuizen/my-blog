@@ -140,7 +140,7 @@ const BlogPost: NextPageWithLayout = ({
         {...SEO}
         title={`${post.title} | Tsuizen's blog`}
         description={post.description}
-        canonical={'https://blog.tsuizen.cn/'}
+        canonical={`https://blog.tsuizen.cn/posts/${post.slug}`}
         openGraph={{
           title: `${post.title}`,
           description: `${post.description}`,
