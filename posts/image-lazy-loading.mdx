@@ -24,17 +24,17 @@ draft: false
 - IntersectionObserver API
 
 第一种方式通过监听 `scroll` 事件判断图片是否出现在可视区域中，然后替换 src 属性。虽然这种方式的兼容性较好，但是 `scroll`
-事件运行在主线程并且触发频繁，需要再写一个节流函数，非常不优雅。[使用方法](https://zhuanlan.zhihu.com/p/55311726)
+事件运行在主线程并且触发频繁，需要再写一个节流函数，非常不优雅。
 
 第二种方式使用 `IntersectionObserver` API 监听页面元素的可见性，是目前最为推荐的一种方式。`IntersectionObserver` 更方便使用并且具有更好的可读性，
-我们只需要考虑编写元素可见时需要执行何种操作的代码即可，主流浏览器也已经基本支持。[使用方法](https://web.dev/lazy-loading-images/)
-![IntersectionObserver兼容性](/Posts/image-lazy-loading/IntersectionObserver兼容性.jpg)
+我们只需要考虑编写元素可见时需要执行的代码即可，主流浏览器也已经基本支持。
+![IntersectionObserver兼容性](/images/posts-images/image-lazy-loading/IntersectionObserver兼容性.jpg)
 
 ## 浏览器级别的懒加载
 
-既然有了 `IntersectionObserver` 为什么还需要浏览器级别的懒加载支持呢，Chrome 团队给出的原因有两个：
+既然有了 `IntersectionObserver` 为什么还需要浏览器级别的懒加载支持，Chrome 团队给出的原因有两个：
 
-1. 不再需要引入外部库
+1. 不再需要引入外部工具或者库
 2. 浏览器禁止 JavaScript 也能正常工作
 
 ### 使用方法
@@ -52,4 +52,5 @@ loading 的属性值有两个：
 
 需要注意的是使用 eager 的图片相比不使用 loading 属性的 img 标签并不会获得更高的加载优先级，所以正常加载的图片不写即可。
 
+### 效果
 
