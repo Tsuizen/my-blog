@@ -140,11 +140,11 @@ const BlogPost: NextPageWithLayout = ({
         {...SEO}
         title={`${post.title} | Tsuizen's blog`}
         description={post.description}
-        canonical={'https://blog.tsuizen.cn/' + post.title}
+        canonical={'https://blog.tsuizen.cn/'}
         openGraph={{
           title: `${post.title}`,
           description: `${post.description}`,
-          url: 'https://blog.tsuizen.cn/posts/' + post.title,
+          url: 'https://blog.tsuizen.cn/posts/' + post.slug,
           type: 'article',
           article: {
             publishedTime: post.createdAt,
@@ -156,7 +156,7 @@ const BlogPost: NextPageWithLayout = ({
         }}
       ></NextSeo>
       <ArticleJsonLd
-        url={`https://blog.tsuizen.cn/posts/${post.title}`}
+        url={`https://blog.tsuizen.cn/posts/${post.slug}`}
         title={post.title}
         images={[]}
         datePublished={post.createdAt}
