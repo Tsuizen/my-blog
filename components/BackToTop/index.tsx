@@ -39,7 +39,7 @@ const BackToTop = () => {
         });
       }}
     >
-      <AiOutlineRocket className="text-4xl" />
+      <AiOutlineRocket className="text-4xl text-gray-500" />
     </div>
   ) : null;
 };
