@@ -4,16 +4,16 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 31 Jan 2023 16:28:09 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 31 Jan 2023 16:49:27 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 31 Jan 2023 16:28:09 GMT</pubDate>
+        <pubDate>Tue, 31 Jan 2023 16:49:27 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
             <title><![CDATA[在Next.js博客中添加RSS支持]]></title>
             <description><![CDATA[RSS是博客必不可少的功能之一，本文介绍了如何在Next.js博客中添加RSS订阅功能]]></description>
-            <link>undefined/posts/add-rss</link>
-            <guid isPermaLink="true">undefined/posts/add-rss</guid>
+            <link>undefined/posts/在Next.js博客中添加RSS支持</link>
+            <guid isPermaLink="true">undefined/posts/在Next.js博客中添加RSS支持</guid>
         </item>
         <item>
             <title><![CDATA[为博客添加SEO优化以及站点地图]]></title>

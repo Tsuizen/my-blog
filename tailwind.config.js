@@ -30,11 +30,15 @@ module.exports = {
           '.bg-header': {
             'background-color': '#BFDEF2'
           },
+          
           '.text-tag': {
             color: '#4B5563'
           },
           '.bg-card': {
-            'background-color': 'base-100'
+            'background-color': '#fff'
+          },
+          '.text-post': {
+            'color': '#000'
           }
         },
         dark: {
