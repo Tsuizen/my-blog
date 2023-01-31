@@ -8,7 +8,7 @@ Allow: /path
 Allow: /path-2
 
 # Host
-Host: https://tsuizen.cn
+Host: https://blog.tsuizen.cn
 
 # Sitemaps
-Sitemap: https://tsuizen.cn/sitemap.xml
+Sitemap: https://blog.tsuizen.cn/sitemap.xml

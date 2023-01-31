@@ -2,7 +2,7 @@
 
 使用 Next.js + TypeScript + Tailwindcss + MDX + zustand 开发的静态博客
 
-[在线预览](https://tsuizen.cn)
+[在线预览](https://blog.tsuizen.cn)
 
 ## 使用指南
 
@@ -37,7 +37,7 @@ pnpm run dev
 
 ## 参考
 
-感谢以下网站提供的帮助</br>
+感谢以下网站提供的帮助
 
 - https://blog.skk.moe/
 - https://www.peterlunch.com/

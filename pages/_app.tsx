@@ -22,14 +22,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <DefaultSeo {...SEO} />
       {/* 网站logo */}
       <LogoJsonLd
-        logo="http://tsuizen.cn/images/logo.png"
-        url="https://tsuizen.cn"
+        logo="http://blog.tsuizen.cn/images/logo.png"
+        url="https://blog.tsuizen.cn"
       />
       {/* 社交信息 */}
       <SocialProfileJsonLd
         type="Person"
         name="Tsuizen"
-        url="http://tsuizen.cn"
+        url="http://blog.tsuizen.cn"
         sameAs={['https://github.com/Tsuizen']}
       />
 
