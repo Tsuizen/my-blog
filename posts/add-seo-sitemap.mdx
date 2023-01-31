@@ -31,7 +31,7 @@ export default function App() {
     defaultTitle: "Tsuizen's blog",
     titleTemplate: "%s | Tsuizen's blog",
     description: 'Tsuizen的个人博客',
-    canonical: "https://tsuizen.cn",
+    canonical: "https://blog.tsuizen.cn",
     robotsProps: {
       noarchive: false, // 不显示缓存链接
       nosnippet: false, // 不在搜索中显示文本片段
@@ -58,11 +58,11 @@ export default function App() {
   {...SEO}
   title={post.title}
   description={post.description}
-  canonical={'https://tsuizen.cn/' + post.title}
+  canonical={'https://blog.tsuizen.cn/' + post.title}
   openGraph={{
     title: `${post.title}`,
     description: `${post.description}`,
-    url: 'https://tsuizen.cn/posts/' + post.title,
+    url: 'https://blog.tsuizen.cn/posts/' + post.title,
     type: 'article',
     article: {
       publishedTime: post.createdAt,
@@ -84,7 +84,7 @@ export default function App() {
 
 ```tsx
 <ArticleJsonLd
-  url={`https://tsuizen.cn/posts/${post.title}`}
+  url={`https://blog.tsuizen.cn/posts/${post.title}`}
   title={post.title}
   images={[]}
   datePublished={post.createdAt}
@@ -92,11 +92,11 @@ export default function App() {
   authorName={[
     {
       name: 'Tsuizen',
-      url: 'https://tsuizen.cn'
+      url: 'https://blog.tsuizen.cn'
     }
   ]}
   publisherName="Tsuizen"
-  publisherLogo="https://tsuizen.cn/images/logo.png"
+  publisherLogo="https://blog.tsuizen.cn/images/logo.png"
   description={post.description}
   isAccessibleForFree={true}
 />
@@ -113,20 +113,20 @@ export default function App() {
     "description": "身为码农怎么能没有自己的博客，由于博客园的整改风波，出于安全原因决定自己搭建，顺便可以练习技术以及督促自己更新🧐。",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://tsuizen.cn/posts/使用Next.js构建我的个人博客"
+      "@id": "https://blog.tsuizen.cn/posts/使用Next.js构建我的个人博客"
     },
     "headline": "使用Next.js构建我的个人博客",
     "image": [],
     "dateModified": "2023-01-18T00:00:00.000Z",
     "author": [
-      { "@type": "Person", "name": "Tsuizen", "url": "https://tsuizen.cn" }
+      { "@type": "Person", "name": "Tsuizen", "url": "https://blog.tsuizen.cn" }
     ],
     "publisher": {
       "@type": "Organization",
       "name": "Tsuizen",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://tsuizen.cn/images/logo.png"
+        "url": "https://blog.tsuizen.cn/images/logo.png"
       }
     },
     "isAccessibleForFree": true
@@ -151,7 +151,7 @@ export default function App() {
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: 'https://tsuizen.cn',
+  siteUrl: 'https://blog.tsuizen.cn',
   changefreq: 'daily',
   priority: 1,
   sitemapSize: 5000,
@@ -159,14 +159,14 @@ module.exports = {
   // exclude: ['/protected-page', '/awesome/secret-page'],
   // alternateRefs: [
   //   {
-  //     href: 'https://tsuizen.cn',
+  //     href: 'https://blog.tsuizen.cn',
   //     hreflang: 'cn'
   //   }
   // ],
   // Default transformation function
   transform: async (config, path) => {
     const result = {
-      loc: 'https://tsuizen.cn' + path, // => this will be exported as http(s)://<config.siteUrl>/<path>
+      loc: 'https://blog.tsuizen.cn' + path, // => this will be exported as http(s)://<config.siteUrl>/<path>
       changefreq: config.changefreq,
       priority: config.priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,

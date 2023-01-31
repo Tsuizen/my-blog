@@ -28,7 +28,7 @@ const HomeLayout: NextPage<LayoutProps> = ({ children }) => {
     <>
       <div className="h-72 md:h-96 relative  w-full bg-header">
         <div className="w-full bg-header h-14"></div>
-        <NavBar backgroundColor={'bg-header'} />
+        <NavBar style={'bg-header'} />
         <div
           className={classNames(
             styles['typing'],
