@@ -4,28 +4,28 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 31 Jan 2023 03:00:04 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 31 Jan 2023 03:56:28 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 31 Jan 2023 03:00:04 GMT</pubDate>
+        <pubDate>Tue, 31 Jan 2023 03:56:28 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
             <title><![CDATA[在Next.js博客中添加RSS支持]]></title>
             <description><![CDATA[RSS是博客必不可少的功能之一，本文介绍了如何在Next.js博客中添加RSS订阅功能]]></description>
-            <link>undefined/posts/在Next.js博客中添加RSS支持</link>
-            <guid isPermaLink="true">undefined/posts/在Next.js博客中添加RSS支持</guid>
+            <link>undefined/posts/add-rss</link>
+            <guid isPermaLink="true">undefined/posts/add-rss</guid>
         </item>
         <item>
             <title><![CDATA[为博客添加SEO优化以及站点地图]]></title>
             <description><![CDATA[想要让博客内容在搜索引擎中名列前茅，好的seo优化是必不可少的，关于seo优化已经成了一门学问，本文在博客中进行了一番实践]]></description>
-            <link>undefined/posts/为博客添加SEO优化以及站点地图</link>
-            <guid isPermaLink="true">undefined/posts/为博客添加SEO优化以及站点地图</guid>
+            <link>undefined/posts/add-seo-sitemap</link>
+            <guid isPermaLink="true">undefined/posts/add-seo-sitemap</guid>
         </item>
         <item>
             <title><![CDATA[还在使用传统图片懒加载？]]></title>
             <description><![CDATA[在学习Next.js13的新特性时发现部分浏览器已经支持了原生的图片懒加载，却鲜有人提及。]]></description>
-            <link>undefined/posts/还在使用传统图片懒加载？</link>
-            <guid isPermaLink="true">undefined/posts/还在使用传统图片懒加载？</guid>
+            <link>undefined/posts/image-lazy-loading</link>
+            <guid isPermaLink="true">undefined/posts/image-lazy-loading</guid>
         </item>
     </channel>
 </rss>

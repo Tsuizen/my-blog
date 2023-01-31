@@ -5,7 +5,7 @@ import { Post } from '@/types';
 
 import { getRecentPosts } from './posts';
 
-type RSSPost = Pick<Post, 'title' | 'createdAt' | 'description'> & {
+type RSSPost = Pick<Post, 'title' | 'createdAt' | 'description' | 'slug'> & {
   date: Date;
   url: string;
 };
@@ -15,7 +15,8 @@ const getRSS = async () => {
   const allPosts = await getRecentPosts<RSSPost>([
     'title',
     'createdAt',
-    'description'
+    'description',
+    'slug'
   ]);
 
   const feed = new RSS({
@@ -31,7 +32,7 @@ const getRSS = async () => {
   allPosts.map((post) => {
     feed.item({
       title: post.title,
-      url: `${siteUrl}/posts/${post.title}`,
+      url: `${siteUrl}/posts/${post.slug}`,
       date: post.date,
       description: post.description
     });
