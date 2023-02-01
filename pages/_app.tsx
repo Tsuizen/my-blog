@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
+import '@/styles/markdown.scss';
 
 import type { AppPropsWithLayout } from 'next/app';
 import Head from 'next/head';

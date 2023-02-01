@@ -38,7 +38,7 @@ module.exports = {
             'background-color': '#fff'
           },
           '.text-post': {
-            'color': '#000'
+            'color': '#213547'
           }
         },
         dark: {

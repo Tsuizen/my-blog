@@ -47,7 +47,9 @@ const Archives: NextPageWithLayout = (
             </div>
             <div className="card w-full bg-card shadow-xl mb-6" key={index}>
               <div className="card-body">
-                <div className="text-xl font-bold">{post.title}</div>
+                <div className="text-xl font-bold">
+                  <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+                </div>
                 <div className="text-md text-gray-500 mb-4">
                   {post.subtitle}
                 </div>

@@ -1,5 +1,4 @@
 // @ts-nocheck
-import classNames from 'classnames';
 import format from 'date-fns/format';
 import * as fs from 'fs';
 import { bundleMDX } from 'mdx-bundler';
@@ -13,6 +12,7 @@ import readingTime from 'reading-time';
 import rehypeJoinLine from 'rehype-join-line';
 import rehypeSlug from 'rehype-slug';
 import rephyTargetBlank from 'rehype-target-blank';
+import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 
 import ListItem from '@/components/List/ListItem';
@@ -26,8 +26,7 @@ import { TableOfContentsProps } from '@/components/TableOfContent';
 import SEO from '@/config/seo-config';
 import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/lib/posts';
-
-import style from './index.module.scss';
+import remarkNoteBlock from '@/lib/remark-note-block';
 
 const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
@@ -69,7 +68,12 @@ export async function getStaticProps({ params }: any) {
   const { code, frontmatter } = await bundleMDX({
     mdxOptions: (opts) => {
       //TODO: 添加额外的处理插件
-      (opts.remarkPlugins = [...(opts.remarkPlugins ?? []), remarkGfm]),
+      (opts.remarkPlugins = [
+        ...(opts.remarkPlugins ?? []),
+        remarkGfm,
+        remarkDirective,
+        remarkNoteBlock
+      ]),
         (opts.rehypePlugins = [
           ...(opts.rehypePlugins ?? []),
           rehypeSlug,
@@ -183,9 +187,7 @@ const BlogPost: NextPageWithLayout = ({
             </p>
 
             <p>{post.description}</p>
-            <article
-              className={classNames(style['markdown-body'], 'w-full mt-10')}
-            >
+            <article className={'markdown-body w-full mt-10'}>
               <Component components={components} />
             </article>
           </div>
