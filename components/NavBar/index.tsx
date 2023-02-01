@@ -29,7 +29,7 @@ const NavBar = ({ style }) => {
     <div
       className={classNames(
         style,
-        'flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10 text-post'
+        'flex flex-wrap md:navbar md:flex-nowrap  px-0 sticky top-0 box-border z-10 text-post backdrop-filter backdrop-blur-sm'
       )}
     >
       <div className="flex items-center w-full md:navbar-start md:justify-center">
