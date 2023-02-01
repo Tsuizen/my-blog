@@ -20,8 +20,6 @@ draft: true
 
 ---
 
-# Heading1
-
 ## Heading2
 
 ### Heading3
@@ -32,9 +30,14 @@ draft: true
 
 ###### Heading6
 
-[MDX](https://mdxjs.com) allows you to use `JSX` in your markdown content. You can **import components**, such as _interactive charts_ or _alerts_, and embed them within your content. This makes writing long-form content with components a blast. 🚀
+[MDX](https://mdxjs.com) allows you to use `JSX` in your markdown content. You can **import components**, such as *interactive charts* or *alerts*, and embed them within your content. This makes writing long-form content with components a blast. 🚀
 
-[MDX](https://mdxjs.com) `MDX` **MDX** _MDX_ ~~MDX~~ ~~_**[`MDX`](https://mdxjs.com)**_~~
+[MDX](https://mdxjs.com)
+`MDX`
+**MDX**
+_MDX_
+~~MDX~~
+~~_**[`MDX`](https://mdxjs.com)**_~~
 
 https://github.com/imzxj
 
@@ -66,6 +69,7 @@ https://github.com/imzxj
 Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 [^1]: This is the first footnote.
+
 [^bignote]: Here's one with multiple paragraphs and code.
 
     Indent paragraphs to include them in the footnote.
@@ -74,32 +78,31 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
     Add as many paragraphs as you like.
 
-:::tip 做人如果没有梦想，跟咸鱼有什么分别？ :::
+:::tip
+做人如果没有梦想，跟咸鱼有什么分别？
+:::
 
-:::warning 做人如果没有梦想，跟咸鱼有什么分别？ :::
+:::warning
+做人如果没有梦想，跟咸鱼有什么分别？
+:::
 
-:::danger 做人如果没有梦想，跟咸鱼有什么分别？ :::
+:::danger
+做人如果没有梦想，跟咸鱼有什么分别？
+:::
 
 ![test image](/images/mdx-test.webp)
 
 ## React Component
 
-<div
-  style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '5rem 0px',
-    gap: 15,
-  }}
->
-  
-  <span>👈 Click here</span>
-</div>
+## Third Party Embeds 🧩
+
+### YouTube
+
+## CodePlayground
 
 ### HTML
 
-```html
+```html live
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,19 +129,15 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 ### React
 
-```jsx
+```jsx live
 function Count() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <>
       <p>count: {count}</p>
       <button onClick={() => setCount(count + 1)}>+1</button>
     </>
-  );
+  )
 }
 ```
-
-<Youtube videoId="vioCbTo3C-4"/>
-
-<Bilibili bvid="BV18R4y1h7G6" />

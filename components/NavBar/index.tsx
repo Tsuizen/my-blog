@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import useMounted from '@/hooks/useMounted';
 import { useThemeStore } from '@/store/store';
 
-export default function NavBar({ style }) {
+const NavBar = ({ style }) => {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
@@ -99,4 +99,6 @@ export default function NavBar({ style }) {
       </div>
     </div>
   );
-}
+};
+
+export default NavBar;

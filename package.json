@@ -18,6 +18,7 @@
     }
   },
   "dependencies": {
+    "@giscus/react": "^2.2.6",
     "@prisma/client": "^4.8.0",
     "@types/hast": "^2.3.4",
     "@types/node": "18.11.10",
@@ -74,6 +75,7 @@
     "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "gray-matter": "^4.0.3",
+    "hastscript": "^7.2.0",
     "husky": "^8.0.2",
     "lint-staged": ">=10",
     "markdownlint-cli": "^0.32.2",
@@ -87,6 +89,7 @@
     "rehype-prism-plus": "^1.5.0",
     "rehype-slug": "^5.1.0",
     "remark-autolink-headings": "^7.0.1",
+    "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
     "sass": "^1.57.1",
     "scss": "^0.2.4",
