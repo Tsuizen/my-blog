@@ -64,6 +64,8 @@ loading 的属性值有两个：
 
 ### 效果
 
+#### Chrome
+
 为了让图片在进入视口时最大限度地加载完成，使用 lazy 属性的图片会在到达它附近的一个位置时就开始请求，chrome 中的请求过程如下：
 
 ![chrome](/images/posts-images/image-lazy-loading/chrome.gif)
@@ -76,18 +78,34 @@ loading 的属性值有两个：
 另一个重要的特性是浏览器会根据网络条件改变阈值范围，网速越慢，阈值越高。在高速 3G 条件下，chrome 首次加载了 7 张图片：
 ![chrome-3g](/images/posts-images/image-lazy-loading/chrome-3g.gif)
 
-> On fast connections (4G), we reduced Chrome's distance-from-viewport thresholds from 3000px to 1250px and on slower connections (3G or lower), changed the threshold from 4000px to 2500px. This change achieves two things:
+> On fast connections (4G), we reduced Chrome's distance-from-viewport thresholds from 3000px to 1250px and on slower connections (3G or lower), changed the threshold from 4000px to 2500px. 
 
-在 4G 条件下阈值大小为 1250px，而在 3G 或者更低时这个值为 2500px
+根据 chrome 开发者的说法，在 4G 条件下阈值大小为 1250px，而在 3G 或者更低时这个值为 2500px
 
 :::warning
 值的注意的是：
 
-1. 各个浏览器厂商对阈值大小有不同的实现并可能会在未来更改。在测试中 Firefox 的阈值比 chrome 要小，而且没有考虑到不同的网络条件。
+1. 各个浏览器厂商对阈值大小有不同的实现并可能会在未来更改。在测试中 Safari 和 Firefox 的阈值都比 chrome 要小，而且没有考虑到不同的网络条件。
 2. 阈值大小是硬编码的，开发者目前不能自定义。
    :::
 
+#### Firefox
+
+![firefox](/images/posts-images/image-lazy-loading/firefox.gif)
+
+#### Safari
+
+![safari](/images/posts-images/image-lazy-loading/safari.gif)
+
 ### 兼容性
+
+本文测试平台:
+
+chrome 109.0.5414.119（正式版本） (arm64)
+
+firefox 109.0(64 位)
+
+safari 16.3 (18614.4.6.1.5)
 
 ![兼容性](/images/posts-images/image-lazy-loading/兼容性.jpeg)
 
