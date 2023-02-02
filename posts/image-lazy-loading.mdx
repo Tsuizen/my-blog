@@ -70,11 +70,15 @@ loading 的属性值有两个：
 
 可以看到在首次加载时请求了 5 张图片，下拉过程中到对应图片的距离到达一个阈值时就已经开始请求。
 
-而在页面中间刷新时，也只请求这个阈值范围内的图片：
+页面在刷新时会记住刷新前的位置，浏览器也很智能地请求这个位置附近阈值范围内的图片：
 ![chrome-diff-loc](/images/posts-images/image-lazy-loading/chrome-diff-loc.gif)
 
 另一个重要的特性是浏览器会根据网络条件改变阈值范围，网速越慢，阈值越高。在高速 3G 条件下，chrome 首次加载了 7 张图片：
 ![chrome-3g](/images/posts-images/image-lazy-loading/chrome-3g.gif)
+
+> On fast connections (4G), we reduced Chrome's distance-from-viewport thresholds from 3000px to 1250px and on slower connections (3G or lower), changed the threshold from 4000px to 2500px. This change achieves two things:
+
+在 4G 条件下阈值大小为 1250px，而在 3G 或者更低时这个值为 2500px
 
 :::warning
 值的注意的是：
