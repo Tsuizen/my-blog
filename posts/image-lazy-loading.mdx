@@ -37,6 +37,14 @@ draft: false
 1. 不再需要引入外部工具或者库
 2. 浏览器禁止 JavaScript 也能正常工作
 
+但是第二点 MDN 给出不同的意见：
+
+:::warning
+备注： 仅在启用 JavaScript 时才会延迟加载。这是一种反跟踪的措施，因为，如果用户代理在禁用脚本的情况下支持延迟加载，网站仍然跨源通过在图像中策略性地放置图像来跟踪用户在整个会话期间的大致滚动位置，这样服务器可以跟踪请求了多少图像以及请求在何时发起。
+:::
+
+经过实际测试，在停用 javascript 时不会开启懒加载。
+
 ### 使用方法
 
 使用方法非常简单，只需要在 img 标签中添加一个 loading 属性即可。
@@ -50,7 +58,35 @@ loading 的属性值有两个：
 - lazy: 图片懒加载
 - eager: 图片正常加载
 
-需要注意的是使用 eager 的图片相比不使用 loading 属性的 img 标签并不会获得更高的加载优先级，所以正常加载的图片不写即可。
+:::tip
+使用 eager 的图片相比不使用 loading 属性的 img 标签并不会获得更高的加载优先级，所以正常加载的图片无需添加此属性。
+:::
 
 ### 效果
 
+为了让图片在进入视口时最大限度地加载完成，使用 lazy 属性的图片会在到达它附近的一个位置时就开始请求，chrome 中的请求过程如下：
+
+![chrome](/images/posts-images/image-lazy-loading/chrome.gif)
+
+可以看到在首次加载时请求了 5 张图片，下拉过程中到对应图片的距离到达一个阈值时就已经开始请求。
+
+而在页面中间刷新时，也只请求这个阈值范围内的图片：
+![chrome-diff-loc](/images/posts-images/image-lazy-loading/chrome-diff-loc.gif)
+
+另一个重要的特性是浏览器会根据网络条件改变阈值范围，网速越慢，阈值越高。在高速 3G 条件下，chrome 首次加载了 7 张图片：
+![chrome-3g](/images/posts-images/image-lazy-loading/chrome-3g.gif)
+
+:::warning
+值的注意的是：
+
+1. 各个浏览器厂商对阈值大小有不同的实现并可能会在未来更改。在测试中 Firefox 的阈值比 chrome 要小，而且没有考虑到不同的网络条件。
+2. 阈值大小是硬编码的，开发者目前不能自定义。
+   :::
+
+### 兼容性
+
+![兼容性](/images/posts-images/image-lazy-loading/兼容性.jpeg)
+
+## 参考资料
+
+https://web.dev/browser-level-image-lazy-loading/
