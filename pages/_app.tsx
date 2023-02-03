@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
 import '@/styles/markdown.scss';
 
+import { Analytics } from '@vercel/analytics/react';
 import type { AppPropsWithLayout } from 'next/app';
 import Head from 'next/head';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
@@ -36,6 +37,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
       {getLayout(<Component {...pageProps}></Component>)}
       <BackToTop />
+      <Analytics />
     </>
   );
 }
