@@ -5,7 +5,7 @@ import NavBar from '@/components/NavBar';
 
 import { LayoutProps } from '../Home';
 
-const PostLayout: NextPage<LayoutProps> = ({ children }) => {
+const Layout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <>
       <NavBar style={'bg-base-100'} />
@@ -15,6 +15,6 @@ const PostLayout: NextPage<LayoutProps> = ({ children }) => {
   );
 };
 
-export const getLayout = (page) => <PostLayout>{page}</PostLayout>;
+export const getLayout = (page) => <Layout>{page}</Layout>;
 
-export default PostLayout;
+export default Layout;

@@ -34,7 +34,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         url="http://blog.tsuizen.cn"
         sameAs={['https://github.com/Tsuizen']}
       />
-
       {getLayout(<Component {...pageProps}></Component>)}
       <BackToTop />
       <Analytics />

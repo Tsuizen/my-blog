@@ -4,11 +4,18 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import useMounted from '@/hooks/useMounted';
+// import useToggle from '@/hooks/useToggle';
 import { useThemeStore } from '@/store/store';
+
+// import AlgoliaSearch from '../Search/Aligolia';
+import SearchBox from '../Search/SearchBox';
+// import SearchBox from '../SearchBox';
 
 const NavBar = ({ style }) => {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
+
+  // const [showSearch, toggleShowSearch] = useToggle(false);
 
   const hasMounted = useMounted();
 
@@ -59,6 +66,11 @@ const NavBar = ({ style }) => {
           </li>
         </ul>
       </div>
+      <div className="flex ">
+        {/* <AlgoliaSearch show={showSearch} toggleShow={toggleShowSearch} /> */}
+        <SearchBox />
+      </div>
+
       <div className="flex items-center m-auto md:navbar-end mr-4">
         <label className="swap swap-rotate mx-4">
           <input
