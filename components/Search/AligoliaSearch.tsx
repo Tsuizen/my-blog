@@ -1,20 +1,14 @@
 import algoliasearch from 'algoliasearch/lite';
-import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import {
   Configure,
-  Highlight,
-  Hits,
   InstantSearch,
   PoweredBy,
-  SearchBox,
-  Snippet
-} from 'react-instantsearch-hooks-web';
+  SearchBox
+} from 'react-instantsearch-dom';
 
 import Mask from '../Mask';
-
-// import { algoliaAppId, algoliaClientKey } from '../../../utils/constants';
-// import Mask from '../Mask';
+import Customhits from './Customhits';
 
 const algoliaAppId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string;
 const algoliaClientKey = process.env.NEXT_PUBLIC_ALGOLIA_APP_KEY as string;
@@ -26,24 +20,10 @@ export type AlgoliaSearchProps = {
   toggleShow: any;
 };
 
-const HitComponent = ({ hit }) => {
-  return (
-    <div className="flex flex-col">
-      <div className="text-lg ellipsis-2">
-        <Link as={`/posts/${hit.slug}`} href="/posts/[slug]">
-          <Highlight attribute="title" hit={hit} />
-        </Link>
-      </div>
-
-      <div className="text-gray-400 text-sm ellipsis-4">
-        <Snippet hit={hit} attribute="content" />
-      </div>
-    </div>
-  );
-};
-
 // TODO: 节流搜索、搜索粒度调整
 const AlgoliaSearch: FC<AlgoliaSearchProps> = ({ show, toggleShow }) => {
+  const targetRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       {show && (
@@ -52,11 +32,12 @@ const AlgoliaSearch: FC<AlgoliaSearchProps> = ({ show, toggleShow }) => {
           toggleShow={toggleShow}
           className="bg-opacity-40 backdrop-filter backdrop-blur-lg"
         >
-          <div className="w-96">
+          <div className="w-60 md:w-96" ref={targetRef}>
             <InstantSearch indexName="tsuizen" searchClient={searchClient}>
-              <Configure attributesToSnippet={['content:100']} />
+              <Configure attributesToSnippet={['content:15']} hitsPerPage={5} />
               <SearchBox />
-              <Hits hitComponent={HitComponent} />
+              {/* <Hits hitComponent={HitComponent} /> */}
+              <Customhits />
               <PoweredBy />
             </InstantSearch>
           </div>

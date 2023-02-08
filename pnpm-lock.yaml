@@ -33,6 +33,7 @@ specifiers:
   hast-util-has-property: ^2.0.1
   hastscript: ^7.2.0
   husky: ^8.0.2
+  instantsearch.css: ^8.0.0
   iron-session: ^6.3.1
   joi: ^17.7.0
   jotai: ^1.12.1
@@ -57,6 +58,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: ^4.7.1
+  react-instantsearch-dom: ^6.39.0
   react-instantsearch-hooks-web: ^6.39.3
   reading-time: ^1.5.0
   reflect-metadata: ^0.1.13
@@ -103,6 +105,7 @@ dependencies:
   date-fns: registry.npmmirror.com/date-fns/2.29.3
   fuse.js: registry.npmmirror.com/fuse.js/6.6.2
   hast-util-has-property: 2.0.1
+  instantsearch.css: registry.npmmirror.com/instantsearch.css/8.0.0
   iron-session: registry.npmmirror.com/iron-session/6.3.1_next@13.0.5
   joi: registry.npmmirror.com/joi/17.7.0
   jotai: 1.12.1_react@18.2.0
@@ -120,6 +123,7 @@ dependencies:
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
+  react-instantsearch-dom: registry.npmmirror.com/react-instantsearch-dom/6.39.0_lcvw2wliyvolumce2ki4t5bwom
   react-instantsearch-hooks-web: registry.npmmirror.com/react-instantsearch-hooks-web/6.39.3_lcvw2wliyvolumce2ki4t5bwom
   reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
   rehype-infer-reading-time-meta: 1.1.0
@@ -194,7 +198,7 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
       chalk: 2.4.2
-      js-tokens: 4.0.0
+      js-tokens: registry.npmmirror.com/js-tokens/4.0.0
     dev: true
 
   /@corex/deepmerge/4.0.37:
@@ -1090,10 +1094,6 @@ packages:
     dependencies:
       react: registry.npmmirror.com/react/18.2.0
     dev: false
-
-  /js-tokens/4.0.0:
-    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
@@ -7787,6 +7787,12 @@ packages:
       through: registry.npmmirror.com/through/2.3.8
     dev: true
 
+  registry.npmmirror.com/instantsearch.css/8.0.0:
+    resolution: {integrity: sha512-yU63cF9KdkyFFh7ynYQy39nh1MD1eVDHIaa/gdm8a/O9dTG/5P6hBF1ONoIbKTtjlxxsHS2S8MarCZZ0l31ajg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/instantsearch.css/-/instantsearch.css-8.0.0.tgz}
+    name: instantsearch.css
+    version: 8.0.0
+    dev: false
+
   registry.npmmirror.com/instantsearch.js/4.50.3_algoliasearch@4.14.3:
     resolution: {integrity: sha512-xfVKe7/uAzxnSJeUI2M4RQZycnggx+jtKB6ZCp10Q2FGsPn0pwf2kHO1r0oy05SFYj/UmRf6NXV6h7GjR+ctKg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/instantsearch.js/-/instantsearch.js-4.50.3.tgz}
     id: registry.npmmirror.com/instantsearch.js/4.50.3
@@ -10890,6 +10896,50 @@ packages:
       loose-envify: registry.npmmirror.com/loose-envify/1.4.0
       react: registry.npmmirror.com/react/18.2.0
       scheduler: registry.npmmirror.com/scheduler/0.23.0
+
+  registry.npmmirror.com/react-fast-compare/3.2.0:
+    resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz}
+    name: react-fast-compare
+    version: 3.2.0
+    dev: false
+
+  registry.npmmirror.com/react-instantsearch-core/6.39.0_67xkusp2uelphus2k7ikyhm6rq:
+    resolution: {integrity: sha512-UROe0jjXI56pu1uHuP5lDhyXMIrodkDBISBv5pLU9/1LIYMNF3o4C9FllTdfia3Jz3lDDsSEcPpc/77so2x3Ww==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-instantsearch-core/-/react-instantsearch-core-6.39.0.tgz}
+    id: registry.npmmirror.com/react-instantsearch-core/6.39.0
+    name: react-instantsearch-core
+    version: 6.39.0
+    peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
+      react: '>= 16.3.0 < 19'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.7
+      algoliasearch: registry.npmmirror.com/algoliasearch/4.14.3
+      algoliasearch-helper: registry.npmmirror.com/algoliasearch-helper/3.11.3_algoliasearch@4.14.3
+      prop-types: registry.npmmirror.com/prop-types/15.8.1
+      react: registry.npmmirror.com/react/18.2.0
+      react-fast-compare: registry.npmmirror.com/react-fast-compare/3.2.0
+    dev: false
+
+  registry.npmmirror.com/react-instantsearch-dom/6.39.0_lcvw2wliyvolumce2ki4t5bwom:
+    resolution: {integrity: sha512-wdFGDFugoCpO9buxjybyLTs7cblQ6g+NIiYIsZ9ua0FLUIdoeawXQYDV83dDzcNgbml5RTiKJsAFxlne8gguMg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-instantsearch-dom/-/react-instantsearch-dom-6.39.0.tgz}
+    id: registry.npmmirror.com/react-instantsearch-dom/6.39.0
+    name: react-instantsearch-dom
+    version: 6.39.0
+    peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
+      react: '>= 16.3.0 < 19'
+      react-dom: '>= 16.3.0 < 19'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.7
+      algoliasearch: registry.npmmirror.com/algoliasearch/4.14.3
+      algoliasearch-helper: registry.npmmirror.com/algoliasearch-helper/3.11.3_algoliasearch@4.14.3
+      classnames: registry.npmmirror.com/classnames/2.3.2
+      prop-types: registry.npmmirror.com/prop-types/15.8.1
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      react-fast-compare: registry.npmmirror.com/react-fast-compare/3.2.0
+      react-instantsearch-core: registry.npmmirror.com/react-instantsearch-core/6.39.0_67xkusp2uelphus2k7ikyhm6rq
+    dev: false
 
   registry.npmmirror.com/react-instantsearch-hooks-web/6.39.3_lcvw2wliyvolumce2ki4t5bwom:
     resolution: {integrity: sha512-ik9uopKQheT8abtUWd012BMRl6OW9u9Nx0O8sduHzK+KHFLvtaXuetACEzlecc0v3nApR+oDf1GztgRNhS/UVQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-instantsearch-hooks-web/-/react-instantsearch-hooks-web-6.39.3.tgz}

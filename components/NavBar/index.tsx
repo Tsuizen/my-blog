@@ -1,21 +1,21 @@
 import classNames from 'classnames';
+import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { BiSearch } from 'react-icons/bi';
 
 import useMounted from '@/hooks/useMounted';
-// import useToggle from '@/hooks/useToggle';
+import useToggle from '@/hooks/useToggle';
 import { useThemeStore } from '@/store/store';
 
-// import AlgoliaSearch from '../Search/Aligolia';
-import SearchBox from '../Search/SearchBox';
-// import SearchBox from '../SearchBox';
+import AlgoliaSearch from '../Search/AligoliaSearch';
 
 const NavBar = ({ style }) => {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
-  // const [showSearch, toggleShowSearch] = useToggle(false);
+  const [showSearch, toggleShowSearch] = useToggle(false);
 
   const hasMounted = useMounted();
 
@@ -67,11 +67,21 @@ const NavBar = ({ style }) => {
         </ul>
       </div>
       <div className="flex ">
-        {/* <AlgoliaSearch show={showSearch} toggleShow={toggleShowSearch} /> */}
-        <SearchBox />
+        <AlgoliaSearch show={showSearch} toggleShow={toggleShowSearch} />
+        {/* <SearchBox /> */}
       </div>
 
       <div className="flex items-center m-auto md:navbar-end mr-4">
+        <button
+          onClick={toggleShowSearch}
+          className="btn btn-ghost btn-circle hover:bg-opacity-0 text-[26px]"
+        >
+          <BiSearch
+            className={classnames(
+              theme === 'light' ? 'text-[#2c2c2c]' : 'text-white'
+            )}
+          ></BiSearch>
+        </button>
         <label className="swap swap-rotate mx-4">
           <input
             type="checkbox"
@@ -102,8 +112,8 @@ const NavBar = ({ style }) => {
                   : '/images/rss-dark.svg'
               }
               alt="rss"
-              width={22}
-              height={22}
+              width={20}
+              height={20}
               className="md:w-6 md:h-6"
             />
           </Link>

@@ -7,5 +7,4 @@ const useToggle = (initialValue) => {
   }, []);
   return [value, toggle];
 };
-
 export default useToggle;
