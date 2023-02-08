@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
 import '@/styles/markdown.scss';
+import 'instantsearch.css/themes/satellite-min.css';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { AppPropsWithLayout } from 'next/app';
@@ -34,7 +35,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         url="http://blog.tsuizen.cn"
         sameAs={['https://github.com/Tsuizen']}
       />
-
       {getLayout(<Component {...pageProps}></Component>)}
       <BackToTop />
       <Analytics />
