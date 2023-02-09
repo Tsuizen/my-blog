@@ -20,7 +20,7 @@
 /* 页面定位时部分内容会被header挡住，滚动条滚动到地址 hash 
 （地址 # 号后面的内容）对应的锚点元素 padding-box上边缘位置。 */
 
-/* bug: post页面切换主题时会向上滚动6rem的距离 */
+ /* TODO: 修复post页面切换主题时会向上滚动6rem的距离 */
 html {
   scroll-padding-top: 6rem;
 }
