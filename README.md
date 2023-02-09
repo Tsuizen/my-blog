@@ -32,8 +32,9 @@ pnpm run dev
 - [x] SEO & sitemap
 - [x] RSS
 - [x] Youtube, Bilibili 嵌入支持
+- [x] 搜索功能
 - [ ] 添加动态功能，例如点赞、评论
-- [ ] 博文搜索功能
+- [ ] 代码编辑器，CodePen，CodeSandbox...
 
 ## 参考
 
