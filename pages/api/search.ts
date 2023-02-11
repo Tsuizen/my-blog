@@ -28,7 +28,7 @@ const Search = async (req: NextApiRequest, res: NextApiResponse) => {
     minMatchCharLength: 2,
     keys: ['tags', 'title']
   };
-  
+
   const fuse = new Fuse(posts, options);
 
   const result = fuse.search(q as string).map(({ item }) => item);
@@ -38,7 +38,7 @@ const Search = async (req: NextApiRequest, res: NextApiResponse) => {
     code: 0,
     msg: '',
     result: result || []
-  })
+  });
 };
 
 export default Search;
