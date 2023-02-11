@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 import BackToTop from '@/components/BackToTop';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import SEO from '@/config/seo-config';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
@@ -35,9 +36,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         url="http://blog.tsuizen.cn"
         sameAs={['https://github.com/Tsuizen']}
       />
-      {getLayout(<Component {...pageProps}></Component>)}
-      <BackToTop />
-      <Analytics />
+      <ErrorBoundary>
+        {getLayout(<Component {...pageProps}></Component>)}
+        <BackToTop />
+        <Analytics />
+      </ErrorBoundary>
     </>
   );
 }
