@@ -22,21 +22,6 @@ const Mask: FC<MaskProps> = (props) => {
     ['mousedown', 'touchstart']
   );
 
-  // useEffect(() => {
-  //   if (show && document.body.style.height !== '100%') {
-  //     document.body.style.height = '100%';
-  //     document.body.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.removeProperty('height');
-  //     document.body.style.removeProperty('overflow');
-  //   }
-
-  //   return () => {
-  //     document.body.style.removeProperty('height');
-  //     document.body.style.removeProperty('overflow');
-  //   };
-  // }, [show]);
-
   return (
     <>
       <div
