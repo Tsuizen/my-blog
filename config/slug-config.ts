@@ -14,5 +14,7 @@ export const TAGS = [
   { label: 'TailwindCSS', tagSlug: 'tailwindcss' },
   { label: '前端性能优化', tagSlug: ' optimization' },
   { label: 'HTML', tagSlug: 'html' },
-  { label: 'Next.js', tagSlug: 'nextjs' }
+  { label: 'Next.js', tagSlug: 'nextjs' },
+  { label: 'SEO', tagSlug: 'seo' },
+  { label: 'RSS', tagSlug: 'rss' }
 ];

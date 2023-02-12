@@ -14,6 +14,7 @@ type TagPosts = Pick<
 
 export async function getStaticPaths() {
   const tags = TAGS.map((tag) => tag.label);
+
   return {
     paths: tags.map((slug) => {
       return {
