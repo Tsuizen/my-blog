@@ -52,7 +52,7 @@ const TableOfContent: React.FC<TableOfContentsProps> = (props) => {
 
   return (
     <aside className={className}>
-      <div className="text-md font-bold mb-2">TABLE OF CONTENTS</div>
+      <div className="text-md font-bold mb-2">目录</div>
       <ul className="list-none pl-0">
         {headings.length > 0 &&
           headings.map((heading) => (
