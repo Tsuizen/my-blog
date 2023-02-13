@@ -36,7 +36,6 @@ const AlgoliaSearch: FC<AlgoliaSearchProps> = ({ show, toggleShow }) => {
             <InstantSearch indexName="tsuizen" searchClient={searchClient}>
               <Configure attributesToSnippet={['content:15']} hitsPerPage={5} />
               <SearchBox />
-              {/* <Hits hitComponent={HitComponent} /> */}
               <Customhits />
               <PoweredBy />
             </InstantSearch>
