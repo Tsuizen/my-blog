@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { BiSearch } from 'react-icons/bi';
+import { FiRss, FiSearch } from 'react-icons/fi';
 
 import useMounted from '@/hooks/useMounted';
 import useToggle from '@/hooks/useToggle';
@@ -74,13 +74,13 @@ const NavBar = ({ style }) => {
       <div className="flex items-center m-auto md:navbar-end mr-4">
         <button
           onClick={toggleShowSearch}
-          className="btn btn-ghost btn-circle hover:bg-opacity-0 text-[26px]"
+          className="btn btn-ghost btn-circle hover:bg-opacity-0 text-[28px]"
         >
-          <BiSearch
+          <FiSearch
             className={classnames(
               theme === 'light' ? 'text-[#2c2c2c]' : 'text-white'
             )}
-          ></BiSearch>
+          ></FiSearch>
         </button>
         <label className="swap swap-rotate mx-4">
           <input
@@ -90,34 +90,27 @@ const NavBar = ({ style }) => {
           />
           <Image
             src="/images/sun.svg"
-            alt="夜间模式"
+            alt="light"
             width={22}
             height={22}
             className="swap-on md:w-6 md:h-6"
           />
           <Image
             src="/images/moon.svg"
-            alt="夜间模式"
+            alt="dark"
             width={22}
             height={22}
             className="swap-off md:w-6 md:h-6"
           />
         </label>
-        <button className="btn btn-ghost btn-circle hover:bg-opacity-0">
-          <Link href={'/feed.xml'} target="_blank">
-            <Image
-              src={
-                theme === 'light'
-                  ? '/images/rss-light.svg'
-                  : '/images/rss-dark.svg'
-              }
-              alt="rss"
-              width={20}
-              height={20}
-              className="md:w-6 md:h-6"
-            />
-          </Link>
-        </button>
+        <Link href={'/feed.xml'} target="_blank" className="ml-2">
+          <FiRss
+            className={classnames(
+              theme === 'light' ? 'text-[#2c2c2c]' : 'text-white',
+              ' text-[26px]'
+            )}
+          ></FiRss>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
 import '@/styles/markdown.scss';
-import 'instantsearch.css/themes/satellite-min.css';
+import 'instantsearch.css/themes/satellite.css';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { AppPropsWithLayout } from 'next/app';
@@ -9,7 +9,7 @@ import Head from 'next/head';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 
 import BackToTop from '@/components/BackToTop';
-import ErrorBoundary from '@/components/ErrorBoundary';
+import ErrorBoundary from '@/components/ErrorBoundry';
 import SEO from '@/config/seo-config';
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
