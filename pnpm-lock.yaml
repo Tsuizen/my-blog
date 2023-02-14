@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.3.0
   '@commitlint/config-conventional': ^17.3.0
+  '@docsearch/react': '3'
   '@giscus/react': ^2.2.6
   '@mapbox/rehype-prism': ^0.8.0
   '@prisma/client': ^4.8.0
@@ -89,6 +90,7 @@ specifiers:
   zustand: ^4.2.0
 
 dependencies:
+  '@docsearch/react': registry.npmmirror.com/@docsearch/react/3.3.3_2zx2umvpluuhvlq44va5bta2da
   '@giscus/react': registry.npmmirror.com/@giscus/react/2.2.6_biqbaboplfbrettd7655fr4n2y
   '@prisma/client': registry.npmmirror.com/@prisma/client/4.8.0_prisma@4.8.0
   '@types/hast': 2.3.4
@@ -2490,6 +2492,33 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
+  registry.npmmirror.com/@algolia/autocomplete-core/1.7.4:
+    resolution: {integrity: sha512-daoLpQ3ps/VTMRZDEBfU8ixXd+amZcNJ4QSP3IERGyzqnL5Ch8uSRFt/4G8pUvW9c3o6GA4vtVv4I4lmnkdXyg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@algolia/autocomplete-core/-/autocomplete-core-1.7.4.tgz}
+    name: '@algolia/autocomplete-core'
+    version: 1.7.4
+    dependencies:
+      '@algolia/autocomplete-shared': registry.npmmirror.com/@algolia/autocomplete-shared/1.7.4
+    dev: false
+
+  registry.npmmirror.com/@algolia/autocomplete-preset-algolia/1.7.4_algoliasearch@4.14.3:
+    resolution: {integrity: sha512-s37hrvLEIfcmKY8VU9LsAXgm2yfmkdHT3DnA3SgHaY93yjZ2qL57wzb5QweVkYuEBZkT2PIREvRoLXC2sxTbpQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.7.4.tgz}
+    id: registry.npmmirror.com/@algolia/autocomplete-preset-algolia/1.7.4
+    name: '@algolia/autocomplete-preset-algolia'
+    version: 1.7.4
+    peerDependencies:
+      '@algolia/client-search': '>= 4.9.1 < 6'
+      algoliasearch: '>= 4.9.1 < 6'
+    dependencies:
+      '@algolia/autocomplete-shared': registry.npmmirror.com/@algolia/autocomplete-shared/1.7.4
+      algoliasearch: registry.npmmirror.com/algoliasearch/4.14.3
+    dev: false
+
+  registry.npmmirror.com/@algolia/autocomplete-shared/1.7.4:
+    resolution: {integrity: sha512-2VGCk7I9tA9Ge73Km99+Qg87w0wzW4tgUruvWAn/gfey1ZXgmxZtyIRBebk35R1O8TbK77wujVtCnpsGpRy1kg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.7.4.tgz}
+    name: '@algolia/autocomplete-shared'
+    version: 1.7.4
+    dev: false
+
   registry.npmmirror.com/@algolia/cache-browser-local-storage/4.14.3:
     resolution: {integrity: sha512-hWH1yCxgG3+R/xZIscmUrWAIBnmBFHH5j30fY/+aPkEZWt90wYILfAHIOZ1/Wxhho5SkPfwFmT7ooX2d9JeQBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@algolia/cache-browser-local-storage/-/cache-browser-local-storage-4.14.3.tgz}
     name: '@algolia/cache-browser-local-storage'
@@ -3206,6 +3235,40 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': registry.npmmirror.com/@jridgewell/trace-mapping/0.3.9
     dev: true
+
+  registry.npmmirror.com/@docsearch/css/3.3.3:
+    resolution: {integrity: sha512-6SCwI7P8ao+se1TUsdZ7B4XzL+gqeQZnBc+2EONZlcVa0dVrk0NjETxozFKgMv0eEGH8QzP1fkN+A1rH61l4eg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@docsearch/css/-/css-3.3.3.tgz}
+    name: '@docsearch/css'
+    version: 3.3.3
+    dev: false
+
+  registry.npmmirror.com/@docsearch/react/3.3.3_2zx2umvpluuhvlq44va5bta2da:
+    resolution: {integrity: sha512-pLa0cxnl+G0FuIDuYlW+EBK6Rw2jwLw9B1RHIeS4N4s2VhsfJ/wzeCi3CWcs5yVfxLd5ZK50t//TMA5e79YT7Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@docsearch/react/-/react-3.3.3.tgz}
+    id: registry.npmmirror.com/@docsearch/react/3.3.3
+    name: '@docsearch/react'
+    version: 3.3.3
+    peerDependencies:
+      '@types/react': '>= 16.8.0 < 19.0.0'
+      react: '>= 16.8.0 < 19.0.0'
+      react-dom: '>= 16.8.0 < 19.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@algolia/autocomplete-core': registry.npmmirror.com/@algolia/autocomplete-core/1.7.4
+      '@algolia/autocomplete-preset-algolia': registry.npmmirror.com/@algolia/autocomplete-preset-algolia/1.7.4_algoliasearch@4.14.3
+      '@docsearch/css': registry.npmmirror.com/@docsearch/css/3.3.3
+      '@types/react': registry.npmmirror.com/@types/react/18.0.25
+      algoliasearch: registry.npmmirror.com/algoliasearch/4.14.3
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+    dev: false
 
   registry.npmmirror.com/@esbuild-plugins/node-resolve/0.1.4_esbuild@0.16.12:
     resolution: {integrity: sha512-haFQ0qhxEpqtWWY0kx1Y5oE3sMyO1PcoSiWEPrAw6tm/ZOOLXjSs6Q+v1v9eyuVF0nNt50YEvrcrvENmyoMv5g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@esbuild-plugins/node-resolve/-/node-resolve-0.1.4.tgz}

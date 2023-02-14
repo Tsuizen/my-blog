@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import 'normalize.css/normalize.css';
 import '@/styles/markdown.scss';
 import 'instantsearch.css/themes/satellite.css';
+import '@docsearch/css';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { AppPropsWithLayout } from 'next/app';
@@ -21,6 +22,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
         />
       </Head>
       <DefaultSeo {...SEO} />

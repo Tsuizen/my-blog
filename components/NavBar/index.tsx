@@ -3,19 +3,19 @@ import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { FiRss, FiSearch } from 'react-icons/fi';
+import { FiRss } from 'react-icons/fi';
 
 import useMounted from '@/hooks/useMounted';
-import useToggle from '@/hooks/useToggle';
+// import useToggle from '@/hooks/useToggle';
 import { useThemeStore } from '@/store/store';
 
-import AlgoliaSearch from '../Search/AligoliaSearch';
+import Search from '../Search/DocSerach';
 
 const NavBar = ({ style }) => {
   const theme = useThemeStore((state) => state.theme);
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
-  const [showSearch, toggleShowSearch] = useToggle(false);
+  // const [showSearch, toggleShowSearch] = useToggle(false);
 
   const hasMounted = useMounted();
 
@@ -47,6 +47,7 @@ const NavBar = ({ style }) => {
           Tsuizen&apos;s blog
         </Link>
       </div>
+
       <div className="flex  md:navbar-center ">
         <ul className="menu menu-horizontal px-1">
           <li>
@@ -66,22 +67,13 @@ const NavBar = ({ style }) => {
           </li>
         </ul>
       </div>
-      <div className="flex ">
-        <AlgoliaSearch show={showSearch} toggleShow={toggleShowSearch} />
-        {/* <SearchBox /> */}
-      </div>
 
       <div className="flex items-center m-auto md:navbar-end mr-4">
-        <button
+        <Search />
+        {/* <button
           onClick={toggleShowSearch}
           className="btn btn-ghost btn-circle hover:bg-opacity-0 text-[28px]"
-        >
-          <FiSearch
-            className={classnames(
-              theme === 'light' ? 'text-[#2c2c2c]' : 'text-white'
-            )}
-          ></FiSearch>
-        </button>
+        ></button> */}
         <label className="swap swap-rotate mx-4">
           <input
             type="checkbox"
