@@ -87,6 +87,7 @@
     "husky": "^8.0.2",
     "lint-staged": ">=10",
     "markdownlint-cli": "^0.32.2",
+    "mddir": "^1.1.1",
     "mockjs": "^1.1.0",
     "next-with-less": "^2.0.5",
     "postcss": "^8.4.20",

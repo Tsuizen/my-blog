@@ -3,7 +3,7 @@ import Image from 'next/image';
 const PostImage = ({ alt, src }) => {
   return (
     <Image
-      className="max-w-full min-w-full"
+      className="w-full my-6"
       alt={alt}
       src={src}
       width={700}
@@ -13,6 +13,7 @@ const PostImage = ({ alt, src }) => {
       //   width: '100%',
       //   height: 'auto'
       // }}
+      quality={100}
       placeholder="blur"
       blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     ></Image>
