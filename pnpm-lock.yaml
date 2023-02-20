@@ -42,6 +42,7 @@ specifiers:
   lint-staged: '>=10'
   markdownlint-cli: ^0.32.2
   md5: ^2.3.0
+  mddir: ^1.1.1
   mdx-bundler: ^9.2.1
   mockjs: ^1.1.0
   mysql2: ^2.3.3
@@ -159,6 +160,7 @@ devDependencies:
   husky: registry.npmmirror.com/husky/8.0.2
   lint-staged: registry.npmmirror.com/lint-staged/13.1.0
   markdownlint-cli: registry.npmmirror.com/markdownlint-cli/0.32.2
+  mddir: registry.npmmirror.com/mddir/1.1.1
   mockjs: registry.npmmirror.com/mockjs/1.1.0
   next-with-less: registry.npmmirror.com/next-with-less/2.0.5_next@13.0.5
   postcss: registry.npmmirror.com/postcss/8.4.20
@@ -9309,6 +9311,14 @@ packages:
     resolution: {integrity: sha512-n4Vypz/DZgwo0iMHLQL49dJzlp7YtAJP+N07MZHpjPf/5XJuHUWstviF4Mn2jEiR/GNmtnRRqnwsXExk3igfFA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdast-util-to-string/-/mdast-util-to-string-3.1.0.tgz}
     name: mdast-util-to-string
     version: 3.1.0
+
+  registry.npmmirror.com/mddir/1.1.1:
+    resolution: {integrity: sha512-VkBEnXdqoCTC5TLzuA8ITGgb3278sl2HQ9xWCEBK4viZXiyl9IzFRXQ+41x16Z9ODzVabSeRsPWGaD+KbigG6Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mddir/-/mddir-1.1.1.tgz}
+    name: mddir
+    version: 1.1.1
+    engines: {node: '>=0.10.0'}
+    hasBin: true
+    dev: true
 
   registry.npmmirror.com/mdurl/1.0.1:
     resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdurl/-/mdurl-1.0.1.tgz}
