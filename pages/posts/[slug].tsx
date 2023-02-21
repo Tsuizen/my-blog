@@ -176,7 +176,7 @@ const BlogPost: NextPageWithLayout = ({
         description={post.description}
         isAccessibleForFree={true}
       />
-      <div className="flex md:w-10/12 m-auto items-start text-post">
+      <div className="flex md:w-11/12 xl:w-9/12 m-auto items-start text-post">
         <main className="flex flex-wrap mt-10 w-full m-auto">
           <div className="w-4/5 px-10 m-auto md:px-0">
             <h1 className="text-4xl">{post.title}</h1>

@@ -16,5 +16,7 @@ export const TAGS = [
   { label: 'HTML', tagSlug: 'html' },
   { label: 'Next.js', tagSlug: 'nextjs' },
   { label: 'SEO', tagSlug: 'seo' },
-  { label: 'RSS', tagSlug: 'rss' }
+  { label: 'RSS', tagSlug: 'rss' },
+  { label: 'CI-CD', tagSlug: 'ci-cd' },
+  { label: 'NPM', tagSlug: 'npm' }
 ];
