@@ -8,6 +8,7 @@ import Tag from '@/components/Tag';
 import { getLayout } from '@/layout/Home';
 import getRSS from '@/lib/generateRss';
 import { getRecentPosts } from '@/lib/posts';
+import getAllTags from '@/lib/tags';
 import { Post } from '@/types';
 
 import style from './index.module.scss';
@@ -27,11 +28,14 @@ export async function getStaticProps() {
     'description'
   ]);
 
+  const tags = await getAllTags();
+
   await getRSS();
 
   return {
     props: {
-      posts
+      posts,
+      tags
     }
   };
 }
@@ -41,7 +45,8 @@ export async function getStaticProps() {
 // const Tag = dynamic(() => import('@/components/Tag'));
 
 const Home: NextPageWithLayout = ({
-  posts
+  posts,
+  tags
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
@@ -54,7 +59,7 @@ const Home: NextPageWithLayout = ({
       >
         <RecentPosts posts={posts} className={style.content} page="index" />
         <Category className={style.category} />
-        <Tag className={style.popular} />
+        <Tag className={style.popular} tags={Object.values(tags)} />
       </main>
     </>
   );
