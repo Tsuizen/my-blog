@@ -1,4 +1,5 @@
 // @ts-nocheck
+import Giscus from '@giscus/react';
 import format from 'date-fns/format';
 import * as fs from 'fs';
 import { bundleMDX } from 'mdx-bundler';
@@ -27,6 +28,8 @@ import SEO from '@/config/seo-config';
 import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/lib/posts';
 import remarkNoteBlock from '@/lib/remark-note-block';
+import { useThemeStore } from '@/store/store';
+import { Post } from '@/types';
 
 const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
@@ -91,13 +94,19 @@ export async function getStaticProps({ params }: any) {
     wordsPerMinute: 300
   });
 
-  const post = frontmatter;
+  const post: Post = frontmatter;
+
   post.readTime = readTime;
   post.content = code;
+  console.log(post);
+  post.createdAt = format(post.createdAt, 'yyyy-MM-dd');
 
+  if (post.updatedAt) {
+    post.updatedAt = format(post.updatedAt, 'yyyy-MM-dd');
+  }
   return {
     props: {
-      post: JSON.parse(JSON.stringify(post))
+      post: post
     }
   };
 }
@@ -131,6 +140,7 @@ const useHeadingsData = () => {
 const BlogPost: NextPageWithLayout = ({
   post
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const theme = useThemeStore((state) => state.theme);
   const [headings] = useHeadingsData();
   const Component = useMemo(
     () => getMDXComponent(post.content!),
@@ -178,10 +188,10 @@ const BlogPost: NextPageWithLayout = ({
       />
       <div className="flex md:w-11/12 xl:w-9/12 m-auto items-start text-post">
         <main className="flex flex-wrap mt-10 w-full m-auto">
-          <div className="w-4/5 px-10 m-auto md:px-0">
+          <div className="w-4/5 px-10 md:px-0 m-auto">
             <h1 className="text-4xl">{post.title}</h1>
             <p className="text-gray-500">
-              {format(new Date(post.createdAt), 'yyyy-MM-dd')}
+              {post.createdAt}
               &nbsp;·&nbsp;
               {Math.ceil(readTime.minutes)}&nbsp;分钟阅读
             </p>
@@ -194,7 +204,24 @@ const BlogPost: NextPageWithLayout = ({
         </main>
         <TableOfContent
           headings={headings}
-          className="hidden md:block break-words w-60 p-4 mt-10 sticky top-20"
+          className="hidden md:block break-words w-60 mt-10 sticky top-20"
+        />
+      </div>
+      <div className="w-11/12 md:w-9/12 xl:w-8/12 m-auto p-4 box-border">
+        <Giscus
+          id={post.slug}
+          repo="Tsuizen/blog-giscus"
+          repoId="R_kgDOJFKs9Q"
+          category="Announcements"
+          categoryId="DIC_kwDOJFKs9c4CUop5"
+          mapping="url"
+          term="欢迎评论👏"
+          reactionsEnabled="0"
+          emitMetadata="0"
+          inputPosition="top"
+          theme={theme}
+          lang="en"
+          loading="lazy"
         />
       </div>
     </>
