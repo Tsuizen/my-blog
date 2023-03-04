@@ -29,6 +29,7 @@ import { getLayout } from '@/layout/Default';
 import { getAllPosts } from '@/lib/posts';
 import remarkNoteBlock from '@/lib/remark-note-block';
 import { useThemeStore } from '@/store/store';
+import { Post } from '@/types';
 
 const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
@@ -93,13 +94,19 @@ export async function getStaticProps({ params }: any) {
     wordsPerMinute: 300
   });
 
-  const post = frontmatter;
+  const post: Post = frontmatter;
+
   post.readTime = readTime;
   post.content = code;
+  console.log(post);
+  post.createdAt = format(post.createdAt, 'yyyy-MM-dd');
 
+  if (post.updatedAt) {
+    post.updatedAt = format(post.updatedAt, 'yyyy-MM-dd');
+  }
   return {
     props: {
-      post: JSON.parse(JSON.stringify(post))
+      post: post
     }
   };
 }
@@ -184,7 +191,7 @@ const BlogPost: NextPageWithLayout = ({
           <div className="w-4/5 px-10 md:px-0 m-auto">
             <h1 className="text-4xl">{post.title}</h1>
             <p className="text-gray-500">
-              {format(new Date(post.createdAt), 'yyyy-MM-dd')}
+              {post.createdAt}
               &nbsp;·&nbsp;
               {Math.ceil(readTime.minutes)}&nbsp;分钟阅读
             </p>
@@ -202,14 +209,14 @@ const BlogPost: NextPageWithLayout = ({
       </div>
       <div className="w-11/12 md:w-9/12 xl:w-8/12 m-auto p-4 box-border">
         <Giscus
-          id="comments"
+          id={post.slug}
           repo="Tsuizen/blog-giscus"
           repoId="R_kgDOJFKs9Q"
           category="Announcements"
           categoryId="DIC_kwDOJFKs9c4CUop5"
-          mapping="specific"
+          mapping="url"
           term="欢迎评论👏"
-          reactionsEnabled="1"
+          reactionsEnabled="0"
           emitMetadata="0"
           inputPosition="top"
           theme={theme}
