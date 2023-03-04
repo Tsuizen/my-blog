@@ -4,9 +4,9 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 04 Mar 2023 04:21:36 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Mar 2023 04:24:22 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 04 Mar 2023 04:21:36 GMT</pubDate>
+        <pubDate>Sat, 04 Mar 2023 04:24:22 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
@@ -32,12 +32,6 @@
             <description><![CDATA[在学习Next.js13的新特性时发现部分浏览器已经支持了原生的图片懒加载，却鲜有人提及。]]></description>
             <link>undefined/posts/image-lazy-loading</link>
             <guid isPermaLink="true">undefined/posts/image-lazy-loading</guid>
-        </item>
-        <item>
-            <title><![CDATA[标题]]></title>
-            <description><![CDATA[mdx测试]]></description>
-            <link>undefined/posts/mdx-test</link>
-            <guid isPermaLink="true">undefined/posts/mdx-test</guid>
         </item>
     </channel>
 </rss>
