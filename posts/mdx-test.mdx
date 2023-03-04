@@ -6,7 +6,7 @@ title: 标题
 subtitle: 副标题
 author: Tsuizen
 description: mdx测试
-tags: 
+tags:
   - CSS
 featureImage: /assert/images/make-money.jpg
 createdAt: 2021-09-11
@@ -30,7 +30,7 @@ draft: true
 
 ###### Heading6
 
-[MDX](https://mdxjs.com) allows you to use `JSX` in your markdown content. You can **import components**, such as *interactive charts* or *alerts*, and embed them within your content. This makes writing long-form content with components a blast. 🚀
+[MDX](https://mdxjs.com) allows you to use `JSX` in your markdown content. You can **import components**, such as _interactive charts_ or _alerts_, and embed them within your content. This makes writing long-form content with components a blast. 🚀
 
 [MDX](https://mdxjs.com)
 `MDX`
@@ -69,7 +69,6 @@ https://github.com/imzxj
 Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 [^1]: This is the first footnote.
-
 [^bignote]: Here's one with multiple paragraphs and code.
 
     Indent paragraphs to include them in the footnote.
@@ -131,13 +130,13 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
 ```jsx live
 function Count() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <p>count: {count}</p>
       <button onClick={() => setCount(count + 1)}>+1</button>
     </>
-  )
+  );
 }
 ```
