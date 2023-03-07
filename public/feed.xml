@@ -4,13 +4,17 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-
-        <lastBuildDate>Sat, 04 Mar 2023 05:20:06 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Mar 2023 04:53:07 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 04 Mar 2023 05:20:06 GMT</pubDate>
-
+        <pubDate>Tue, 07 Mar 2023 04:53:07 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
+        <item>
+            <title><![CDATA[New Bing的正确打开方式]]></title>
+            <description><![CDATA[还在苦于ChatGPT难注册以及时不时的人际验证和掉线重连？本文介绍了如何使用Skype将New Bing培养成你的专属电子宠物。]]></description>
+            <link>undefined/posts/new-bing</link>
+            <guid isPermaLink="true">undefined/posts/new-bing</guid>
+        </item>
         <item>
             <title><![CDATA[使用github action自动发布npm包]]></title>
             <description><![CDATA[本文介绍了如何使用GitHub Action在push源文件后自动发布npm包，省略手动发布的过程。]]></description>
@@ -34,12 +38,6 @@
             <description><![CDATA[在学习Next.js13的新特性时发现部分浏览器已经支持了原生的图片懒加载，却鲜有人提及。]]></description>
             <link>undefined/posts/image-lazy-loading</link>
             <guid isPermaLink="true">undefined/posts/image-lazy-loading</guid>
-        </item>
-        <item>
-            <title><![CDATA[标题]]></title>
-            <description><![CDATA[mdx测试]]></description>
-            <link>undefined/posts/mdx-test</link>
-            <guid isPermaLink="true">undefined/posts/mdx-test</guid>
         </item>
     </channel>
 </rss>

@@ -1,0 +1,93 @@
+---
+slug: buil-my-blog
+category: 其他
+categorySlug: other
+title: New Bing的正确打开方式
+subtitle: ''
+author: Tsuizen
+description: 还在苦于ChatGPT难注册以及时不时的人际验证和掉线重连？本文介绍了如何使用Skype将New Bing培养成你的专属电子宠物。
+tags:
+  - ChatGPT
+  - New Bing
+featureImage: ''
+createdAt: 2023-03-07
+draft: false
+---
+
+# 前言
+
+ChatGPT 的使用门槛并不算低，各种前置准备劝退不少人，即便成功注册也要忍受经常性的掉线和人机验证。如果只是自用不需要使用 API 二次开发，New Bing 是一个绝佳的替代品，并且不需要科学环境。
+
+# New Bing 的几种使用方式
+
+不需要下载 Edge 浏览器，访问[New Bing](https://www.bing.com/new)进行注册即可。但是国内 IP 会被跳转到国内版 bing 页面，因此先要修改请求头。
+Chrome 可以安装扩展[Header Editor](https://chrome.google.com/webstore/detail/header-editor/eningockdidmgiojffjmkdblpjocbhgh/related?hl=zh-CN),
+然后点击扩展按钮进行配置，配置如下
+![header editor](/images/posts-images/new-bing/header-editor.png)
+
+```javascript
+^http(s?)://(.*).bing\.com/(.*)
+x-forwarded-for
+8.8.8.8
+```
+
+:::tip
+如果还是被重定向到 cn bing，先清一下 Cookie 再访问
+:::
+
+现在注册一个微软账号，然后在页面点击`加入候补名单`，等待微软邮件通知你获取资格即可（据大部分人的说法审核时间一般在两三天到两周左右，但是我的申请秒过甚至没有给我发邮件，不知道是不是因为我的账号活跃度较高的原因）
+
+获取资格后要使用 New Bing 有几种方式
+
+## 下载 Edge dev 版浏览器
+
+使用 Edge dev 浏览器访问[Bing](https://bing.com)，点击左上角聊天 tab 或者在 Bing 搜索中上拉就可以开始对话。但是为了使用 New Bing 迁移浏览器的成本过高，并且这种方式连续对话 9 次后就会刷新上下文，不适合长对话。虽然有油猴脚本可以解除这个限制，
+但是不太稳定。
+![](/images/posts-images/new-bing/8times.png)
+
+## 客户端 Bing 应用
+
+移动端，不方便。
+
+## Win11 会集成在搜索栏里
+
+考虑到 Win11 的普及率以及 Mac 用户没法使用所以还是被排除在外。
+
+## Skype（老东西该爆金币了）
+
+没想到微软还会给 Skype 引流，在[下载](https://www.skype.com/zh-Hans/get-skype/)页面下载客户端或者直接使用网页版 Skype 登陆拥有权限的账号，这里以客户端为例。
+根据引导页进入 Skype，登陆刚刚获得资格的微软账号并进入设置。验证邮箱，并将位置设置为美国。
+
+![skype-setting](/images/posts-images/new-bing/skype-setting.png)
+
+点击左栏搜索框搜索 Bing 并添加到联系人
+
+![search](/images/posts-images/new-bing/search.png)
+
+终于可以愉快地使用 New Bing 了。
+
+但是，等等。
+
+对话上下文的限制依然存在
+
+![context](/images/posts-images/new-bing/skype8times.png)
+
+:::warning
+微软：“你只可到这里，不可越过。”
+:::
+
+别急，我们可以曲线救国，点击新建聊天。
+
+![newchat](/images/posts-images/new-bing/newchat.png)
+
+选择新建多人对话并把 Bing 拉入群组
+
+![newgroup](/images/posts-images/new-bing/newgroup.png)
+
+终于完成了。~~现在你可以在这个群组里尽情调教 New Bing。~~
+
+![pet](/images/posts-images/new-bing/ele-pet.png)
+
+:::tip
+当然这种方式也有缺点，每次对话都要手动@Bing，见仁见智吧。
+:::
