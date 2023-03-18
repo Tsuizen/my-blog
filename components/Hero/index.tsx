@@ -1,4 +1,4 @@
-export default function Hero() {
+const Hero = () => {
   return (
     <>
       <div className="hero min-h-screen bg-base-200 w-full">
@@ -11,4 +11,6 @@ export default function Hero() {
       </div>
     </>
   );
-}
+};
+
+export default Hero;

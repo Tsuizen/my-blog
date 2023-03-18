@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       <footer className="footer footer-center py-10 text-base-content rounded">
@@ -26,4 +26,6 @@ export default function Footer() {
       </footer>
     </>
   );
-}
+};
+
+export default Footer;

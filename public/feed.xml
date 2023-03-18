@@ -4,14 +4,14 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 07 Mar 2023 04:54:57 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Mar 2023 16:01:50 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 07 Mar 2023 04:54:57 GMT</pubDate>
+        <pubDate>Sat, 18 Mar 2023 16:01:50 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
         <item>
             <title><![CDATA[New Bing的正确打开方式]]></title>
-            <description><![CDATA[还在苦于ChatGPT难注册以及时不时的人际验证和掉线重连？本文介绍了如何使用Skype将New Bing培养成你的专属电子宠物。]]></description>
+            <description><![CDATA[还在苦于ChatGPT难注册以及时不时的人机验证和掉线重连？本文介绍了如何使用Skype将New Bing培养成你的专属电子宠物。]]></description>
             <link>undefined/posts/new-bing</link>
             <guid isPermaLink="true">undefined/posts/new-bing</guid>
         </item>

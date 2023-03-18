@@ -9,7 +9,7 @@ interface Props {
   threshold?: number;
 }
 
-export default function LazyImage(props: Props) {
+const LazyImage = (props: Props) => {
   const { src, alt, className, placeholder, threshold = 0 } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -48,4 +48,6 @@ export default function LazyImage(props: Props) {
       className={className}
     />
   );
-}
+};
+
+export default LazyImage;

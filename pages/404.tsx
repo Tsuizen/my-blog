@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BsArrowUpLeft } from 'react-icons/bs';
 
-export default function Custom404() {
+const Custom404 = () => {
   return (
     <>
       <div className="bg-black w-screen h-screen">
@@ -18,4 +18,6 @@ export default function Custom404() {
       </div>
     </>
   );
-}
+};
+
+export default Custom404;
