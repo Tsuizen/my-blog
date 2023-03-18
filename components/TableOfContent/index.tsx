@@ -8,7 +8,7 @@ export interface TableOfContentsProps {
 }
 
 // eslint-disable-next-line no-undef
-function useIntersectionObserver(ids: string[], setActiveId) {
+const useIntersectionObserver = (ids: string[], setActiveId) => {
   const elements = Array.from(ids.map((id) => document.getElementById(id)));
   // 用useRef存储数据更新后页面不重渲染
   const headingsRef = useRef({});
@@ -39,7 +39,7 @@ function useIntersectionObserver(ids: string[], setActiveId) {
 
     elements.forEach((element) => observer.observe(element!));
   }, [setActiveId, elements]);
-}
+};
 
 const TableOfContent: React.FC<TableOfContentsProps> = (props) => {
   const { headings, className } = props;

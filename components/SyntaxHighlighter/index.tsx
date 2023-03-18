@@ -14,9 +14,9 @@ type Children = ReactNode & {
   };
 };
 
-type Props = {
+interface Props {
   children: Children;
-};
+}
 
 // 高亮代码组件
 const SyntaxHighlighter: React.FC<Props> = ({ children }) => {

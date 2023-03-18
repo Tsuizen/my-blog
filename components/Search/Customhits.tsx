@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { connectStateResults, Snippet } from 'react-instantsearch-dom';
 
-function Hits({ searchState, searchResults }) {
+const Hits = ({ searchState, searchResults }) => {
   const validQuery = searchState.query?.length >= 3;
   console.log(searchResults);
   return (
@@ -27,6 +27,6 @@ function Hits({ searchState, searchResults }) {
       )}
     </>
   );
-}
+};
 
 export default connectStateResults(Hits);

@@ -2,12 +2,12 @@ import { useClickAway } from 'ahooks';
 import classnames from 'classnames';
 import { FC, useRef } from 'react';
 
-export type MaskProps = {
+export interface MaskProps {
   show: boolean;
   toggleShow: any;
   className?: string;
   children: any;
-};
+}
 
 const Mask: FC<MaskProps> = (props) => {
   const { children, className, toggleShow } = props;

@@ -33,12 +33,12 @@ import { Post } from '@/types';
 
 const TableOfContent = dynamic(() => import('@/components/TableOfContent'));
 
-type ReadTimeResults = {
+interface ReadTimeResults {
   text: string;
   time: number;
   words: number;
   minutes: number;
-};
+}
 
 const components = {
   ul: UnorderList,

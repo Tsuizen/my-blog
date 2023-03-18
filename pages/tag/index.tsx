@@ -20,9 +20,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Tag(
-  props: InferGetStaticPropsType<typeof getStaticProps>
-) {
+const Tag = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { tags } = props;
   const totalTagsNum = tags.reduce((pre, cur) => pre + cur.postsNum, 0);
 
@@ -60,6 +58,8 @@ export default function Tag(
       </div>
     </>
   );
-}
+};
 
 Tag.getLayout = getLayout;
+
+export default Tag;

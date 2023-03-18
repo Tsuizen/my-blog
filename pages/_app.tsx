@@ -13,7 +13,7 @@ import BackToTop from '@/components/BackToTop';
 import ErrorBoundary from '@/components/ErrorBoundry';
 import SEO from '@/config/seo-config';
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page) => page);
 
   return (
@@ -48,4 +48,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </ErrorBoundary>
     </>
   );
-}
+};
+
+export default App;

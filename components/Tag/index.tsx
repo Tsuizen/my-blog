@@ -1,15 +1,15 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 
-type TagsInfo = {
+interface TagsInfo {
   name: string;
   postsNum: number;
-};
+}
 
-type Props = {
+interface Props {
   className: string;
   tags: TagsInfo[];
-};
+}
 
 const Tag: React.FC<Props> = (props) => {
   const { className, tags } = props;
