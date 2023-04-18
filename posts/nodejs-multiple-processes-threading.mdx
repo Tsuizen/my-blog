@@ -1,0 +1,260 @@
+---
+slug: nodejs-multiple-processes-threading
+category: 后端
+categorySlug: background
+title: NodeJS多进程与多线程使用
+subtitle: ''
+author: Tsuizen
+description: NodeJS多进程和多线程使用指南
+tags:
+  - NodeJS
+  - 多进程
+  - 多线程
+featureImage: ''
+createdAt: 2023-04-17
+updatedAt: 2023-04-17
+draft: false
+---
+
+平时使用 NodeJS 挺多的，但是对多进程和多线程没有接触过，本文记录一下最近的学习记录。
+
+## 多进程
+
+JavaScript 在浏览器中是单线程非阻塞的，在 Node 的早期版本中同样如此。这中模式很适合处理 IO 密集型任务，但当遇到 CPU 密集型任务时，可能会阻塞程序运行，因此可以使用多进程来解决这个问题。
+
+### 什么是多进程
+
+> 进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配的基本单位，是操作系统结构的基础
+
+NodeJS 中的多进程可以运行多个 Node 实例，在理想情况下每个 CPU 核心运行一个。对于多个 Node 实例，对应多个主线程。在 Node 中可以使用 child_process 和 cluster 模块来创建子进程。
+
+### child_process
+
+`child_process`提供了四种方法创建子进程。
+
+- spawn
+
+```javascript
+child_process.spawn(command[, args][, options])
+```
+
+`spawn` 会启动一个 shell，并在 shell 执行命令，`child_process.spawn` 返回 `stdout` 和 `stderr` 流对象。 程序可以通过 `stdout` 的 `data`、`end` 或者其他事件来获取子进程返回的数据。 使用 spawn 方法时，子进程一开始执行就会通过流返回数据，因此 spawn 适合子进程返回大量数据的情形。
+
+```javascript
+const { spawn } = require('child_process');
+const ls = spawn('ls', ['-lh', '/usr']);
+
+ls.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+ls.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+
+ls.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+```
+
+- fork
+
+```javascript
+child_process.fork(modulePath[, args][, options])
+```
+
+`fork` 可以传入一个模块的路径，返回子进程的引用，在子进程和父进程间建立了一个 IPC(IPC，InterProcess Communication)通道进行通信。
+:::tip
+fork 是一个特殊的 spawn 实例，它会创建一个 v8 实例，主要用于将 CPU 密集型任务与主事件分开
+:::
+
+```javascript
+// parent.js
+var child_process = require('child_process');
+var child = child_process.fork('./child.js');
+
+child.on('message', function (m) {
+  console.log('message from child: ' + JSON.stringify(m));
+});
+
+child.send({ from: 'parent' });
+
+// child.js
+process.on('message', function (m) {
+  console.log('message from parent: ' + JSON.stringify(m));
+});
+
+process.send({ from: 'child' });
+```
+
+- exec
+
+```javascript
+child_process.exec(command[, options][, callback])
+```
+
+exec 接收一个回调作为参数，回调中会传入报错和 IO 流。exec 返回整个子进程处理时产生的 buffer，这个 buffer 默认大小是 200K。 当子进程返回的数据超过默认大小时，程序就会产生”Error: maxBuffer exceeded”异常。 调大 exec 的 maxBuffer 选项可以解决这个问题，不过当子进程返回的数据太过巨大的时候，这个问题还会出现。 因此当子进程返回的数据超过默认大小时，最好的解决方法是使用 spawn 方法。
+
+```javascript
+const { exec } = require('child_process');
+exec('cat ./test.txt', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
+```
+
+- execFile
+
+```javascript
+child_process.execFile(file[, args][, options][, callback])
+```
+
+execFile 和 exec 类似，但是在默认情况下不会生成 shell，并且指定的可执行文件是作为新进程直接生成的，因此效率略高于 exec。
+
+### cluster
+
+`cluster` 可以创建管理多个 Node 实例。
+
+```javascript
+import cluster from 'node:cluster';
+import http from 'node:http';
+import { availableParallelism } from 'node:os'; //该方法在node v19.4以上可用
+import process from 'node:process';
+
+const numCPUs = availableParallelism();
+
+if (cluster.isPrimary) {
+  console.log(`Primary ${process.pid} is running`);
+
+  // Fork workers.
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
+  // Workers can share any TCP connection
+  // In this case it is an HTTP server
+  http
+    .createServer((req, res) => {
+      res.writeHead(200);
+      res.end('hello world\n');
+    })
+    .listen(8000);
+
+  console.log(`Worker ${process.pid} started`);
+}
+```
+
+![](/images/posts-images/node-multi/worker.png)
+
+worker 进程是通过`child_process.fork()`方法创建的，因此可以和父进程通过 IPC 进行通信。
+
+cluster 主要提供了三个能力：
+
+1. 创建子进程
+2. 解决多个子进程监听同一个端口导致的冲突问题
+3. 负载均衡
+
+cluster 有两种策略进行负载均衡
+
+1. 除 windows 外默认使用轮询方式。该方法中，主进程侦听端口，接受新的连接，并以轮询的方式将它们分布在工作进程间。
+2. 第二种方法是主进程创建监听 socket 并将其发送给感兴趣的工作进程，该方法理论上可以获得理想性能，但是在实际由于操作系统调度程序的反复无常，分布往往非常不平衡。
+
+## 多线程
+
+NodeJS 在 v12 中加入了`work_threads`模块来创建多线程，与多进程不同的是多线程可以共享内存，通过传输`ArrayBuffer`或者`SharedArrayBuffer`实例来实现。
+
+```javascript
+const {
+  Worker,
+  isMainThread,
+  parentPort,
+  workerData
+} = require('node:worker_threads');
+
+if (isMainThread) {
+  module.exports = function parseJSAsync(script) {
+    return new Promise((resolve, reject) => {
+      const worker = new Worker(__filename, {
+        workerData: script
+      });
+      worker.on('message', resolve);
+      worker.on('error', reject);
+      worker.on('exit', (code) => {
+        if (code !== 0)
+          reject(new Error(`Worker stopped with exit code ${code}`));
+      });
+    });
+  };
+} else {
+  const { parse } = require('some-js-parsing-library');
+  const script = workerData;
+  parentPort.postMessage(parse(script));
+}
+```
+
+上述代码主线程与工作线程都使用同一份文件作为执行脚本(\_\_filename 为当前执行文件路径)，通过 isMainThread 来区分主线程与工作线程运行时逻辑。当模块对外暴露方法 parseJSAsync 被调用时候，都将会衍生子工作线程去执行调用 parse 函数。
+
+`work_threads` 通过执行主线程指定的脚本文件来工作，每个线程在与其他线程隔离的情况下执行。但是，这些线程可以通过消息通道来回传递消息。
+主线程使用`worker.postMessage()`传递消息，而工作线程使用`parentPort.postMessage()`。
+
+下面以一个求质数的例子来说明多线程的具体使用方式
+
+```javascript
+// main.js
+const {Worker} = require('worker_threads');
+
+const num = 10000;
+
+const runWorker = (data) => {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker('./prime.js', {workerData: data});
+    worker.once('message', resolve);
+    worker.on('error', reject);
+    worker.on('exit', (code) => {
+      if (code) {
+        reject(new Error(`stop with code ${code}`));
+      }
+    })
+  })
+}
+
+const main = async () => {
+  const result = await runWorker(num);
+  console.log(result);
+}
+
+main();
+
+// prime.js
+const {parentPort, workerData} = require('worker_threads');
+
+const getPrime = (num) => {
+  const result = [];
+
+  for (let i = 2; i <= num; i++) {
+    let flag = 0;
+    for (let j = 2; j <= Math.sqrt(i); j++) {
+      if (i % j === 0) {
+        flag = 1;
+      }
+    }
+    if (!flag) {
+      result.push(i);
+    }
+  }
+
+  return result;
+}
+
+parentPort.postMessage(getPrime(workerData));
+```
+
+![](/images/posts-images/node-multi/thread.png)

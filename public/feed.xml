@@ -4,11 +4,17 @@
         <description><![CDATA[随便写东西的地方]]></description>
         <link>http://github.com/dylang/node-rss</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 18 Mar 2023 16:01:50 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Apr 2023 02:02:04 GMT</lastBuildDate>
         <atom:link href="undefined/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 18 Mar 2023 16:01:50 GMT</pubDate>
+        <pubDate>Tue, 18 Apr 2023 02:02:04 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Tsuizen]]></copyright>
         <language><![CDATA[cn]]></language>
+        <item>
+            <title><![CDATA[NodeJS多进程与多线程使用]]></title>
+            <description><![CDATA[NodeJS多进程和多线程使用指南]]></description>
+            <link>undefined/posts/nodejs-multiple-processes-threading</link>
+            <guid isPermaLink="true">undefined/posts/nodejs-multiple-processes-threading</guid>
+        </item>
         <item>
             <title><![CDATA[New Bing的正确打开方式]]></title>
             <description><![CDATA[还在苦于ChatGPT难注册以及时不时的人机验证和掉线重连？本文介绍了如何使用Skype将New Bing培养成你的专属电子宠物。]]></description>
